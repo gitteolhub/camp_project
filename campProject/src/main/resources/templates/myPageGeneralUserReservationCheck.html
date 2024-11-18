@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>마이페이지 일반유저 예약 확인</title>
+  <style>
+    /* 레이아웃을 위한 스타일 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .left-menu {
+      float: left;
+      width: 20%;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-right: 20px;
+    }
+    .left-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .left-menu li {
+      margin-bottom: 10px;
+    }
+    .left-menu a {
+      text-decoration: none;
+      color: #337ab7;
+    }
+    .left-menu a:hover {
+      color: #23527c;
+    }
+    .content {
+      float: left;
+      width: 60%;
+      padding: 20px;
+    }
+    .reservation-list {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .reservation-list th, .reservation-list td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    .reservation-list th {
+      background-color: #f2f2f2;
+    }
+    .btn {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      background-color: #337ab7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #23527c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-menu">
+      <ul>
+        <li><a href="#">회원정보 수정</a></li>
+        <li><a href="#">예약 확인</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <h2>캠핑 예약 확인</h2>
+      <table class="reservation-list">
+        <thead>
+          <tr>
+            <th>예약 번호</th>
+            <th>캠핑장 이름</th>
+            <th>예약 날짜</th>
+            <th>인원 수</th>
+            <th>상태</th>
+            <th>취소</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 예약 정보를 반복 렌더링 -->
+          <tr>
+            <td>12345</td>
+            <td>힐링 캠핑장</td>
+            <td>2024-11-25</td>
+            <td>4명</td>
+            <td>확정</td>
+            <td><button class="btn">취소</button></td>
+          </tr>
+          <tr>
+            <td>12346</td>
+            <td>자연 속 캠핑</td>
+            <td>2024-12-05</td>
+            <td>2명</td>
+            <td>대기</td>
+            <td><button class="btn">취소</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
