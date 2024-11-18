@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageGeneralUserModificationController {
 
-    @GetMapping("/MyPageGeneralUserModification")
+    @GetMapping("/myPageGeneralUserModification")
     public String MyPageGeneralUserModification() {
-        return "MyPageGeneralUserModification"; // myPageGeneralUser.html 파일을 반환
+        return "myPageGeneralUserModification"; // myPageGeneralUserModification.html 파일을 반환
     }
 }
