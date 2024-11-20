@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="header-head">
+    <meta charset="UTF-8">
+    <title>미로그인 헤더</title>
+    <!-- CSS, JavaScript 링크 등 공통 헤더 정보 -->
+</head>
+<body>
+
+    <header th:fragment="header">
+        <nav>
+            <ul>
+                <li><a href="/" th:href="@{/}">홈</a></li>
+                <li sec:authorize="!isAuthenticated()"><a href="/login" th:href="@{/login}">로그인</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/mypage" th:href="@{/mypage}">마이페이지</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">로그아웃</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+</body>
+</html>
