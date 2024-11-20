@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!-- 헤더 적용 -->
 <head>
   <title>마이페이지 일반유저 회원정보 수정</title>
+  
+  <div th:include="header :: header-head"></div>
+  
   <style>
     /* 레이아웃을 위한 스타일 */
     body {
@@ -80,6 +84,8 @@
   </style>
 </head>
 <body>
+	<header th:include="header :: header"></header>
+
   <div class="container">
     <div class="left-menu">
       <ul>

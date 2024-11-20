@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>마이페이지 일반유저 예약 확인</title>
+  
+  <div th:include="header :: header-head"></div>
+  
   <style>
     /* 레이아웃을 위한 스타일 */
     body {
@@ -78,6 +81,8 @@
   </style>
 </head>
 <body>
+	<header th:include="header :: header"></header>
+
   <div class="container">
     <div class="left-menu">
       <ul>
