@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>캡차 인증</title>
+<style>
+    body {
+        
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+    }
+    img {
+        display: block;
+        margin: 0 auto 15px auto;
+    }
+    .input-container {
+        display: flex; /* Flexbox 설정 */
+        justify-content: space-between; /* 요소 간의 공간을 분배 */
+        align-items: center; /* 수직 정렬 */
+        margin-bottom: 10px; /* 입력란과 버튼 사이 간격 */
+    }
+    input[type="text"] {
+        width: 70%; /* 입력란의 너비 */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 5px; /* 버튼 간의 간격 */
+        display: inline-block;
+        white-space: nowrap;
+    }
+    button:hover {
+        background-color: #218838;
+    }
+    .error {
+        color: red;
+        margin-top: 10px;
+    }
+    .refresh-button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 5px; /* 새로 고침 버튼과 인증 버튼 간의 간격 */
+        display: inline-block;
+        white-space: nowrap;
+    }
+    .refresh-button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<script th:src="@{/axios/1.7.4/dist/axios.min.js}"></script>
+</head>
+<body>
+    <div class="container">
+    	loginErrorCount:[[${session.loginErrorCount}]] <br>
+        <h5>아래의 이미지를 보이는 대로 입력해 주세요.</h5>
+        <!-- <form id="captchaForm" th:action="@{/verifyCaptcha}" method="post"> -->
+            <img id="captcha_img" th:src="@{'/captcha/image/' + ${captchaImage}}" alt="캡차 이미지" />
+            <input type="hidden" id="key" name="key" th:value="${key}" />
+            <div class="input-container">
+                <input type="text" id="userInput" name="userInput" placeholder="캡차 입력" required />
+                <button id="captcha_button" type="button">인증</button>
+                <button type="button" class="refresh-button" id="refresh_btn" onclick="refreshImage()">새로고침</button>
+            </div>
+        <!-- </form> -->
+        <div th:if="${error}" class="error" th:text="${error}"></div>
+    </div>
+
+    <script>
+    	window.onload=function(){
+    		let err="[[${error}]]";
+    		let msg="[[${msg}]]";
+    		if(err=="true"){
+    			alert(msg);
+    		}
+    	}
+
+        function refreshImage() {
+            axios.get('/campProject/refreshImage')
+                .then(function (response) {
+                    let json = response.data;
+                    // 이미지 갱신
+                    document.getElementById('captcha_img').src = '/campProject/captcha/image/' + json.captchaImage;
+                    // 키(key) 재입력
+                    document.getElementById('key').value = json.key;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+        document.getElementById('captcha_button').onclick = function(e) {
+            alert("전송");
+        	// e.preventDefault(); // 기본 제출 방지
+            let userInput = document.getElementById('userInput').value;
+            let key = document.getElementById('key').value;
+
+            axios.get('/campProject/checkCaptcha', {
+            	params: {
+                	captchaVal: userInput,
+                	key: key
+            	}
+            })
+            .then(function (response) {
+                let res = response.data;
+                console.log("res: ", res);
+
+                if (res.result == true) {
+                    alert("캡차 인증 성공!");
+                    // 추가적인 로그인 절차를 진행할 수 있습니다.
+                    location.href="/campProject/loginForm";
+                } else {
+                    alert("캡차 인증 실패! 다시 시도해주세요.");
+                    refreshImage(); // 인증 실패 시 새로 고침
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        };
+    </script>
+</body>
+</html>
