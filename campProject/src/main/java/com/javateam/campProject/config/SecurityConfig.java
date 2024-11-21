@@ -1,0 +1,74 @@
+package com.javateam.campProject.config;
+
+import org.springframework.context.annotation.Bean;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+@Slf4j
+public class SecurityConfig {
+
+	// 비밀번호를 안전하게 암호화하기 위해 BCryptPasswordEncoder 빈 생성
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity objHttpSecurity) throws Exception {
+
+		      objHttpSecurity.headers(headersCustomizer -> headersCustomizer
+		                  .frameOptions(Customizer.withDefaults()).disable());
+
+		      // 요청 권한 설정
+		      objHttpSecurity.authorizeHttpRequests((authorizeHttpRequests) ->
+		                                    authorizeHttpRequests.requestMatchers("/",     "/resources/**", "/loginError",   "/choiceJoin", "/userJoin", "/ceoJoin",  "/loginForm",
+		                                                                   "/home", "/captcha",      "/checkCaptcha", "/captcha/image/**", "/refreshImage",
+		                                                                   "/join", "/socialAddInformation", "/findUserId", "/findUserPw", "/findUserIdProc",
+		                                                                   "/pwVerificationCode")
+		                                                      .permitAll()
+		                                                      .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")            // ROLE_ADMIN 권한이 필요한 경로
+		                                                      .requestMatchers("my")  // TODO 추후 변경
+		                                                      .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")   // ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
+		                                                      .anyRequest().authenticated());
+		// csrf 토큰 미사용
+		objHttpSecurity.csrf((csrf) -> csrf.disable());
+
+		// 로그인/ 로그아웃(인증) 처리
+		objHttpSecurity.formLogin(formLogin -> formLogin
+						   	.loginProcessingUrl("/loginForm")
+						   	.loginPage("/loginForm")		// 로그인 이후 주소
+						   	.usernameParameter("userid")	// 아이디
+						   	.passwordParameter("password")	// 비밀번호
+						   	.defaultSuccessUrl("/home")	// 로그인 성공시 이동 주소
+						   	.failureUrl("/loginError")		// 로그인 에러 처리
+						   	.permitAll())
+
+					   .logout((logout) -> logout
+							.logoutSuccessUrl("/loginForm")	// 로그아웃 이후 이동 주소
+							.permitAll());
+		// 예외처리 이용 주소
+		objHttpSecurity.exceptionHandling(handler -> handler.accessDeniedPage("/403"));
+
+
+		return objHttpSecurity.build();
+	}
+
+	// security URL 열외(제외)
+	@Bean
+	public WebSecurityCustomizer webSecurityCustomizer() {
+
+		return (web) -> web.ignoring().requestMatchers("/bootstrap/**", "/css/**", "/js/**", "/axios/**", "/captcha/**", "/webjars/**");
+	}
+}
