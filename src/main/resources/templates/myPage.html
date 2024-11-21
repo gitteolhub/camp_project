@@ -7,6 +7,11 @@
 <body>
 principal:[[${#authentication}]] <br>
 sessionUser(네이버, 구글):[[${session.socialUser}]] <br>
-
+msg: [[${msg}]]<br>
+<div class="success-message" th:if="${msg != null and msg != '없음'}">
+ 		<script>
+    			alert('[[${msg}]]'); // 로그인 성공 메시지 표시
+ 		</script>
+</div>
 </body>
 </html>

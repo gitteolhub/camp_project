@@ -94,7 +94,7 @@
     		let err="[[${error}]]";
     		let msg="[[${msg}]]";
     		if(err=="true"){
-    			alert(msg);
+    			alert("메시지: "+msg);
     		}
     	}
 
@@ -113,7 +113,6 @@
         }
 
         document.getElementById('captcha_button').onclick = function(e) {
-            alert("전송");
         	// e.preventDefault(); // 기본 제출 방지
             let userInput = document.getElementById('userInput').value;
             let key = document.getElementById('key').value;

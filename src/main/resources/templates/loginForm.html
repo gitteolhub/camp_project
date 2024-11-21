@@ -135,9 +135,10 @@
 <body>
     <div class="login-container">
 	loginErrorCount:[[${session.loginErrorCount}]] <br>
+	error:[[${error}]] <br>
         <h2>Login Page</h2>
         <!-- TODO 나중에 수정해야함!! action=""부분  -->
-        <form action="" method="post">
+        <form th:action="@{/loginForm}" method="post">
             <div class="form-group">
                 <label for="userid">ID:</label>
                 <input type="text"
@@ -177,11 +178,12 @@
 			    </div>
 			</div>
 
-            <div class="error-message" th:if="${error!=null}">
-            <script>
-              alert('아이디와 비밀번호를 확인하세요.');
+            <div class="error-message" >
+            <script th:if="${msg!='없음'}">
+              	alert('[[${msg}]]');
             </script>
             </div>
+            
         </form>
 
 

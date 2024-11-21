@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javateam.campProject.service.ApiCaptchaImageService;
@@ -35,9 +36,10 @@ public class CaptchaController {
 
 	@Autowired
 	public ServletContext servletContext;
-
-	@GetMapping("/captcha")
-	public String login(@RequestParam("error") String error,@RequestParam("msg") String msg, Model model) {
+	
+	@GetMapping("/captcha") // 11월21일 (인자 기정값: defaultValue = "")
+	public String captcha(@RequestParam(value = "error", defaultValue = "") String error, 
+			   			  @RequestParam(value = "msg", defaultValue = "") String msg, Model model) {
 
 		log.info("[CaptchaController].login");
 
@@ -89,6 +91,7 @@ public class CaptchaController {
 		model.addAttribute("captchaImage", filenameOrMsg);
 		model.addAttribute("key", key); // 발급받은 캡차키(key)
 
+		log.info("[캡차페이지 진입 전]");
 		return "captcha";
 	}
 

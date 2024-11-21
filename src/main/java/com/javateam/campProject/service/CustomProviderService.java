@@ -107,7 +107,7 @@ public class CustomProviderService implements AuthenticationProvider, UserDetail
 			if (passwordEncoder.matches(password, customUser.getPassword()))
 				log.info("[CustomProviderService][비밀번호가 일치합니다.]");
 			else {
-				throw new BadCredentialsException("[CustomProviderService][비밀번호가 일치하지 않습니다.]");
+				throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
 			}
 
 			List<Role> roles = this.loadUserRole(userid);

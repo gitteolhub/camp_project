@@ -46,9 +46,19 @@ public class AuthController {
 
 	 // 홈 페이지 메서드 추가
     @GetMapping("/home")
-    public String home(Model model) {
+    public String home() {
         log.info("[home]");
         return "home"; // home.html 뷰를 반환
+    }
+    
+    @GetMapping("/myPage")
+    public String myPage(Model model) {
+        log.info("[myPage]");
+        
+		log.info("로그인 인증됨");
+		model.addAttribute("msg", "로그인 되었습니다.");
+        
+        return "myPage"; // home.html 뷰를 반환
     }
 
 	// 로그인 페이지를 반환
@@ -72,7 +82,7 @@ public class AuthController {
 			log.info("[loginErrorCount_1]: {}", loginErrorCount);
 		}
 
-		String movePath="";
+		String movePath="loginForm";	// 11월21일 수정 (무한루프 패치)
 
 		if(auth.getPrincipal() == null || auth.getPrincipal().toString().equals("anonymousUser")) {
 
@@ -81,18 +91,19 @@ public class AuthController {
 			model.addAttribute("msg", msg);
 
 			log.info("[loginErrorCount_2: {}]", loginErrorCount);
+			
 			if(loginErrorCount >= maxCount) {
+				
 				log.info("[if(loginErrorCount >= maxCount)]");
-				captchaController.login(error, msg, model);
+				log.info("[AuthController][msg]: {} ", msg);
+				log.info("[AuthController][error]: {} ", error);
+				captchaController.captcha(error, msg, model);
+			
 			}
 
-			movePath = "loginForm";
-
-		} else {
-			log.info("로그인 인증됨");
-			movePath = "home";
 		}
 
+		log.info("[AuthController][movePath]: {}", movePath);
 		return movePath;
 	}
 
@@ -118,13 +129,15 @@ public class AuthController {
 
 		// 마지막 보안 예외 가져오기
 		Exception secuSess = (Exception)httpSession.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
-		log.info("[loginError][인증 오류 {}]", secuSess.getMessage());
+		log.info("[loginError][인증 오류]: {}", secuSess.getMessage());
 
 		// 오류 flag 추가
-		redirectAttributes.addAttribute("error", "true");
+//		redirectAttributes.addAttribute("error", "true");
+		model.addAttribute("error", "true");
 
 		// 오류 메서드 추가
-		redirectAttributes.addAttribute("msg", secuSess.getMessage());
+//		redirectAttributes.addAttribute("msg", secuSess.getMessage());
+		model.addAttribute("msg", secuSess.getMessage());
 
 		// loginErrorCount 세션화
 		if(httpSession.getAttribute("loginErrorCount")==null) {
@@ -147,7 +160,7 @@ public class AuthController {
 
 	    }
 
-		return "redirect:/loginForm";
+		return "loginForm";
 	}
 	// 구글 로그인시 추가정보
 	@GetMapping("/socialAddInformation")
@@ -167,6 +180,13 @@ public class AuthController {
 			log.info("[home]");
 	        return "redirect:/home"; // 홈으로 이동
 		}
+	}
+	
+	// 비정상 로그인 상황 처리
+	@GetMapping("/error")
+	public String error() {
+		log.info("[error 비정상 로그인 상황 처리]");
+		return "redirect:/home";
 	}
 
 }
