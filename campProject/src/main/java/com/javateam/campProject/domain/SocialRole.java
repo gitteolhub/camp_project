@@ -7,8 +7,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum SocialRole {
 
-	GUEST("ROLE_GUEST", "손님"),
-	USER("ROLE_USER", "일반 사용자");
+	SUPERADMIN("ROLE_SUPERADMIN", "최고 관리자"),
+	ADMIN("ROLE_ADMIN", "관리자"),
+	USER("ROLE_USER", "일반 사용자"),
+	CEO("ROLE_CEO", "사업자");
 
 	private final String key;
 	private final String title;

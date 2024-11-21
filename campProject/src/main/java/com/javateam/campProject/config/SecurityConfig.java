@@ -44,7 +44,7 @@ public class SecurityConfig {
 												   					.permitAll()
 												   					.requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")				// ROLE_ADMIN 권한이 필요한 경로
 												   					.requestMatchers("/myPage")  // TODO 추후 변경
-												   					.hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
+												   					.hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_CEO", "ROLE_SUPERADMIN")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
 												   					.anyRequest().authenticated());
 
 		// csrf 토큰 미사용
