@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.campSocialUserMapper">
+
+	<!-- email로 소셜 회원 정보 조회 -->
+	 <select id="selectSocialMemberByEmail" resultType="com.javateam.campProject.domain.SocialUser">
+        SELECT *
+          FROM SOCIAL_USER
+         WHERE EMAIL = #{email}
+    </select>
+
+    <!-- social(naver, google) 회원정보 저장 -->
+  	<insert id="insertSocialUser" parameterType="com.javateam.campProject.domain.SocialUser">
+	 	INSERT INTO SOCIAL_USER (ID, NAME, EMAIL, GENDER, BIRTHDAY, MOBILE, MEMBER_TYPE, CREATED_DATE, MODIFIED_DATE, AUTH_VENDOR, ROLE)
+	 					 VALUES (SOCIAL_USER_SEQ.NEXTVAL, #{name}, #{email}, #{gender}, #{birthday},
+	 							#{mobile}, #{memberType}, SYSDATE, SYSDATE, #{authVendor}, #{role})
+  	</insert>
+
+	<!-- social(google) 회원정보 수정 -->
+  	<update id="updateSocialGoogleUser" parameterType="com.javateam.campProject.domain.SocialUser">
+  	 	UPDATE SOCIAL_USER
+  	 	   SET GENDER        = #{gender},
+  	 	       BIRTHDAY      = #{birthday},
+  	 	       MOBILE        = #{mobile},
+  	 	       MEMBER_TYPE   = #{memberType},
+  	 	       MODIFIED_DATE = SYSDATE
+  	 	 WHERE NAME = #{name} AND EMAIL = #{email} AND AUTH_VENDOR = #{authVendor}
+  	</update>
+
+  	<!-- social(naver, google) 회원 조회(email, authVendor로 조회) -->
+  	<select id="selectSocialUserByEmailAndAuthVendor" parameterType="map" resultType="com.javateam.campProject.domain.SocialUser">
+		SELECT
+			ID, NAME, EMAIL, GENDER, BIRTHDAY, MOBILE, MEMBER_TYPE,
+			CREATED_DATE AS "createdDate",
+			MODIFIED_DATE AS "modifiedDate",
+			AUTH_VENDOR AS "authVendor",
+			ROLE
+		  FROM SOCIAL_USER
+		 WHERE EMAIL = #{email} AND AUTH_VENDOR = #{authVendor}
+	</select>
+
+</mapper>
