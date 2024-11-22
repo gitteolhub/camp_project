@@ -57,4 +57,56 @@
 		   SET PW = #{pw}
 		 WHERE ID = #{id}
 	</update>
+	
+	<!-- 회원정보 삽입(생성) -->
+	<insert id="insertMember"
+			parameterType="com.javateam.campProject.domain.MemberVO">
+		INSERT INTO
+		       USER_TBL
+		       (
+					ID
+				  , PW
+				  , NAME
+				  , GENDER
+				  , EMAIL
+				  , PHONE
+				  , ZIP
+				  , ROAD_ADDRESS
+				  , JIBUN_ADDRESS
+				  , DETAIL_ADDRESS
+				  , BIRTHDAY
+				  , JOINDATE
+				  , MEMBERTYPE
+				  , BUSINESSNUM
+		       )
+		       VALUES
+		       (
+		       	    #{id}
+				  , #{pw}
+				  , #{name}
+				  , #{gender}
+				  , #{email}
+				  , #{phone}
+				  , #{zip}
+				  , #{roadAddress}
+				  , #{jibunAddress}
+				  , #{detailAddress}
+				  , #{birthday}
+		          , SYSDATE
+		          , #{memberType}
+		          , #{businessNum}
+		       )
+	</insert>
+
+	<!-- 회원 롤(Role) 생성 -->
+	<insert id="insertRole" parameterType="map">
+		INSERT INTO
+		   USER_ROLES
+		   VALUES
+		   (
+		       USER_ROLES_SEQ.NEXTVAL
+		       , #{id}
+		       , #{role}
+		   )
+	</insert>
 </mapper>

@@ -42,7 +42,7 @@ public class MemberJoinController {
 		
 		if (memberService.insertMember(memberVO) == true) {
 			msg = "회원가입에 성공하셨습니다.";
-			path = "/login";
+			path = "/loginForm";
 		} else {			
 			msg = "회원가입에 실패하였습니다.";
 			path = "/choiceJoin";

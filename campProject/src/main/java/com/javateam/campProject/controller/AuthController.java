@@ -195,6 +195,7 @@ public class AuthController {
     public String choiceJoin() {
     	return "choiceJoin";
     }
+    
     @GetMapping("/userJoin")
     public String userJoin(Model model) {
     	MemberVO memberVO = new MemberVO();
