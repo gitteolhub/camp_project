@@ -85,5 +85,6 @@ public class SecurityConfig {
 
 		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
 													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs");
+
 	}
 }

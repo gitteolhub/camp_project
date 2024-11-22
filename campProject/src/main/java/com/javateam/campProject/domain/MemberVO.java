@@ -16,22 +16,34 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberVO {
 
+	/** 아이디 */
 	private String id;
+	/** 패쓰워드 */
 	private String pw;
+	/** 이름 */
 	private String name;
+	/** 성별 */
 	private String gender;
+	/** 이메일 */
 	private String email;
-
+	/** 연락처(휴대폰) */
 	private String phone;
+	/** 우편번호 */
 	private String zip;
+	/** 도로명 주소 */
 	private String roadAddress;
+	/** 지번 주소 */
 	private String jibunAddress;
+	/** 상세 주소 */
 	private String detailAddress;
-
-	private Date   birthday;
-	private Date   joindate;
-	private String membertype;
-	private String businessnum;
+	/** 생년월일 */
+	private Date birthday;
+	/** 가입일 */
+	private Date joindate;
+	/** 회원 종류*/
+	private String memberType;
+	/** 사업자 번호*/
+	private String businessNum;
 
 	@Override
 	public boolean equals(Object object) {
@@ -54,14 +66,15 @@ public class MemberVO {
 			&& Objects.equals(email, other.email)               && Objects.equals(phone, other.phone)
 			&& Objects.equals(zip, other.zip)                   && Objects.equals(roadAddress, other.roadAddress)
 			&& Objects.equals(jibunAddress, other.jibunAddress) && Objects.equals(detailAddress, other.detailAddress)
-			&& Objects.equals(birthday, other.birthday)         && Objects.equals(membertype, other.membertype)
-			&& Objects.equals(businessnum, other.businessnum);
+			&& Objects.equals(birthday, other.birthday)         && Objects.equals(memberType, other.memberType)
+			&& Objects.equals(businessNum, other.businessNum);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id,       pw,         name,        gender,       email,
 							phone,    zip,        roadAddress, jibunAddress, detailAddress,
-							birthday, membertype, businessnum);
+							birthday, memberType, businessNum);
 	}
 }
+

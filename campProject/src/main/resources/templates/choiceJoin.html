@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 선택</title>
+     <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box; /* 패딩을 포함한 박스 크기 계산 */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .choice-btn {
+            display: block;
+            width: 100%;
+            max-width: 250px; /* 버튼 크기를 보드 크기 내에 맞추기 위해 max-width 설정 */
+            padding: 20px;
+            margin: 10px auto; /* 버튼들을 수평 중앙에 배치 */
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            color: #3498db;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+            box-sizing: border-box; /* 패딩 포함한 크기 계산 */
+        }
+
+        .choice-btn:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .choice-btn:active {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>회원 가입</h1>
+    <a th:href="@{/userJoin}" class="choice-btn">사용자 회원가입</a>
+    <a th:href="@{/ceoJoin}" class="choice-btn">사업자 회원가입</a>
+</div>
+
+</body>
+</html>

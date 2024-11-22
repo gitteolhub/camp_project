@@ -112,7 +112,7 @@ public class AuthController {
 	public String logout(Model model, HttpServletRequest request, HttpServletResponse response) {
 		log.info("[logout]");
 
-		// 혅대 인증 정보
+		// 현재 인증 정보
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		log.info("[auth: {}]", auth);
 
@@ -187,6 +187,26 @@ public class AuthController {
 	public String error() {
 		log.info("[error 비정상 로그인 상황 처리]");
 		return "redirect:/home";
+
+    // 회원가입 메서드
+    @GetMapping("/choiceJoin")
+    public String choiceJoin() {
+    	return "choiceJoin";
+    }
+    @GetMapping("/userJoin")
+    public String userJoin(Model model) {
+    	MemberVO memberVO = new MemberVO();
+    	memberVO.setMemberType("user");
+    	model.addAttribute("memberDTO", memberVO);
+    	return "memberJoin";
+    }
+    @GetMapping("/ceoJoin")
+    public String ceoJoin(Model model) {
+    	MemberVO memberVO = new MemberVO();
+		memberVO.setMemberType("ceo");
+		model.addAttribute("memberDTO", memberVO);
+    	return "memberJoin";
+    }
 	}
 
 }

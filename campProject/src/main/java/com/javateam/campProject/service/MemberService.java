@@ -1,13 +1,12 @@
 package com.javateam.campProject.service;
 
-import java.util.Map;
-
 import com.javateam.campProject.domain.MemberVO;
+import com.javateam.campProject.domain.Role;
 
 public interface MemberService {
 
-	// 아이디로 회원정보 조회
-	MemberVO selectMemberById(MemberVO objMemberVO);
+	// 아이디로 회원 정보를 조회
+	MemberVO selectMemberById(String strId);
 
 	// 이름, 이메일로 아이디 찾기
 	String findUserIdByNameEmail(String strName, String strEmail);
@@ -24,4 +23,12 @@ public interface MemberService {
 	// 비밀번호 업데이트
 	boolean updatePw(String strId, String strPw);
 
+	// 중복 아이디 확인후 새로운 회원 추가
+	boolean insertMember(MemberVO objMemberVO);
+
+	// 회원정보 중복 점검(회원 가입)
+	boolean hasMemberByFld (String strField, String strValue);
+
+	// 회원 role 생성
+	boolean insertRole(Role role);
 }
