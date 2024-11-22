@@ -6,9 +6,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import com.javateam.campProject.domain.MemberVO;
 import com.javateam.campProject.domain.Role;
@@ -25,7 +27,17 @@ public class MemberServiceImpl implements MemberService {
 	MemberDAO memberDAO;
 	
 	@Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	public PlatformTransactionManager dataSourceTransactionManager;
+	public TransactionTemplate        transactionTemplate;
+
+	@Autowired
+	void setTransactionTemplate (PlatformTransactionManager transactionManager) {
+
+		this.transactionTemplate = new TransactionTemplate(transactionManager);
+	}
 
 	// 아이디로 회원 정보를 조회
 	@Transactional (readOnly = true)
@@ -115,7 +127,8 @@ public class MemberServiceImpl implements MemberService {
 		
 		return blRetVal;
 	}
-		// 중복 아이디 확인후 새로운 회원 추가
+	
+	// 중복 아이디 확인후 새로운 회원 추가
 	@Override
 	public boolean insertMember(MemberVO objMemberVO) {
 
@@ -136,7 +149,7 @@ public class MemberServiceImpl implements MemberService {
 					log.info("[MemberService][insertMember]: {}", objMemberVO);
 
 					 // 비밀번호 암호화
-                    String encodedPassword = passwordEncoder.encode(objMemberVO.getPw());
+                    String encodedPassword = bCryptPasswordEncoder.encode(objMemberVO.getPw());
                     objMemberVO.setPw(encodedPassword); // 암호화된 비밀번호를 설정
 					
 					// 회원 정보 저장

@@ -20,6 +20,8 @@ public class MemberDAOImpl implements MemberDAO {
 
 	private static final String MAPPER_PATH="mapper.campUserMapper.";
 
+	private static final String MAPPER_PATH2="mapper.campMapper.";
+	
 	// 주어진 ID로 회원 정보를 조회
 	@Override
 	public MemberVO selectMemberById(String strId) {
@@ -72,7 +74,7 @@ public class MemberDAOImpl implements MemberDAO {
 		boolean blRetVal = false;
 
 		try {
-			int intResult = sqlSession.insert(MAPPER_PATH + "insertMember", objMemberVO);
+			int intResult = sqlSession.insert(MAPPER_PATH2 + "insertMember", objMemberVO);
 			blRetVal = intResult == 1 ? true : false;
 
 		} catch (Exception ex) {
@@ -98,7 +100,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 		} else {
 
-			return(int) sqlSession.selectOne(MAPPER_PATH + "hasMemberByFld", memberDatabase) == 1 ? true: false;
+			return(int) sqlSession.selectOne(MAPPER_PATH2 + "hasMemberByFld", memberDatabase) == 1 ? true: false;
 		}
 
 	}
@@ -116,7 +118,7 @@ public class MemberDAOImpl implements MemberDAO {
 			map.put("id",   strId);
 			map.put("role", strRole);
 
-			sqlSession.selectList(MAPPER_PATH + "insertRole", map);
+			sqlSession.selectList(MAPPER_PATH2 + "insertRole", map);
 			blRetVal = true;
 
 		} catch (Exception ex) {
@@ -137,7 +139,7 @@ public class MemberDAOImpl implements MemberDAO {
 		     map.put("id", strId);
 		     map.put("role", strRole);
 
-		     int intResult = sqlSession.update(MAPPER_PATH + "updateRole", map);
+		     int intResult = sqlSession.update(MAPPER_PATH2 + "updateRole", map);
 		     blRetVal = intResult == 1; // 업데이트 성공 여부 확인
 		} catch (Exception ex) {
 			log.error("[MemberDAOImpl][updateRole] Exception: {}", ex);

@@ -35,15 +35,12 @@ public class CustomUser implements UserDetails {
 		this.userid  = users.getUserid();
 		this.username = users.getUsername();
 		this.password = users.getPassword();
-		// enabled 값이 1이면 true, 0이면 false로 설정
-        this.enabled = users.getEnabled() == 1;
 	}
 
 	public CustomUser(String userid, String username, String password, boolean enabled) {
 		this.userid  = userid;
 		this.username = username;
 		this.password = password;
-		this.enabled = enabled;
 	}
     // 권한 목록 반환
     @Override
