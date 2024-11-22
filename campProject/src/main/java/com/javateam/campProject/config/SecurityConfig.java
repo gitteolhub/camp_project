@@ -40,7 +40,7 @@ public class SecurityConfig {
 											   authorizeHttpRequests.requestMatchers("/",     "/resources/**", "/loginError",   "/join",             "/loginForm",
 														   							 "/home",  "/captcha",     "/checkCaptcha", "/captcha/image/**", "/refreshImage",
 														   							 "/socialAddInformation", "/findUserId", "/findUserPw", "/findUserIdProc",
-														   							 "/pwVerificationCode", "/findUserPwProc", "/findUserPwResult", "/choiceJoin", "/userJoin", "/ceoJoin")
+														   							 "/pwVerificationCode", "/findUserPwProc", "/findUserPwResult", "/choiceJoin", "/userJoin", "/ceoJoin", "/member/joinProc2")
 												   					.permitAll()
 												   					.requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")				// ROLE_ADMIN 권한이 필요한 경로
 												   					.requestMatchers("/myPage")  // TODO 추후 변경
