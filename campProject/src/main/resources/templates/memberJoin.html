@@ -56,7 +56,6 @@
 	</script>
 </head>
 <body>
-memberType = [[${memberDTO.memberType}]]<br>
 <div class="container">
     <h2>회원가입</h2>
     <form id="frm" th:action="@{'/member/joinProc2'}" method="POST" autocomplete="off" th:object="${memberDTO}">
@@ -126,7 +125,7 @@ memberType = [[${memberDTO.memberType}]]<br>
 
 	        <!-- 사업자 번호 (ceo일 경우) -->
 	        <label for="businessNum" th:if="${memberDTO.memberType == 'ceo'}">사업자 번호</label>
-		    <input type="text" th:if="${memberDTO.memberType == 'ceo'}" name="businessNum" th:field="*{businessNum}" required />
+		    <input class="input-field" type="text" th:if="${memberDTO.memberType == 'ceo'}" name="businessNum" placeholder="사업자 번호를 입력하세요" th:field="*{businessNum}" required />
 		    
 		    <!-- 사업자 번호 (user일 경우) -->
 		    <input type="hidden" th:if="${memberDTO.memberType == 'user'}" name="businessNum" th:field="*{businessNum}" th:value="null"/>

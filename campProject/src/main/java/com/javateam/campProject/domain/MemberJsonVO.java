@@ -36,7 +36,7 @@ public class MemberJsonVO {
 	private String phone;
 	private Date   birthday;
 	private Date   joindate;
-	private String numberType;
+	private String memberType;
 	private String businessNum;
 
 	public static MemberJsonVO toEntity(MemberVO memberVO) {
