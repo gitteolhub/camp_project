@@ -35,7 +35,7 @@ public class SecurityConfig {
 		      objHttpSecurity.authorizeHttpRequests((authorizeHttpRequests) ->
 		                                    authorizeHttpRequests.requestMatchers("/",     "/resources/**", "/loginError",   "/choiceJoin", "/userJoin", "/ceoJoin",  "/loginForm",
 		                                                                   "/home", "/captcha",      "/checkCaptcha", "/captcha/image/**", "/refreshImage",
-		                                                                   "/join", "/socialAddInformation", "/findUserId", "/findUserPw", "/findUserIdProc",
+		                                                                   "/join", "/socialAddInformation", "/findUserId", "/findUserPw", "/findUserIdProc", "/member/joinProc2",
 		                                                                   "/pwVerificationCode")
 		                                                      .permitAll()
 		                                                      .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")            // ROLE_ADMIN 권한이 필요한 경로
