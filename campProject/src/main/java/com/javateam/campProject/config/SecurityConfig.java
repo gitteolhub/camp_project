@@ -42,7 +42,6 @@ public class SecurityConfig {
 		            "/", 
 		            "/resources/**", 
 		            "/loginError", 
-		            "/join", 
 		            "/loginForm",
 		            "/home", 
 		            "/captcha", 
