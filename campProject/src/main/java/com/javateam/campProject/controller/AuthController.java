@@ -61,7 +61,7 @@ public class AuthController {
         
         return "myPage"; // home.html 뷰를 반환
     }
-
+    
 	// 로그인 페이지를 반환
     @GetMapping("/loginForm")
 	public String login( HttpServletRequest request, Model model, HttpSession httpSession) {	//RedirectAttributes redirectAttributes
@@ -210,5 +210,5 @@ public class AuthController {
 		model.addAttribute("memberDTO", memberVO);
     	return "memberJoin";
 	}
-
+    
 }
