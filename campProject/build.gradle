@@ -46,14 +46,12 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	
-	implementation 'com.oracle.database.jdbc:ojdbc11:23.6.0.24.10'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11:23.6.0.24.10'
 
 	// Java Mail
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 	
 		// spring security taglib
 	implementation 'org.springframework.security:spring-security-taglibs'

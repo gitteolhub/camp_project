@@ -36,16 +36,41 @@ public class SecurityConfig {
 					   .frameOptions(Customizer.withDefaults()).disable());
 
 		// 요청 권한 설정
-		objHttpSecurity.authorizeHttpRequests((authorizeHttpRequests) ->
-											   authorizeHttpRequests.requestMatchers("/",     "/resources/**", "/loginError",   "/join",             "/loginForm",
-														   							 "/home",  "/captcha",     "/checkCaptcha", "/captcha/image/**", "/refreshImage",
-														   							 "/socialAddInformation", "/findUserId", "/findUserPw", "/findUserIdProc",
-														   							 "/pwVerificationCode", "/findUserPwProc", "/findUserPwResult", "/choiceJoin", "/userJoin", "/ceoJoin", "/member/joinProc2")
-												   					.permitAll()
-												   					.requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")				// ROLE_ADMIN 권한이 필요한 경로
-												   					.requestMatchers("/myPage")  // TODO 추후 변경
-												   					.hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
-												   					.anyRequest().authenticated());
+		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests -> 
+		    authorizeHttpRequests
+		        .requestMatchers(
+		            "/", 
+		            "/resources/**", 
+		            "/loginError", 
+		            "/join", 
+		            "/loginForm",
+		            "/home", 
+		            "/captcha", 
+		            "/checkCaptcha", 
+		            "/captcha/image/**", 
+		            "/refreshImage",
+		            "/socialAddInformation", 
+		            "/findUserId", 
+		            "/findUserPw", 
+		            "/findUserIdProc",
+		            "/pwVerificationCode", 
+		            "/findUserPwProc", 
+		            "/findUserPwResult", 
+		            "/choiceJoin", 
+		            "/userJoin", 
+		            "/ceoJoin", 
+		            "/member/joinProc2",
+		            "/myPageGeneralUserModification", 
+		            "/myPageGeneralUserReservationCheck" // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
+		        )
+		        .permitAll()
+		        .requestMatchers("/admin/**")
+		        .hasAnyAuthority("ROLE_ADMIN") // ROLE_ADMIN 권한이 필요한 경로
+		        .requestMatchers("/myPage") // TODO: 추후 변경
+		        .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN") // ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
+		        .anyRequest()
+		        .authenticated()
+		);
 
 		// csrf 토큰 미사용
 		objHttpSecurity.csrf((csrf) -> csrf.disable());
@@ -54,7 +79,7 @@ public class SecurityConfig {
 		objHttpSecurity.formLogin(formLogin -> formLogin
 						   	.loginProcessingUrl("/loginForm")
 						   	.loginPage("/loginForm")		// 로그인 이후 주소
-						   	.usernameParameter("userid")	// 아이디
+						   	.usernameParameter("userId")	// 아이디
 						   	.passwordParameter("password")	// 비밀번호
 						   	.defaultSuccessUrl("/myPage")	// 로그인 성공시 이동 주소
 						   	.failureUrl("/loginError")		// 로그인 에러 처리

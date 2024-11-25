@@ -3,9 +3,9 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="header-head">
     <meta charset="UTF-8">
-    <title>미로그인 헤더</title>
+    <title>헤더</title>
     <style>
-        /* 기존 레이아웃 스타일 */
+        /* 마이페이지와 같은 레이아웃 스타일 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -126,6 +126,8 @@
             <li><a href="/" th:href="@{/}">홈</a></li>
             <li sec:authorize="!isAuthenticated()"><a href="/login" th:href="@{/login}">로그인</a></li>
             <li sec:authorize="isAuthenticated()"><a href="/mypage" th:href="@{/mypage}">마이페이지</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/user" th:href="@{/admin/user}">유저 관리</a></li>
+            <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')"><a href="/admin/manager" th:href="@{/admin/manager}">관리자 관리</a></li>
             <li sec:authorize="isAuthenticated()">
                 <form th:action="@{/logout}" method="post" style="display: inline;">
                     <button type="submit">로그아웃</button>
