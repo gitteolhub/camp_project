@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  th:include="~{layout/header :: layout(~{::body}, '마이페이지 회원정보 수정')}">
 <!-- 헤더 적용 -->
 <head>
-  <title>마이페이지 일반유저 회원정보 수정</title>
-  
-  <div th:include="header :: header-head"></div>
+  <title>마이페이지 회원정보 수정</title>
   
   <style>
     /* 레이아웃을 위한 스타일 */
@@ -84,7 +83,6 @@
   </style>
 </head>
 <body>
-	<header th:include="header :: header"></header>
 
   <div class="container">
     <div class="left-menu">
