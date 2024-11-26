@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout}" lang="ko-kr">
+<head>
+<meta charset="UTF-8">
+<title>게시글 보기</title>
+
+<style>
+.container {
+	width: 920px;
+    border: 1px solid #ccc; /* 테두리 색상 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    padding: 5px; /* 안쪽 여백 */
+    margin: 30px auto;/* 바깥 여백 */
+}
+#reply_write_form {
+ resize:none;
+ height:5em;
+ width:100%;
+ font-size: 15px
+}
+h2{
+	font-size: 25px;
+}
+.btn {
+    font-size: 13px; /* 버튼 글자 크기 설정 */
+}
+.small-text{
+ 	font-size: 13px;
+}
+.reply-content{
+	font-size: 15px;
+}
+.wtfont{
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	background: transparent; /* 배경색 없애기 */
+	padding-right: 15px; /* 오른쪽 여백 추가 */
+}
+.writer{
+	background-color: #d4edda !important; /* 연한 녹색 */
+    color: #2DB400 !important; /* 텍스트 색상 */
+    margin-left: 5px;
+}
+.table th{
+	width: 18%;
+}
+
+.table td{
+	width: 82%;
+}
+.btn-custom {
+    background-color: #a9a9a9; /* 원하는 배경색 */
+    color: white; /* 텍스트 색상 */
+    border: none; /* 테두리 제거 */
+}
+
+.btn-custom:hover {
+    background-color: #808080; /* 호버 시 색상 변경 */
+    color: white;
+}
+</style>
+
+<!-- bootstrap icons -->
+<link rel="stylesheet" th:href="@{/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css}">
+
+<!-- 댓글 전송용  -->
+<!-- AJAX library axios -->
+<script th:src="@{'/axios/1.7.4/dist/axios.min.js'}"></script>
+
+<!-- 댓글 작성/수정/삭제시 패쓰워드 미사용 -->
+<script th:src="@{'/js/inquiryBoardView_no_pw.js'}"></script>
+
+<!-- 댓글 제어 -->
+<script>
+window.onload = () => {
+
+	// 개별글 로딩시 지금까지 집계된 댓글들 읽어오기
+	let boardNum = '[[${board.boardNum}]]';
+	let realWriter='[[${session.socialUser==null ? #authentication.name : session.socialUser.email+"_"+session.socialUser.authVendor}]]';
+	let originalWriter = "[[${board.boardWriter.split('_')[0]}]]";
+	console.log("realWriter: ", realWriter);
+	console.log("originalWriter: ", originalWriter);
+	
+	// Naver & Google 로그인 허용에 따른 조치
+	getAllReplies(boardNum, realWriter, originalWriter);
+	
+	writeReply(boardNum, realWriter, originalWriter);
+
+	// (원)글 삭제 함수
+	deleteBoard(boardNum, realWriter);
+
+} // onload
+</script>
+</head>
+<body>
+
+	<!-- layout -->
+	<div layout:fragment="content" class="container">
+	
+		<div class="main_sect_pnl">
+	
+			<div class="content_sect_pnl">
+			
+				<h2 class="d-flex justify-content-center">게시글 보기</h2>
+	
+				<table class="table mx-auto mt-4" style="width: 800px;">
+					
+					<tr>
+						<th scope="col">제목</th>
+						<td th:utext="${board.boardSubject}"></td>
+					</tr>
+					
+					<tr>
+						<th scope="col">작성자</th>
+						<td th:utext="${board.boardWriter.split('_')[0]}"></td>
+					</tr>
+					
+					<tr>
+						<th scope="col">내용</th>
+						<td>
+							<div id="boardContentDiv" th:utext="${board.boardContent}" contenteditable="false"></div>
+						</td>
+					</tr>
+					
+					<tr>
+						<th scope="col">첨부파일</th>
+						<td>
+							<span th:if="${#strings.isEmpty(board.boardFile)}">첨부 파일 없음</span>
+	
+							<a th:href="@{'/board/download/'+${board.boardOriginalFile}+'/'+${board.boardFile}}"
+							   th:if="${!#strings.isEmpty(board.boardOriginalFile)}"
+							   th:utext="${board.boardOriginalFile}"></a>
+						</td>
+					</tr>
+					
+					<tr>
+						<th class="small-text" scope="col">게시글 번호</th>
+						<td class="small-text" th:utext="${board.boardNum}"></td>
+					</tr>
+					
+					<tr>
+						<th class="small-text" scope="col">등록일</th>
+						<td class="small-text" th:utext="${#dates.format(board.boardDate, 'yyyy.MM.dd HH:mm:ss')}"></td>
+					</tr>
+				
+				</table>
+				
+				<!-- 댓글 영역  -->
+				<!-- <div id="reply_pnl" class="mx-auto my-3 border border-top border-primary-subtle" style="width: 800px;"> -->
+	
+				<div id="reply_pnl" class="mx-auto my-3" style="width: 800px;">
+	
+					<!-- 개별 게시글 전체 댓글 리스트 -->
+					<div id="reply_list_pnl" class="bg-light my-3">
+					 	<!-- 댓글 리스트 -->
+					</div>
+					
+					<!-- 댓글 등록/수정 -->
+					<div id="reply_write_update_pnl" class="my-3">
+	
+						<textarea id="reply_write_form" name="reply_write_form"
+								  class="form-control border border-primary"
+								  placeholder="댓글을  100자이내로 작성하십시오"></textarea>
+	
+					</div>
+					
+					<!-- 댓글 메뉴 -->
+					<!-- 정렬 교정 -->
+					<div class="d-flex justify-content-end align-items-center my-2">
+	
+						<!-- 댓글 패쓰워드 -->
+						<!-- 정렬 교정 -->
+	
+						<!-- 댓글 패쓰워드 입력 사용시 활성화 비사용시 비활성화 -->
+						<!-- <input type="text" th:id="${'board_pass_' + board.boardNum}"
+							   th:name="${'board_pass_' + board.boardNum}" required
+							   class="form-control form-control-sm h-100 w-25 me-2"> -->
+	
+						<!-- 댓글 메뉴 -->
+						<a href="#" th:id="${'reply_write_btn_' + board.boardNum}" class="btn btn-sm btn-outline-primary my-2 me-2">댓글 등록</a>
+	
+					</div>
+	
+				</div>
+				
+				<!-- 추가) board_view_no_pw.js 사용시 레이아웃 변경 : row 추가-->
+				<div class="d-flex justify-content-center mb-3 row">
+	
+					<div class="col-auto">
+						<a type="button" class="btn btn-custom" th:href="@{/board/inquiryBoardList}">게시글 목록</a>
+					</div>
+					
+					<!-- 글수정 링크 추가 -->
+					<!-- 글 작성자만 글수정/삭제하도록 조건 처리 -->
+					<!-- 자체 로그인일 경우 -->
+					<span th:if="${session.socialUser == null && board.boardWriter == #authentication.name}">
+	
+						<a type="button" class="btn btn-custom"
+							th:href="@{'/board/inquiryBoardUpdate?boardNum='+${board.boardNum}}">글수정</a>
+	
+						<!-- (원)글삭제 링크 추가 -->
+						<a type="button" class="btn btn-custom ms-2"
+						    th:id="${'board_delete_btn_' + board.boardNum}"
+							href="#">글삭제</a>
+	
+					</span>
+					
+					<!-- Naver & Google 로그인일 경우 -->
+					<span th:if="${session.socialUser != null && board.boardWriter == session.socialUser.email+'_'+session.socialUser.authVendor}">
+	
+						<a type="button" class="btn btn-primary"
+							th:href="@{'/board/inquiryBoardUpdate?boardNum='+${board.boardNum}}">글수정</a>
+	
+						<!-- (원)글삭제 링크 추가 -->
+						<a type="button" class="btn btn-primary ms-2"
+						    th:id="${'board_delete_btn_' + board.boardNum}"
+							href="#">글삭제</a>
+	
+					</span>
+					
+				</div>
+	
+			</div>
+			<!--// content -->
+	
+		</div>
+	</div>
+				
+</body>
+</html>

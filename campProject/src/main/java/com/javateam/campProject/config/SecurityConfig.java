@@ -37,14 +37,23 @@ public class SecurityConfig {
 
 		// 요청 권한 설정
 		objHttpSecurity.authorizeHttpRequests((authorizeHttpRequests) ->
-											   authorizeHttpRequests.requestMatchers("/",     "/resources/**", "/loginError",   "/join",             "/loginForm",
+											   authorizeHttpRequests.requestMatchers("/",     "/resources/**", "/loginError",   "/loginForm",
 														   							 "/home",  "/captcha",     "/checkCaptcha", "/captcha/image/**", "/refreshImage",
 														   							 "/socialAddInformation", "/findUserId", "/findUserPw", "/findUserIdProc",
-														   							 "/pwVerificationCode", "/findUserPwProc", "/findUserPwResult")
+														   							 "/pwVerificationCode", "/findUserPwProc")
 												   					.permitAll()
 												   					.requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")				// ROLE_ADMIN 권한이 필요한 경로
 												   					.requestMatchers("/myPage")  // TODO 추후 변경
 												   					.hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_CEO", "ROLE_SUPERADMIN")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
+												   					//
+												   					// 게시판 관련 링크 추가
+												   					.requestMatchers("/board/inquiryBoardWrite","/board/inquiryBoardWriteProc",
+														   							 "/board/image", "/board/image/**", "/board/inquiryBoardList",
+															            			 "/board/inquiryBoardView", "/board/searchList", "/board/inquiryBoardView_no_pw",
+															            			 "/board/inquiryBoardUpdate", "/board/inquiryBoardUpdateProc",
+															            			 "/board/replyWrite", "/board/replyUpdate", "/board/replyUpdateNoPw",
+															            			 "/board/getRepliesAll", "/board/replyDelete",
+															            			 "/board/deleteProc").authenticated()
 												   					.anyRequest().authenticated());
 
 		// csrf 토큰 미사용
@@ -84,6 +93,7 @@ public class SecurityConfig {
 	public WebSecurityCustomizer webSecurityCustomizer() {
 
 		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
-													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs");
+													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
+													   "/summernote/**", "/jquery/**", "/images/**", "/resources/**");
 	}
 }

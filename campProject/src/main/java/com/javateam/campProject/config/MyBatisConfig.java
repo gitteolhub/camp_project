@@ -51,6 +51,9 @@ public class MyBatisConfig {
 
 	@Bean
 	@Qualifier(value = "transactionManager")
+	// 주의) MyBatis & JPA 동시에 트랜잭션 매니저를 사용하고 있는 상황에서
+	// JPA 트랜잭션 매니저와의 충돌 문제로 @Qualifier 적용
+	// 트랜잭션 매니저 빈(bean) 이름 구체 지정 : transactionManager
 	public PlatformTransactionManager getTransactionManager() {
 
 		return new DataSourceTransactionManager(this.getDataSource());
