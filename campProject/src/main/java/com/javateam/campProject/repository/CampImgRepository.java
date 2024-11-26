@@ -1,4 +1,4 @@
-package com.javateam.campProject.dao;
+package com.javateam.campProject.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
