@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -23,11 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-import com.javateam.campProject.repository.CampImgRepository;
 import com.javateam.campProject.domain.CampCrawlDTO;  // 무슨 파일?
 import com.javateam.campProject.domain.CampImgVO;
-
+import com.javateam.campProject.repository.CampImgRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -244,7 +241,7 @@ public class CrawlTest {
 		this.saveCampMainImg(4);
 		this.saveCampSubImg(4);
 	} //
-
+/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// 위쪽 코드는 코드 생성 과정이므로 실제 사용x
 	// 전체 캠핑장 이미지 저장(DB + 저장소)
@@ -272,7 +269,7 @@ public class CrawlTest {
 		log.info("고캠핑 캠핑장 레코드 수 : " + cNoList.size()); // 4130 개소
 
 		// subList 메서드 사용하여 분할 크롤링 가능
-		for (int cNo : cNoList.subList(0, 100)) {
+		for (int cNo : cNoList.subList(100, cNoList.size())) {
 			saveCampMainImg(cNo);
 			saveCampSubImg(cNo);
 		} // for
