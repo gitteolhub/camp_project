@@ -117,12 +117,7 @@ public class SecurityConfig {
 	public WebSecurityCustomizer webSecurityCustomizer() {
 
 		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
-<<<<<<< HEAD
-													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs");
-
-=======
-													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
-													   "/summernote/**", "/jquery/**", "/images/**", "/resources/**");
->>>>>>> refs/heads/inquiryBoard
+				   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
+				   "/summernote/**", "/jquery/**", "/images/**", "/resources/**");
 	}
 }
