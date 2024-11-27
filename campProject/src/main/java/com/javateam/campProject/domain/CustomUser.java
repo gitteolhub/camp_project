@@ -19,9 +19,9 @@ import lombok.ToString;
 public class CustomUser implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	private String userid;
-	private String username;
-	private String password;
+	private String username; // 사용자 ID
+	private String name;	 // 사용자 이름	
+	private String password; // 사용자 pw
 
 	/* Spring Security 관련 필드 */
 	private List<Role> authorities;
@@ -32,22 +32,22 @@ public class CustomUser implements UserDetails {
 
 	// Users 객체를 받아 초기화
 	public CustomUser(Users users) {
-		this.userid  = users.getUserid();
-		this.username = users.getUsername();
+		this.username = users.getUserid();
+		this.name     = users.getUsername();
 		this.password = users.getPassword();
 	}
 
-	public CustomUser(String userid, String username, String password, boolean enabled) {
-		this.userid  = userid;
+	public CustomUser(String username, String name, String password, boolean enabled) {
 		this.username = username;
+		this.name     = name;
 		this.password = password;
 	}
-    // 권한 목록 반환
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities.stream()
-                          .map(role -> (GrantedAuthority) role::getAuthority)  // Role 객체를 GrantedAuthority로 변환
-                          .collect(Collectors.toList());
-    }
+//    // 권한 목록 반환
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return authorities.stream()
+//                          .map(role -> (GrantedAuthority) role::getAuthority)  // Role 객체를 GrantedAuthority로 변환
+//                          .collect(Collectors.toList());
+//    }
 }
 

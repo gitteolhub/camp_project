@@ -41,18 +41,18 @@ public class CustomProviderService implements AuthenticationProvider, UserDetail
 
 	// 회원아이디로 회원 정보를 로드하는 메서드
 	@Override
-	public CustomUser loadUserByUsername(String userid) {
+	public CustomUser loadUserByUsername(String userId) {
 		log.info("[CustomProviderService][loadUserByUsername]");
 
 		try {
 			return(CustomUser)jdbcTemplate.queryForObject(
-					"SELECT ID as USERID, "
-					  +  "NAME as USERNAME, "
+					"SELECT ID as USERNAME, "
+					  +  "NAME as NAME, "
 					  +    "PW as PASSWORD "
 					  +  "FROM USER_TBL WHERE ID=?",
 
 					new BeanPropertyRowMapper<CustomUser>(CustomUser.class),
-					new Object[] {userid});
+					new Object[] {userId});
 
 		} catch (EmptyResultDataAccessException ex) {
 			log.error("[CustomProviderService][loadUserByUsername] exception: {}", ex);
@@ -61,17 +61,17 @@ public class CustomProviderService implements AuthenticationProvider, UserDetail
 		}
 	}
 
-	private List<Role> loadUserRole(String userid) {
+	private List<Role> loadUserRole(String userId) {
 		log.info("[CustomProviderService][loadUserRole]");
 
 		try {
 			return(List<Role>)jdbcTemplate.query(
-				"SELECT USERID, ROLE "
+				"SELECT USERID AS USERNAME, ROLE "
 			   +  "FROM USER_ROLES "
 			   + "WHERE USERID=?",
 
 			   new BeanPropertyRowMapper<Role>(Role.class),
-			   new Object[] {userid});
+			   new Object[] {userId});
 
 		} catch (EmptyResultDataAccessException ex) {
 			log.info("[CustomProviderService][loadUserRole] exception");
@@ -84,21 +84,21 @@ public class CustomProviderService implements AuthenticationProvider, UserDetail
 	public Authentication authenticate (Authentication authentication) throws AuthenticationException {
 		log.info("[CustomProviderService][authenticate]: {} ",authentication);
 
-		String     userid = authentication.getName();
+		String     userId = authentication.getName();
 		String     password = "";
 		CustomUser customUser = null;
 
 		Collection<? extends GrantedAuthority> authorities = null;
 
 		try {
-			if (userid.trim().equals("")) {
+			if (userId.trim().equals("")) {
 				throw new InternalAuthenticationServiceException("회원 아이디를 입력하십시오.");
 			}
-			if (this.loadUserByUsername(userid) == null) {
+			if (this.loadUserByUsername(userId) == null) {
 				throw new UsernameNotFoundException("회원 아이디가 없습니다.");
 			}
 
-			customUser = this.loadUserByUsername(userid);
+			customUser = this.loadUserByUsername(userId);
 			log.info("[CustomProviderService][사용자현황 (customUser)]: {}", customUser);
 
 			password = (String) authentication.getCredentials();
@@ -110,10 +110,14 @@ public class CustomProviderService implements AuthenticationProvider, UserDetail
 				throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
 			}
 
-			List<Role> roles = this.loadUserRole(userid);
+			List<Role> roles = this.loadUserRole(userId);
+			
+			log.info("[roles]: {}", roles);
+			
 			customUser.setAuthorities(roles);
 
 			authorities = customUser.getAuthorities();
+			log.info("[authorities]: {}", authorities);
 
 		} catch (InternalAuthenticationServiceException ex)  {
 

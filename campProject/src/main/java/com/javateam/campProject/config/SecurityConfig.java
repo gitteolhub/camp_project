@@ -89,7 +89,7 @@ public class SecurityConfig {
 						   	.loginPage("/loginForm")		// 로그인 이후 주소
 						   	.usernameParameter("userId")	// 아이디
 						   	.passwordParameter("password")	// 비밀번호
-						   	.defaultSuccessUrl("/myPageGeneralUserModification")	// 로그인 성공시 이동 주소
+						   	.defaultSuccessUrl("/myPage")	// 로그인 성공시 이동 주소
 						   	.failureUrl("/loginError")		// 로그인 에러 처리
 						   	.permitAll())
 

@@ -3,9 +3,9 @@ package com.javateam.campProject.domain;
 public class Users {
 	//TODO 확인 후 어떻게 할 건 지 선택
 
-	private String userid;
-	private String username;
-	private String password;
+	private String userid;   // 사용자 id
+	private String username; // 사용자 이름
+	private String password; // 사용자 pw
 
 	public Users(String userid, String username, String password) {
 		this.userid = userid;
