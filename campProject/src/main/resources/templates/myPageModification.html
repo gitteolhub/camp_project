@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  th:include="~{layout/header :: layout(~{::body}, '마이페이지 회원정보 수정')}">
-<!-- 헤더 적용 -->
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/header :: header-head">
   <title>마이페이지 회원정보 수정</title>
   
   <style>
@@ -84,11 +82,17 @@
 </head>
 <body>
 
+<!-- 헤더 포함 -->
+  <div th:replace="layout/header :: header"></div>
+
   <div class="container">
     <div class="left-menu">
       <ul>
-        <li><a href="http://localhost:8181/campProject/myPageGeneralUserModification">회원정보 수정</a></li>
-        <li><a href="http://localhost:8181/campProject/myPageGeneralUserReservationCheck">예약 확인</a></li>
+        <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
+		<li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
+		<li sec:authorize="hasRole('ROLE_MANAGER')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
+		<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
+		<li sec:authorize="hasRole('ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/adminManagement">관리자 관리</a></li>
       </ul>
     </div>
     <div class="content">
