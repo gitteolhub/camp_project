@@ -26,6 +26,10 @@ public class ResourceConfig implements WebMvcConfigurer{
 
 		registry.addResourceHandler("/axios/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/axios/");
+		
+		// 게시판 관련 : summernote 자원 경로 추가
+		registry.addResourceHandler("/summernote/**")
+				.addResourceLocations("classpath:/META-INF/resources/webjars/summernote/");
 	}
 
 	@Override

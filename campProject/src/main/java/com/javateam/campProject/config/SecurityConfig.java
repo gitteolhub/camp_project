@@ -37,39 +37,48 @@ public class SecurityConfig {
 
 		// 요청 권한 설정
 		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests -> 
-		    authorizeHttpRequests
-		        .requestMatchers(
-		            "/", 
-		            "/resources/**", 
-		            "/loginError", 
-		            "/loginForm",
-		            "/home", 
-		            "/captcha", 
-		            "/checkCaptcha", 
-		            "/captcha/image/**", 
-		            "/refreshImage",
-		            "/socialAddInformation", 
-		            "/findUserId", 
-		            "/findUserPw", 
-		            "/findUserIdProc",
-		            "/pwVerificationCode", 
-		            "/findUserPwProc", 
-		            "/findUserPwResult", 
-		            "/choiceJoin", 
-		            "/userJoin", 
-		            "/ceoJoin", 
-		            "/member/joinProc2",
-		            "/myPageGeneralUserModification", 
-		            "/myPageGeneralUserReservationCheck" // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
-		        )
-		        .permitAll()
-		        .requestMatchers("/admin/**")
-		        .hasAnyAuthority("ROLE_ADMIN") // ROLE_ADMIN 권한이 필요한 경로
-		        .requestMatchers("/myPage") // TODO: 추후 변경
-		        .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN") // ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
-		        .anyRequest()
-		        .authenticated()
-		);
+	    authorizeHttpRequests
+	        .requestMatchers(
+	            "/", 
+	            "/resources/**", 
+	            "/loginError", 
+	            "/loginForm",
+	            "/home", 
+	            "/captcha", 
+	            "/checkCaptcha", 
+	            "/captcha/image/**", 
+	            "/refreshImage",
+	            "/socialAddInformation", 
+	            "/findUserId", 
+	            "/findUserPw", 
+	            "/findUserIdProc",
+	            "/pwVerificationCode", 
+	            "/findUserPwProc", 
+	            "/findUserPwResult", 
+	            "/choiceJoin", 
+	            "/userJoin", 
+	            "/ceoJoin", 
+	            "/member/joinProc2",
+	            "/myPageGeneralUserModification", 
+	            "/myPageGeneralUserReservationCheck" // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
+	        )
+	        .permitAll()
+	        .requestMatchers("/admin/**")
+	        .hasAnyAuthority("ROLE_ADMIN") // ROLE_ADMIN 권한이 필요한 경로
+	        .requestMatchers("/myPage") // TODO: 추후 변경
+	        .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_CEO", "ROLE_SUPERADMIN")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
+			// 게시판 관련 링크 추가
+			.requestMatchers("/board/inquiryBoardWrite","/board/inquiryBoardWriteProc",
+							 "/board/image", "/board/image/**", "/board/inquiryBoardList",
+							 "/board/inquiryBoardView", "/board/searchList", "/board/inquiryBoardView_no_pw",
+							 "/board/inquiryBoardUpdate", "/board/inquiryBoardUpdateProc",
+							 "/board/replyWrite", "/board/replyUpdate", "/board/replyUpdateNoPw",
+							 "/board/getRepliesAll", "/board/replyDelete",
+							 "/board/deleteProc").authenticated()
+	        .anyRequest()
+	        .authenticated()
+	);
+
 
 		// csrf 토큰 미사용
 		objHttpSecurity.csrf((csrf) -> csrf.disable());
@@ -108,7 +117,12 @@ public class SecurityConfig {
 	public WebSecurityCustomizer webSecurityCustomizer() {
 
 		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
+<<<<<<< HEAD
 													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs");
 
+=======
+													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
+													   "/summernote/**", "/jquery/**", "/images/**", "/resources/**");
+>>>>>>> refs/heads/inquiryBoard
 	}
 }
