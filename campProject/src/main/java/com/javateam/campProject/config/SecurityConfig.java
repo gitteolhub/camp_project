@@ -59,8 +59,11 @@ public class SecurityConfig {
 	            "/userJoin", 
 	            "/ceoJoin", 
 	            "/member/joinProc2",
-	            "/myPageGeneralUserModification", 
-	            "/myPageGeneralUserReservationCheck" // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
+	            "/myPageModification", 
+	            "/myPageReservationCheck", // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
+	            "/userManagement",
+	            "/campGroundManagement",
+	            "/adminManagement"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**")

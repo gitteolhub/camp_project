@@ -124,7 +124,7 @@
     <nav>
         <ul>
             <li><a href="/" th:href="@{/}">홈</a></li>
-            <li sec:authorize="!isAuthenticated()"><a href="/login" th:href="@{/login}">로그인</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/login" th:href="@{/loginForm}">로그인</a></li>
             <!-- TODO 권한별 마이페이지로 이동하게 수정 -->
             <li sec:authorize="isAuthenticated()"><a href="/myPageModification" th:href="@{/myPageModification}">마이페이지</a></li>
             <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/user" th:href="@{/admin/user}">유저 관리</a></li>
