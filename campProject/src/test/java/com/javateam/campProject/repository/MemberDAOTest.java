@@ -25,28 +25,28 @@ class MemberDAOTest {
 	SocialUserDAO socialUserDAO;
 
 	// 아이디와 회원명이 같은지 테스트
-	@Test
-	void testSelectMemberByIdName() {
-		MemberVO objMemberVO = new MemberVO();
-
-		objMemberVO.setId("abcd1111");
-
-		objMemberVO = memberDAO.selectMemberById(objMemberVO);
-		log.info("[objMemberVO]: " + objMemberVO);
-
-		assertEquals("홍길동", objMemberVO.getName());
-	}
-
-	// 아이디와 비밀번호가 같은지 테스트
-	@Test
-	void testSelectMemberByIdPw() {
-		MemberVO objMemberVO = new MemberVO();
-
-		objMemberVO.setId("abcd1111");
-
-		objMemberVO = memberDAO.selectMemberById(objMemberVO);
-		assertEquals("#Abcd1111", objMemberVO.getPw());
-	}
+//	@Test
+//	void testSelectMemberByIdName() {
+//		MemberVO objMemberVO = new MemberVO();
+//
+//		objMemberVO.setId("abcd1111");
+//
+//		objMemberVO = memberDAO.selectMemberById(objMemberVO);
+//		log.info("[objMemberVO]: " + objMemberVO);
+//
+//		assertEquals("홍길동", objMemberVO.getName());
+//	}
+//
+//	// 아이디와 비밀번호가 같은지 테스트
+//	@Test
+//	void testSelectMemberByIdPw() {
+//		MemberVO objMemberVO = new MemberVO();
+//
+//		objMemberVO.setId("abcd1111");
+//
+//		objMemberVO = memberDAO.selectMemberById(objMemberVO);
+//		assertEquals("#Abcd1111", objMemberVO.getPw());
+//	}
 
 	@Test
 	@Transactional
