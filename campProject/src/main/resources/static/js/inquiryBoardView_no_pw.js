@@ -20,6 +20,10 @@ function getAllReplies(originalBoardId, boardWriter, originalWriter) {
 			let replyData = "";
 			
 			for (let reply of resData) {
+				
+				/*console.log('originalWriter.split("_")[0]: ', originalWriter.split("_")[0]);
+				console.log('reply.boardWriter.split("_")[0]: ', reply.boardWriter.split("_")[0]);
+				console.log("[작성자 동등여부] = ", originalWriter.split("_")[0] == reply.boardWriter.split("_")[0]);*/
 
 				// 날짜 포매팅(형식화)
 				let replyFormattedBoardDate = reply.boardDate;
