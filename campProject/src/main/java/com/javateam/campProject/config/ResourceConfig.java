@@ -26,6 +26,9 @@ public class ResourceConfig implements WebMvcConfigurer{
 
 		registry.addResourceHandler("/axios/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/axios/");
+		
+		registry.addResourceHandler("/webjars/**")
+				.addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 
 	@Override

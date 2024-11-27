@@ -62,6 +62,12 @@ public class AuthController {
         return "myPage"; // home.html 뷰를 반환
     }
     
+    @GetMapping("/search")
+    public String search() {
+        log.info("[search]");
+        return "search"; 
+    }
+    
 	// 로그인 페이지를 반환
     @GetMapping("/loginForm")
 	public String login( HttpServletRequest request, Model model, HttpSession httpSession) {	//RedirectAttributes redirectAttributes
