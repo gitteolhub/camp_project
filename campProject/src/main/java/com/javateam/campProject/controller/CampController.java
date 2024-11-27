@@ -1,6 +1,6 @@
 package com.javateam.campProject.controller;
 
-import com.javateam.campProject.service.campService;
+import com.javateam.campProject.service.CampService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class CampController {
 
-    private final campService campService;
+    private final CampService campService;
 
-    public CampController(campService campService) {
+    public CampController(CampService campService) {
         this.campService = campService;
     }
     

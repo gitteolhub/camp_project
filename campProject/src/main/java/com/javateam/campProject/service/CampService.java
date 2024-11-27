@@ -17,14 +17,14 @@ import org.springframework.http.ResponseEntity;
 
 @Service
 @Slf4j
-public class campService {
+public class CampService {
 
     @Value("${gocamping.api.key}")
     private String apiKey; // 고캠핑 API 키
 
     private final RestTemplate restTemplate;
 
-    public campService(RestTemplate restTemplate) {
+    public CampService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
