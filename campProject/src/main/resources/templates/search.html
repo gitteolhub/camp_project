@@ -17,7 +17,7 @@
 		
 		.container {
 		    width: 80%;
-		    max-width: 600px;
+		    max-width: 1000px;
 		    margin: 50px auto;
 		    background-color: white;
 		    padding: 20px;
@@ -63,20 +63,11 @@
 		    background-color: #45a049;
 		}
 		
-		#results {
-		    margin-top: 20px;
-		}
 		
-		.result-item {
-		    padding: 10px;
-		    background-color: #f9f9f9;
-		    border-radius: 5px;
-		    margin-bottom: 10px;
-		    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-		}
     </style>
 </head>
 <body>
+
      <div class="container">
         <h1>캠핑장 검색</h1>
         <form id="searchForm">
@@ -89,8 +80,9 @@
         <div id="results">
             <!-- 검색 결과가 이곳에 표시됩니다 -->
         </div>
+         <script th:src="@{'/js/searchCamp.js'}" charset="UTF-8"></script>
     </div>
-    <script th:src="@{'/js/searchCamp.js'}" charset="UTF-8"></script>
+   
 
 </body>
 </html>
