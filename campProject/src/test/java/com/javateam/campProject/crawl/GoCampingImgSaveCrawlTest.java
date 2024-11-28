@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.javateam.campProject.domain.CampCrawlDTO;
-import com.javateam.campProject.domain.CampImageVO;
+import com.javateam.campProject.domain.CampImgVO;
 import com.javateam.campProject.repository.CampImgRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +42,7 @@ public class GoCampingImgSaveCrawlTest {
 
 		String url = "https://gocamping.or.kr/bsite/camp/info/read.do?c_no="+cNo;
 
-		CampImageVO campImageVO = new CampImageVO();
+		CampImgVO campImageVO = new CampImgVO();
 		campImageVO.setCNo(cNo);
 		campImageVO.setImgKind("M");
 
@@ -84,7 +84,7 @@ public class GoCampingImgSaveCrawlTest {
 
 		String url = "https://gocamping.or.kr/bsite/camp/info/read.do?c_no="+cNo;
 
-		CampImageVO campImageVO = null;
+		CampImgVO campImageVO = null;
 
 		try {
 
@@ -93,7 +93,7 @@ public class GoCampingImgSaveCrawlTest {
 
 			for (Element img : imgs) {
 
-				campImageVO = new CampImageVO();
+				campImageVO = new CampImgVO();
 				campImageVO.setCNo(cNo);
 				campImageVO.setImgKind("S");
 
