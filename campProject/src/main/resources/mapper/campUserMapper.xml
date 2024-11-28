@@ -107,6 +107,14 @@
 		       USER_ROLES_SEQ.NEXTVAL
 		       , #{id}
 		       , #{role}
-		   )
+		   )+
 	</insert>
+	
+	<!-- 캠핑 이름 조회 -->
+	<select id="selectCampingName" parameterType = "String" resultType="com.javateam.campProject.domain.CampVO">
+		SELECT * FROM camp_info_tbl
+		WHERE camp_name LIKE '%${camp_name}%'
+	</select>
+	
+	
 </mapper>

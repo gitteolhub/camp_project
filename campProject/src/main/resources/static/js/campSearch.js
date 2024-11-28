@@ -1,49 +1,70 @@
-// 캠핑 검색 함수
-function searchCamping() {
-    const keyword = document.getElementById('keyword').value;
-    if (!keyword) {
-        alert("검색어를 입력해주세요!");
-        return;
-    }
+document.getElementById('searchBtn').addEventListener('click', function() {
+    // 사용자 입력값 가져오기
+    const campName = document.getElementById('campName').value.trim();
+    const category = document.getElementById('category').value.trim();
+    const address = document.getElementById('roadAddress').value.trim();
 
-    // API 호출
-    fetch(`/campProject/searchCamping?keyword=${encodeURIComponent(keyword)}`)
-    .then(response => {
-		console.log("response:"+response);
-		console.log("response.data:"+response.response);
-        /*if (!response.ok) {
-            throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
-        }
-        return response.json();*/
-    })
-    .then(data => {
-        displayResults(data);
-    })
-    .catch(error => {
-        console.error('API 호출 오류:', error);
-        alert("검색 중 오류가 발생했습니다.");
-    });
+    // 결과 영역 초기화
+    const resultContainer = document.getElementById('resultContainer');
+    resultContainer.innerHTML = '';
+
+    // 캠핑 이름이 비어 있지 않으면 검색 API 호출
+    if (campName) {
+        searchCampingByName(campName);
+    }
+    // 캠핑 종류가 비어 있지 않으면 검색 API 호출
+    else if (category) {
+        searchCampingByCategory(category);
+    }
+    // 캠핑 주소가 비어 있지 않으면 검색 API 호출
+    else if (address) {
+        searchCampingByAddress(address);
+    } else {
+        resultContainer.innerHTML = '<p>검색어를 입력해주세요.</p>';
+    }
+});
+
+// 캠핑 이름으로 검색
+function searchCampingByName(campName) {
+    fetch(`/campByName?campName=${campName}`)
+        .then(response => response.json())
+        .then(data => displayResults(data))
+        .catch(error => console.error('Error:', error));
 }
 
-// 검색 결과 표시 함수
+// 캠핑 종류로 검색
+function searchCampingByCategory(category) {
+    fetch(`/campByCategory?category=${category}`)
+        .then(response => response.json())
+        .then(data => displayResults(data))
+        .catch(error => console.error('Error:', error));
+}
+
+// 캠핑 주소로 검색
+function searchCampingByAddress(address) {
+    fetch(`/campByAddress?address=${address}`)
+        .then(response => response.json())
+        .then(data => displayResults(data))
+        .catch(error => console.error('Error:', error));
+}
+
+// 검색 결과 표시
 function displayResults(data) {
-    const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = ''; // 기존 결과 초기화
+    const resultContainer = document.getElementById('resultContainer');
 
-    if (!data || data.length === 0) {
-        resultsContainer.innerHTML = '<p>검색 결과가 없습니다.</p>';
-        return;
+    if (data && data.length > 0) {
+        const ul = document.createElement('ul');
+        data.forEach(camp => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <strong>캠핑 이름:</strong> ${camp.campName}<br>
+                <strong>캠핑 종류:</strong> ${camp.kategorieName}<br>
+                <strong>주소:</strong> ${camp.roadAddress}
+            `;
+            ul.appendChild(li);
+        });
+        resultContainer.appendChild(ul);
+    } else {
+        resultContainer.innerHTML = '<p>검색된 결과가 없습니다.</p>';
     }
-
-    // 검색된 캠핑지 결과를 표시
-    data.forEach(item => {
-        const resultItem = document.createElement('div');
-        resultItem.classList.add('result-item');
-        resultItem.innerHTML = `
-            <h3>${item.name}</h3>
-            <p>${item.address}</p>
-            <p>${item.description}</p>
-        `;
-        resultsContainer.appendChild(resultItem);
-    });
 }

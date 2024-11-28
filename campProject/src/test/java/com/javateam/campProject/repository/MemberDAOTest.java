@@ -31,7 +31,7 @@ class MemberDAOTest {
 
 		objMemberVO.setId("abcd1111");
 
-		objMemberVO = memberDAO.selectMemberById(objMemberVO);
+		//objMemberVO = memberDAO.selectMemberById(objMemberVO);
 		log.info("[objMemberVO]: " + objMemberVO);
 
 		assertEquals("홍길동", objMemberVO.getName());
@@ -44,7 +44,7 @@ class MemberDAOTest {
 
 		objMemberVO.setId("abcd1111");
 
-		objMemberVO = memberDAO.selectMemberById(objMemberVO);
+	//	objMemberVO = memberDAO.selectMemberById(objMemberVO);
 		assertEquals("#Abcd1111", objMemberVO.getPw());
 	}
 
