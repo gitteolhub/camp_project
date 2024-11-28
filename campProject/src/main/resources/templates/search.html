@@ -6,83 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>캠핑 검색</title>
     <script th:src="@{'/axios/1.7.4/dist/axios.min.js'}"></script>
-    
-    <style>
-        body {
-		    font-family: Arial, sans-serif;
-		    background-color: #f4f4f4;
-		    margin: 0;
-		    padding: 0;
-		}
-		
-		.container {
-		    width: 80%;
-		    max-width: 1000px;
-		    margin: 50px auto;
-		    background-color: white;
-		    padding: 20px;
-		    border-radius: 10px;
-		    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		}
-		
-		h1 {
-		    text-align: center;
-		}
-		
-		form {
-		    display: flex;
-		    flex-direction: column;
-		    align-items: center;
-		    margin-bottom: 20px;
-		}
-		
-		label {
-		    margin-bottom: 10px;
-		    font-size: 16px;
-		}
-		
-		input[type="text"] {
-		    padding: 10px;
-		    width: 80%;
-		    font-size: 16px;
-		    margin-bottom: 10px;
-		    border: 1px solid #ccc;
-		    border-radius: 5px;
-		}
-		
-		button {
-		    padding: 10px 20px;
-		    background-color: #4CAF50;
-		    color: white;
-		    border: none;
-		    border-radius: 5px;
-		    cursor: pointer;
-		}
-		
-		button:hover {
-		    background-color: #45a049;
-		}
-		
-		
-    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/searchCss.css}">
 </head>
 <body>
 
      <div class="container">
         <h1>캠핑장 검색</h1>
         <form id="searchForm">
-		    <label for="campName">캠핑장 이름:</label>
+		    <label for="campName"></label>
 		    <input type="text" id="campName" name="campName" placeholder="캠핑장 이름을 입력하세요" required>
+		    
 		    <button type="submit">검색</button>
 		</form>
-
+		
+		   <!-- 버튼 영역 -->
+        <div class="button-container">
+        	page입력<input type="number" id="page" name="page"/>
+        
+		    <a href="javascript:void(0);" id="searchCamping">
+		        <img th:src="@{/img/camp.png}" alt="일반야영장" style="width: 100px; height: auto;">
+		    </a>
+		    
+		    <a href="javascript:void(0);" id="searchGlamping">
+		        <img th:src="@{/img/glamping.png}" alt="글램핑" style="width: 100px; height: auto;">
+		    </a>
+		    
+		    <a href="javascript:void(0);" id="searchCaraban">
+		        <img th:src="@{/img/caraban.png}" alt="카라반" style="width: 100px; height: auto;">
+		    </a>
+		    
+		    <a href="javascript:void(0);" id="searchCar">
+		        <img th:src="@{/img/car.png}" alt="자동차야영장" style="width: 100px; height: auto;">
+		    </a>
+		</div>
 
         <div id="results">
             <!-- 검색 결과가 이곳에 표시됩니다 -->
         </div>
+        
          <script th:src="@{'/js/searchCamp.js'}" charset="UTF-8"></script>
+         
     </div>
-   
-
+		
+	<!-- 페이징 -->		
+	<div>
+<!-- 		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=1&limit=10}">1</a>
+		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=2&limit=10}">2</a>
+		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=3&limit=10}">3</a>
+		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=147&limit=10}">147</a>
+ -->	</div>
+	
+		
 </body>
 </html>

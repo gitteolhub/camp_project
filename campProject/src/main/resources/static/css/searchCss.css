@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.button-container {
+    display: flex;             /* Flexbox를 사용하여 수평 배열 */
+    justify-content: center;   /* 가로 중앙 정렬 */
+    align-items: center;       /* 세로 중앙 정렬 */
+    gap: 20px;                 /* 버튼 간 간격 */
+    margin-top: 20px;          /* 위쪽 여백 */
+}
+
+.button-container a {
+	text-decoration: none;
+}
+
+.search-image {
+    width: 200px;              /* 이미지 크기 지정 */
+    height: auto;              /* 자동 비율 유지 */
+    cursor: pointer;          /* 이미지 클릭 시 포인터 커서 */
+    transition: transform 0.3s ease; /* 호버 시 효과 */
+}
+
+.search-image:hover {
+    transform: scale(1.1);     /* 호버 시 이미지 크기 증가 */
+}

@@ -29,6 +29,10 @@ public class ResourceConfig implements WebMvcConfigurer{
 		
 		registry.addResourceHandler("/webjars/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/");
+		
+		// 캠핑 이미지
+		registry.addResourceHandler("/campImg/**")
+				.addResourceLocations("file:///D:/work/campImage/");
 	}
 
 	@Override

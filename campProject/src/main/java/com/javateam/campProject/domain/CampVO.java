@@ -64,4 +64,9 @@ public class CampVO {
 	private String facilCharacteristics;
 	private String facilDetail;
 	private String regDate;
+	
+	//고캠핑 사이트 PK(기본 키)
+	private int cNo;
+	//캠프 메인 이미지
+	private String mainImg;
 }
