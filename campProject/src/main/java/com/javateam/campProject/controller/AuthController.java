@@ -33,9 +33,9 @@ public class AuthController {
 	@Autowired
 	CaptchaController captchaController;
 
-	// 로그인 틀린 횟수
+	// 로그인 틀린 횟수. 3회 실패 시 캡챠 노출
 	private int loginErrorCount = 0;
-	private final int maxCount = 3;
+	private final int maxCount = 4;
 
 	// 홈 페이지로 redirection (return문 >> 경로)
 	@RequestMapping("/")
