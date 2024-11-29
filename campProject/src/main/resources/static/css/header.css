@@ -1,6 +1,11 @@
 @charset "UTF-8";
         /* 헤더 스타일 */
         header {
+        	width: 100%;
+  			text-align: right;
+  			position: fixed;
+  			top: 0;
+  			z-index: 100;
             padding: 10px 0;
             background-color: #f9f9f9;
             border-bottom: 1px solid #ddd;
