@@ -52,11 +52,7 @@ public class CampController {
 		
 		// 총 페이지 수
 		int maxPage = PageVO.getMaxPage(listCount, limit);
-		// 현재 페이지에 보여줄 시작 페이지 수 (1, 11, 21,...)
-		/* int startPage = PageVO.getStartPage(page, limit); */
 		int startPage = 1;
-		// 현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30, ...)
-   	    // int endPage = startPage + 10;
 		int endPage = maxPage;
 
    	    if (endPage> maxPage) endPage = maxPage;
@@ -95,6 +91,8 @@ public class CampController {
 		return new ResponseEntity<>(pageListVO, HttpStatus.OK);
 	}
 	
+	
+	// 캠핑 이름 검색
 	@GetMapping(value = "searchCamping", produces = "application/xml; UTF-8")
 	public String searchCamping(@RequestParam String keyword) {
 		log.info("keyword:" + keyword); // 캠핑장 검색 서비스 호출 return campService.searchCamping(keyword); }

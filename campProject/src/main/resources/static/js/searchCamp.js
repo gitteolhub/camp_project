@@ -57,9 +57,9 @@ function searchByCate3Name(keyword, page, limit) {
         // 데이터 행 추가
         data.campList.forEach(camp => {
             const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
-
+            
             let campImg = camp.mainImg=='' || camp.mainImg==null ? 'noimg.jpg' : `${camp.mainImg}`;
-		
+
             resultsHTML += `
                 <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
 					<p><img src="/campProject/campImg/${campImg}"></p>                	
@@ -128,8 +128,6 @@ window.onload = () => {
 	            // roadAddress가 null일 경우 jibunAddress를 표시
 	            const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress;
 	
-				console.log('캠핑장 이름:', camp.campName, 'mainImg 값:', camp.mainImg);
-				
 				let campImg = camp.mainImg=='' || camp.mainImg==null ? 'noimg.jpg' : `${camp.mainImg}`;
 	
 	            // HTML 생성
