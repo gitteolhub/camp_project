@@ -146,5 +146,26 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return blRetVal;
 	}
+
+	@Override
+	public boolean updateMember(MemberVO objMemberVO) {
+		boolean blRetVal = false;
+
+		try {
+			//기존 회원정보 존재 여부 점검
+			int intResult = this.selectMemberById(objMemberVO.getId()) != null ? 1 : 0;
+
+		if(intResult == 0) {
+			throw new Exception("회원정보가 존재하지 않습니다.");
+		}
+		sqlSession.update(MAPPER_PATH + "updateMember",objMemberVO);
+
+		blRetVal = true;
+		} catch (Exception ex) {
+			log.error("[MemberDao][updateMember] Exception : {}", ex);
+			ex.printStackTrace();
+		}
+		return blRetVal;
+	}
 }
 

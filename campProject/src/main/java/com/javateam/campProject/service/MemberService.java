@@ -31,4 +31,7 @@ public interface MemberService {
 
 	// 회원 role 생성
 	boolean insertRole(Role role);
+	
+	// 회원정보 수정
+	boolean updateMember (MemberVO objMemberVO);
 }

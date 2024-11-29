@@ -109,4 +109,34 @@
 		       , #{role}
 		   )
 	</insert>
+	
+	<!-- 회원정보 수정 -->
+	<update id = "updateMember" parameterType = "com.javateam.campProject.domain.MemberVO">
+		UPDATE USER_TBL
+		<set>
+			<if test = "pw != null">
+				PW = #{pw}
+			</if>
+			<if test = "email != null">
+				,EMAIL = #{email}
+			</if>
+			<if test = "phone != null">
+				,PHONE = #{phone}
+			</if>
+			<if test = "zip != null">
+				,ZIP = #{zip}
+			</if>
+			<if test = "roadAddress != null">
+				,ROAD_ADDRESS = #{roadAddress}
+			</if>
+			<if test = "jibunAddress != null">
+				,JIBUN_ADDRESS = #{jibunAddress}
+			</if>
+			<if test = "detailAddress != null">
+				,DETAIL_ADDRESS = #{detailAddress}
+			</if>
+		</set>
+		WHERE ID = #{id}
+
+	</update>
 </mapper>

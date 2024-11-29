@@ -32,5 +32,8 @@ public interface MemberDAO {
 
 	// 회원 Role 생성
 	boolean insertRole(String strId, String strRole);
+	
+	// 회원정보 수정
+	boolean updateMember (MemberVO objMemberVO);
 
 }

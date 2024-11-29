@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="layout/header :: header-head">
+<head>
   <title>마이페이지 회원정보 수정</title>
   
   <style>
@@ -79,6 +80,13 @@
       background-color: #23527c;  /* 버튼에 마우스 올렸을 때 버튼색 변경 */
     }
   </style>
+  <script>
+  //"회원정보 수정 메시지"
+  let msg = '[[${msg}]]';
+  if(msg.trim() != '') {
+	  alert(msg);
+  }
+  </script>
 </head>
 <body>
 
@@ -97,26 +105,48 @@
     </div>
     <div class="content">
       <h2>회원정보 수정</h2>
-      <form>  <!-- TODO 회원정보 테이블로 보내는 action 속성 추가 -->
+      <form th:action="@{'/member/updateProc'}" method="post" th:object="${memberUpdateDTO}">  <!-- TODO 회원정보 테이블로 보내는 action 속성 추가 -->
+        
+        <!-- 히든 필드 -->
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{name}">
+        <input type="hidden" th:field="*{gender}">
+        <input type="hidden" th:field="*{birthday}">
+        <input type="hidden" th:field="*{joindate}">
+        
         <div class="form-group">
           <label for="email">이메일</label>
-          <input type="email" id="email" class="form-control" placeholder="기존 이메일 주소 표시">
+          <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="기존 이메일 주소 표시">
         </div>
         <div class="form-group">
           <label for="phone">휴대폰 번호</label>
-          <input type="tel" id="phone" class="form-control" placeholder="기존 휴대폰 번호 표시">
+          <input type="tel" id="phone" th:field="*{phone}" class="form-control" placeholder="기존 휴대폰 번호 표시">
         </div>
         <div class="form-group">
-  		  <label for="address">주소</label>
-  		  <input type="text" id="address" class="form-control" placeholder="기존 주소 표시">
+  		  <label for="zip">우편번호</label>
+  		  <input type="text" id="zip" th:field="*{zip}" class="form-control" placeholder="기존 우편번호 표시">
 		</div>
         <div class="form-group">
-          <label for="old-password">기존 비밀번호</label>
-          <input type="password" id="old-password" class="form-control" placeholder="기존 비밀번호를 입력하세요.">
-        </div>
+  		  <label for="roadAddress">도로명 주소</label>
+  		  <input type="text" id="roadAddress" th:field="*{roadAddress}" class="form-control" placeholder="기존 도로명 주소 표시">
+		</div>
+		<div class="form-group">
+  		  <label for="jibunAddress">지번 주소</label>
+  		  <input type="text" id="jibunAddress" th:field="*{jibunAddress}" class="form-control" placeholder="기존 지번 주소 표시">
+		</div>
+		<div class="form-group">
+  		  <label for="detailAddress">상세 주소</label>
+  		  <input type="text" id="detailAddress" th:field="*{detailAddress}" class="form-control" placeholder="기존 상세 주소 표시">
+		</div>
+		
+		<div class="form-group">
+  		  <label for="old-password">기존 비밀번호</label>
+		  <input type="text" id="pw" th:field="*{pw}" class="form-control" placeholder="기존 비밀번호를 입력하세요.">
+		</div>
+
         <div class="form-group">
           <label for="new-password">수정할 비밀번호</label>
-          <input type="password" id="new-password" class="form-control" placeholder="수정할 비밀번호를 입력하세요.">
+          <input type="password" id="passwordUpdate" th:field="*{passwordUpdate}" class="form-control" placeholder="수정할 비밀번호를 입력하세요.">
         </div>
         <button type="submit" class="btn">수정</button>
         <button type="button" class="btn">회원탈퇴</button>

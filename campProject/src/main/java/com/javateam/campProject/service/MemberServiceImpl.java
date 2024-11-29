@@ -214,4 +214,35 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return blRetVal;
 	}
+
+	@Override
+	public boolean updateMember(MemberVO objMemberVO) {
+
+		return transactionTemplate.execute(new TransactionCallback<Boolean>() {
+
+			@Override
+			public Boolean doInTransaction(TransactionStatus transactionStatus)	{
+				boolean blRetVal = false;
+
+				try {
+					//  기존 회원 존재 여부
+					if(memberDAO.hasMemberByFld("ID", objMemberVO.getId()) == false) {
+						throw new Exception("수정할 회원정보가 존재하지 않습니다.");
+					}
+					
+					// 수정한 비밀번호 암호화
+                    String encodedPassword = bCryptPasswordEncoder.encode(objMemberVO.getPw());
+                    objMemberVO.setPw(encodedPassword); // 암호화된 비밀번호를 설정
+					
+					blRetVal = memberDAO.updateMember(objMemberVO);
+
+				} catch (Exception ex) {
+					log.error("[MemberService][updateMember] Exception : " + ex);
+					transactionStatus.setRollbackOnly();
+				}
+
+				return blRetVal;
+			}
+		});
+	}
 }
