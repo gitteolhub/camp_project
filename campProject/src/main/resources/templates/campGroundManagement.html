@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="layout/header :: header-head">
+<head>
+  <th:block th:replace="layout/header :: header-head"></th:block>
   <title>캠핑장 관리</title>
   
   <style>
@@ -83,7 +84,7 @@
 <body>
 
 <!-- 헤더 포함 -->
-  <div th:include="layout/header :: header"></div>
+  <th:block th:replace="layout/header :: header"></th:block>
 
   <div class="container">
     <div class="left-menu">

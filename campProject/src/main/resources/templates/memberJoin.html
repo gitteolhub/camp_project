@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html 	xmlns:th="http://www.thymeleaf.org"
 		lang="ko">
-<head th:include="layout/header :: header-head">
+<head>
+	<th:block th:replace="layout/header :: header-head"></th:block>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
@@ -57,92 +58,92 @@
 </head>
 <body>
 <!-- 헤더 포함 -->
-  <div th:include="layout/header :: header"></div>
+	<th:block th:replace="layout/header :: header"></th:block>
 
-<div class="container">
-    <h2>회원가입</h2>
-    <form id="frm" th:action="@{'/member/joinProc2'}" method="POST" autocomplete="off" th:object="${memberDTO}">
-    
-        <!-- 회원 아이디 -->
-        <label for="id">ID</label>
-        <input class="input-field" type="text" id="id" name="id" placeholder="ID를 입력하세요" 
-        	   pattern="[a-zA-Z]{1}\w{7,19}" title="아이디는 영문자로 시작하여 영문, 숫자 8~20자 사이로 작성하여 주십시오" required th:field="*{id}"/>
-        
-        <!-- 비밀번호 -->
-        <label for="password">비밀번호</label>
-        <input class="input-field" type="password" id="pw" name="pw" required placeholder="비밀번호를 입력하세요" 
-        	   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,20}"
-			   title="비밀번호는 영문 대소문자 및 숫자, 특수문자를 최소 1개 이상 포함하여 8~20 사이로 작성하여 주십시오." th:field="*{pw}"/>
-
-        <!-- 비밀번호 확인 -->
-        <label for="pw_confirm">비밀번호 확인</label>
-        <input class="input-field" type="password" id="pw_confirm" name="pw_confirm" required placeholder="비밀번호를 다시 입력하세요"
-        	   oninput="validatePassword(this)" title="비밀번호가 일치하지 않습니다."/>
-
-		 <!-- 이름 -->
-        <label for="name">이름</label>
-        <input class="input-field" type="text" id="name" name="name" required placeholder="이름을 입력하세요" th:field="*{name}">
-		
-		<!-- 성별 -->
-	    <label for="gender">성별</label><br>
-	    <input type="radio" id="male" name="gender" value="m" th:field="*{gender}">
-	    <label for="male">남성</label>
+	<div class="container">
+	    <h2>회원가입</h2>
+	    <form id="frm" th:action="@{'/member/joinProc2'}" method="POST" autocomplete="off" th:object="${memberDTO}">
+	    
+	        <!-- 회원 아이디 -->
+	        <label for="id">ID</label>
+	        <input class="input-field" type="text" id="id" name="id" placeholder="ID를 입력하세요" 
+	        	   pattern="[a-zA-Z]{1}\w{7,19}" title="아이디는 영문자로 시작하여 영문, 숫자 8~20자 사이로 작성하여 주십시오" required th:field="*{id}"/>
+	        
+	        <!-- 비밀번호 -->
+	        <label for="password">비밀번호</label>
+	        <input class="input-field" type="password" id="pw" name="pw" required placeholder="비밀번호를 입력하세요" 
+	        	   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,20}"
+				   title="비밀번호는 영문 대소문자 및 숫자, 특수문자를 최소 1개 이상 포함하여 8~20 사이로 작성하여 주십시오." th:field="*{pw}"/>
 	
-	    <input type="radio" id="female" name="gender" value="f" th:field="*{gender}">
-	    <label for="female">여성</label><br>
-		
-        <!-- 이메일 -->
-        <label for="email">이메일</label>
-        <input class="input-field" type="email" id="email" name="email" required placeholder="이메일을 입력하세요"
-               pattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" title="정확한 이메일을 입력해주세요" th:field="*{email}"/>
-		
-        <!-- 전화번호 -->
-        <label for="phone">전화번호</label>
-        <input class="input-field" type="tel" id="phone" name="phone" placeholder="전화번호를 입력하세요"
-               pattern = "(010)-\d{3,4}-\d{4}" title = "010-0000-0000 형식으로 입력해주세요." th:field="*{phone}"/>
-
-        <!-- 생년월일 -->
-        <label for="birthday">생년월일</label>
-        <input class="input-field" type="date" id="birthday" name="birthday" th:field="*{birthday}">
+	        <!-- 비밀번호 확인 -->
+	        <label for="pw_confirm">비밀번호 확인</label>
+	        <input class="input-field" type="password" id="pw_confirm" name="pw_confirm" required placeholder="비밀번호를 다시 입력하세요"
+	        	   oninput="validatePassword(this)" title="비밀번호가 일치하지 않습니다."/>
 	
-        <!-- 주소 -->
-        <fieldset>
-            <legend>주소</legend>
-            <label for="zip">우편번호</label>
-            <div>
-                <input class="input-field" type="text" id="zip" name="zip" placeholder="우편번호" readonly>
-                <button type="button" class="btn btn-primary me-2" id="address_search_btn" onclick="getPostcodeAddress()" th:field="*{zip}">주소 검색</button>
-            </div>
-            
-            <label for="roadaddress">도로명 주소</label>
-            <input class="input-field" type="text" id="roadaddress" name="roadaddress" readonly th:field="*{roadAddress}"/>
-            
-            <label for="jibunAddress">지번 주소</label>
-            <input class="input-field" type="text" id="jibunAddress" name="jibunAddress" readonly th:field="*{jibunAddress}"/>
-            
-            <label for="detailAddress">상세 주소</label>
-            <input class="input-field" type="text" id="detailAddress" name="detailAddress" placeholder="상세 주소를 입력하세요" th:field="*{detailAddress}">
-            
-            <!-- 회원 종류 (고정 값: user) -->
-       		<input type="hidden" name="memberType" th:value="${memberDTO.memberType}"/>
-
-	        <!-- 사업자 번호 (ceo일 경우) -->
-	        <label for="businessNum" th:if="${memberDTO.memberType == 'ceo'}">사업자 번호</label>
-		    <input class="input-field" type="text" th:if="${memberDTO.memberType == 'ceo'}" name="businessNum" placeholder="사업자 번호를 입력하세요" th:field="*{businessNum}" required />
-		    
-		    <!-- 사업자 번호 (user일 경우) -->
-		    <input type="hidden" th:if="${memberDTO.memberType == 'user'}" name="businessNum" th:field="*{businessNum}" th:value="null"/>
-            
-        </fieldset>
-
-        <!-- 가입 버튼 -->
-        <input class="input-field" type="submit" value="가입하기">
-    </form>
-
-    <div class="form-footer">
-        <p>이미 계정이 있으신가요? <a th:href="@{/loginFrom}">로그인</a></p>
-    </div>
-</div>
+			 <!-- 이름 -->
+	        <label for="name">이름</label>
+	        <input class="input-field" type="text" id="name" name="name" required placeholder="이름을 입력하세요" th:field="*{name}">
+			
+			<!-- 성별 -->
+		    <label for="gender">성별</label><br>
+		    <input type="radio" id="male" name="gender" value="m" th:field="*{gender}">
+		    <label for="male">남성</label>
+		
+		    <input type="radio" id="female" name="gender" value="f" th:field="*{gender}">
+		    <label for="female">여성</label><br>
+			
+	        <!-- 이메일 -->
+	        <label for="email">이메일</label>
+	        <input class="input-field" type="email" id="email" name="email" required placeholder="이메일을 입력하세요"
+	               pattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" title="정확한 이메일을 입력해주세요" th:field="*{email}"/>
+			
+	        <!-- 전화번호 -->
+	        <label for="phone">전화번호</label>
+	        <input class="input-field" type="tel" id="phone" name="phone" placeholder="전화번호를 입력하세요"
+	               pattern = "(010)-\d{3,4}-\d{4}" title = "010-0000-0000 형식으로 입력해주세요." th:field="*{phone}"/>
+	
+	        <!-- 생년월일 -->
+	        <label for="birthday">생년월일</label>
+	        <input class="input-field" type="date" id="birthday" name="birthday" th:field="*{birthday}">
+		
+	        <!-- 주소 -->
+	        <fieldset>
+	            <legend>주소</legend>
+	            <label for="zip">우편번호</label>
+	            <div>
+	                <input class="input-field" type="text" id="zip" name="zip" placeholder="우편번호" readonly>
+	                <button type="button" class="btn btn-primary me-2" id="address_search_btn" onclick="getPostcodeAddress()" th:field="*{zip}">주소 검색</button>
+	            </div>
+	            
+	            <label for="roadaddress">도로명 주소</label>
+	            <input class="input-field" type="text" id="roadaddress" name="roadaddress" readonly th:field="*{roadAddress}"/>
+	            
+	            <label for="jibunAddress">지번 주소</label>
+	            <input class="input-field" type="text" id="jibunAddress" name="jibunAddress" readonly th:field="*{jibunAddress}"/>
+	            
+	            <label for="detailAddress">상세 주소</label>
+	            <input class="input-field" type="text" id="detailAddress" name="detailAddress" placeholder="상세 주소를 입력하세요" th:field="*{detailAddress}">
+	            
+	            <!-- 회원 종류 (고정 값: user) -->
+	       		<input type="hidden" name="memberType" th:value="${memberDTO.memberType}"/>
+	
+		        <!-- 사업자 번호 (ceo일 경우) -->
+		        <label for="businessNum" th:if="${memberDTO.memberType == 'ceo'}">사업자 번호</label>
+			    <input class="input-field" type="text" th:if="${memberDTO.memberType == 'ceo'}" name="businessNum" placeholder="사업자 번호를 입력하세요" th:field="*{businessNum}" required />
+			    
+			    <!-- 사업자 번호 (user일 경우) -->
+			    <input type="hidden" th:if="${memberDTO.memberType == 'user'}" name="businessNum" th:field="*{businessNum}" th:value="null"/>
+	            
+	        </fieldset>
+	
+	        <!-- 가입 버튼 -->
+	        <input class="input-field" type="submit" value="가입하기">
+	    </form>
+	
+	    <div class="form-footer">
+	        <p>이미 계정이 있으신가요? <a th:href="@{/loginFrom}">로그인</a></p>
+	    </div>
+	</div>
 
 </body>
 </html>

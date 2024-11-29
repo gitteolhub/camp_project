@@ -1,0 +1,37 @@
+@charset "UTF-8";
+        /* 헤더 스타일 */
+        header {
+            padding: 10px 0;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            text-align: right; /* 메뉴를 오른쪽으로 정렬 */
+            margin-right: 20px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+        nav ul li {
+            display: inline;
+            margin-left: 15px; /* 메뉴 간 간격 설정 */
+        }
+        nav ul li a, nav ul li button {
+            text-decoration: none;
+            font-size: 16px;
+            color: #337ab7;
+        }
+        nav ul li button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #337ab7;
+        }
+        nav ul li a:hover, nav ul li button:hover {
+            color: #23527c; /* 마우스 올렸을 때 색상 */
+        }

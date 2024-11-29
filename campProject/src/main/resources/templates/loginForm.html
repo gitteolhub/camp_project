@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="kr-ko">
-<head th:include="layout/header :: header-head">
+<head>
+	<th:block th:replace="layout/header :: header-head"></th:block>
     <meta charset="UTF-8">
     <title>Login</title>
     <script>
@@ -134,7 +135,7 @@
 </head>
 <body>
 <!-- 헤더 포함 -->
-  <div th:include="layout/header :: header"></div>
+	<th:block th:replace="layout/header :: header"></th:block>
 
     <div class="login-container">
 	loginErrorCount:[[${session.loginErrorCount}]] <br>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="layout/header :: header-head">
+<head>
+  <th:block th:replace="layout/header :: header-head"></th:block>
   <title>사용자 관리</title>
   
   <style>
@@ -101,52 +102,52 @@
 </head>
 <body>
 
-<!-- 헤더 포함 -->
-<div th:include="layout/header :: header"></div>
+	<!-- 헤더 포함 -->
+	<th:block th:replace="layout/header :: header"></th:block>
 
-<div class="container">
-  <div class="left-menu">
-    <ul>
-      <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
-      <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
-      <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
-      <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
-      <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/adminManagement">관리자 관리</a></li>
-    </ul>
-  </div>
-  <div class="content">
-    <h2>사용자 관리</h2>
-    <div class="search-bar">
-      <input type="text" class="search-input" placeholder="사용자 검색...">
-      <button class="search-btn">검색</button>
-    </div>
-    <table class="user-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>이름</th>
-          <th>이메일</th>
-          <th>역할</th>
-          <th>상태</th>
-          <th>관리</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>홍길동</td>
-          <td>hong@example.com</td>
-          <td>일반회원</td>
-          <td>활성</td>
-          <td>
-            <button class="action-btn">활성화</button>
-            <button class="action-btn">정지</button>
-          </td>
-        </tr>
-        <!-- 더 많은 사용자 행들... -->
-      </tbody>
-    </table>
-  </div>
-</div>
+	<div class="container">
+	  <div class="left-menu">
+	    <ul>
+	      <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
+	      <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
+	      <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
+	      <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
+	      <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/adminManagement">관리자 관리</a></li>
+	    </ul>
+	  </div>
+	  <div class="content">
+	    <h2>사용자 관리</h2>
+	    <div class="search-bar">
+	      <input type="text" class="search-input" placeholder="사용자 검색...">
+	      <button class="search-btn">검색</button>
+	    </div>
+	    <table class="user-table">
+	      <thead>
+	        <tr>
+	          <th>ID</th>
+	          <th>이름</th>
+	          <th>이메일</th>
+	          <th>역할</th>
+	          <th>상태</th>
+	          <th>관리</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr>
+	          <td>1</td>
+	          <td>홍길동</td>
+	          <td>hong@example.com</td>
+	          <td>일반회원</td>
+	          <td>활성</td>
+	          <td>
+	            <button class="action-btn">활성화</button>
+	            <button class="action-btn">정지</button>
+	          </td>
+	        </tr>
+	        <!-- 더 많은 사용자 행들... -->
+	      </tbody>
+	    </table>
+	  </div>
+	</div>
 </body>
 </html>
