@@ -25,21 +25,44 @@ function searchByCate3Name(keyword, page, limit) {
             return;
         }
 		
-		console.log("data 크기:"+data.length);
+		console.log("data.campList:"+data.campList.length);
+		console.log("data.pageVO:"+data.pageVO);
 		
-		console.log("data:"+data);
+		console.log("data.startPage:"+data.pageVO.startPage);
+		console.log("data.prePage:"+data.pageVO.prePage);
+		console.log("data.currPage:"+data.pageVO.currPage);
+		console.log("data.nextPage:"+data.pageVO.nextPage);
+		console.log("data.maxPage:"+data.pageVO.maxPage);
+		
+		console.log("data.campList:"+data.campList[0].roadAddress);
+		
+		// 페이징 버튼에 페이지 할당
+		let pagingContent=
+				   `<li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
+				    <li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
+					
+					<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
+					
+					<li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
+					<li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>
+				   `;
+				   
+		document.querySelector("#pagingSectionTop ul#pagingsTop").innerHTML=pagingContent;
+		document.querySelector("#pagingSectionBottom ul#pagingsBottom").innerHTML=pagingContent;
+		
 		
         // 결과를 표시할 HTML 초기화
         let resultsHTML = `<h4>카테고리: ${keyword}</h4>`;
 
         // 데이터 행 추가
-        data.forEach(camp => {
+        data.campList.forEach(camp => {
             const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
 
+            let campImg = camp.mainImg=='' || camp.mainImg==null ? 'noimg.jpg' : `${camp.mainImg}`;
+		
             resultsHTML += `
                 <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
-					
-					<p><img src="/campProject/campImg/${camp.mainImg}"></p>                	
+					<p><img src="/campProject/campImg/${campImg}"></p>                	
                     <h3> ${camp.campName}</h3>
                     <p><strong>종류:</strong> ${camp.cate3}</p>
                     <p><strong>주소:</strong> ${address}</p>
@@ -48,6 +71,7 @@ function searchByCate3Name(keyword, page, limit) {
                 </div>
             `;
         });
+        
 
         // 결과를 HTML로 표시
         results.innerHTML = resultsHTML;
@@ -104,9 +128,14 @@ window.onload = () => {
 	            // roadAddress가 null일 경우 jibunAddress를 표시
 	            const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress;
 	
+				console.log('캠핑장 이름:', camp.campName, 'mainImg 값:', camp.mainImg);
+				
+				let campImg = camp.mainImg=='' || camp.mainImg==null ? 'noimg.jpg' : `${camp.mainImg}`;
+	
 	            // HTML 생성
 	            resultsHTML += `
 	                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
+	                    <p><img src="/campProject/campImg/${campImg}"></p>  
 	                    <h3> ${camp.campName}</h3>
 	                    <p><strong>종류:</strong> ${camp.cate3}</p>
 	                    <p><strong>주소:</strong> ${address}</p>
@@ -128,21 +157,20 @@ window.onload = () => {
 
 	
 	// 키워드 버튼 클릭 이벤트 추가
-	document.getElementById('searchCamping').addEventListener('click', () => {
-		console.log("일반야영장 검색");
+	let searchCamps = document.querySelectorAll('.searchCamps');
 		
-		let page = document.getElementById('page').value;
-		let limit = 10;
-	    searchByCate3Name('일반야영장',page,limit);
-	});
+	for (let searchCamp of searchCamps){
+		
+		searchCamp.addEventListener('click', (e) => { 
+			
+			let cate3 = e.target.alt;
+			console.log(`${cate3} 검색`);
+			
+			/*let page = document.getElementById('page').value;*/
+			let page = 1;
+			let limit = 10;
+		    searchByCate3Name(`${cate3}`, page, limit);
+		});
 	
-	document.getElementById('searchGlamping').addEventListener('click', () => {
-	    searchByCate3Name('글램핑');
-	});
-	document.getElementById('searchCaraban').addEventListener('click', () => {
-	    searchByCate3Name('카라반');
-	});
-	document.getElementById('searchCar').addEventListener('click', () => {
-	    searchByCate3Name('자동차야영장');
-	});
+	}
 }

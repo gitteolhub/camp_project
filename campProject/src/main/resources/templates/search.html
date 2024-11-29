@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>캠핑 검색</title>
     <script th:src="@{'/axios/1.7.4/dist/axios.min.js'}"></script>
+    <!-- 부트 스트랩 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <!-- 부트 스트랩 아이콘 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/searchCss.css}">
 </head>
 <body>
-
      <div class="container">
         <h1>캠핑장 검색</h1>
         <form id="searchForm">
@@ -21,41 +24,43 @@
 		
 		   <!-- 버튼 영역 -->
         <div class="button-container">
-        	page입력<input type="number" id="page" name="page"/>
+        	<!-- page입력<input type="number" id="page" name="page"/> -->
         
-		    <a href="javascript:void(0);" id="searchCamping">
+		    <a href="javascript:void(0);" id="searchCamping" class="searchCamps">
 		        <img th:src="@{/img/camp.png}" alt="일반야영장" style="width: 100px; height: auto;">
 		    </a>
 		    
-		    <a href="javascript:void(0);" id="searchGlamping">
+		    <a href="javascript:void(0);" id="searchGlamping" class="searchCamps">
 		        <img th:src="@{/img/glamping.png}" alt="글램핑" style="width: 100px; height: auto;">
 		    </a>
 		    
-		    <a href="javascript:void(0);" id="searchCaraban">
+		    <a href="javascript:void(0);" id="searchCaraban" class="searchCamps">
 		        <img th:src="@{/img/caraban.png}" alt="카라반" style="width: 100px; height: auto;">
 		    </a>
 		    
-		    <a href="javascript:void(0);" id="searchCar">
+		    <a href="javascript:void(0);" id="searchCar" class="searchCamps">
 		        <img th:src="@{/img/car.png}" alt="자동차야영장" style="width: 100px; height: auto;">
 		    </a>
 		</div>
-
+		
+		<!-- 페이징 상단 -->		
+		<div id="pagingSectionTop">
+			<ul id="pagingsTop">
+	 		</ul>
+		</div>
+		
         <div id="results">
             <!-- 검색 결과가 이곳에 표시됩니다 -->
         </div>
         
          <script th:src="@{'/js/searchCamp.js'}" charset="UTF-8"></script>
          
+        <!-- 페이징 하단 -->		
+		<div id="pagingSectionBottom">
+			<ul id="pagingsBottom">
+	 		</ul>
+		</div> 
+		
     </div>
-		
-	<!-- 페이징 -->		
-	<div>
-<!-- 		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=1&limit=10}">1</a>
-		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=2&limit=10}">2</a>
-		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=3&limit=10}">3</a>
-		<a th:href="@{/searchCate3Name?cate3=%EC%9D%BC%EB%B0%98%EC%95%BC%EC%98%81%EC%9E%A5&page=147&limit=10}">147</a>
- -->	</div>
-	
-		
 </body>
 </html>

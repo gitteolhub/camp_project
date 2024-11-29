@@ -1,7 +1,7 @@
 package com.javateam.campProject.controller;
 
 import com.javateam.campProject.domain.CampVO;
-
+import com.javateam.campProject.domain.PageListVO;
 import com.javateam.campProject.service.CampService;
 import com.javateam.campProject.service.CampService2;
 import com.javateam.campProject.domain.PageVO;
@@ -39,7 +39,7 @@ public class CampController {
 	}
 	
 	@GetMapping("/searchCate3Name")
-	public ResponseEntity<List<CampVO>> searchCate3Name(@RequestParam("cate3") String cate3,
+	public ResponseEntity<PageListVO> searchCate3Name(@RequestParam("cate3") String cate3,
 			@RequestParam(value="page",defaultValue = "1") int page, @RequestParam(value="limit",defaultValue = "10") int limit) {
 		
 		log.info("searchCate3Name:");
@@ -53,9 +53,11 @@ public class CampController {
 		// 총 페이지 수
 		int maxPage = PageVO.getMaxPage(listCount, limit);
 		// 현재 페이지에 보여줄 시작 페이지 수 (1, 11, 21,...)
-		int startPage = PageVO.getStartPage(page, limit);
+		/* int startPage = PageVO.getStartPage(page, limit); */
+		int startPage = 1;
 		// 현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30, ...)
-   	    int endPage = startPage + 10;
+   	    // int endPage = startPage + 10;
+		int endPage = maxPage;
 
    	    if (endPage> maxPage) endPage = maxPage;
 
@@ -86,7 +88,11 @@ public class CampController {
 			
 		log.info("resultList.size:"+resultList.size());
 		
-		return new ResponseEntity<>(resultList, HttpStatus.OK);
+		PageListVO pageListVO = new PageListVO();
+		pageListVO.setCampList(campList);
+		pageListVO.setPageVO(pageVO);
+		
+		return new ResponseEntity<>(pageListVO, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "searchCamping", produces = "application/xml; UTF-8")

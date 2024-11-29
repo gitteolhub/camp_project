@@ -75,3 +75,29 @@ button:hover {
 .search-image:hover {
     transform: scale(1.1);     /* 호버 시 이미지 크기 증가 */
 }
+
+/* 페이징 */
+[id^=pagingSection] {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+}
+
+[id^=pagingSection] ul {
+	list-style-type: none;
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+}
+
+[id^=pagingSection] ul li {
+	margin: 0 10px;	
+}
+
+[id^=pagingSection] ul li a {
+	text-decoration: none;
+	font-size: 2em;
+}
+	
