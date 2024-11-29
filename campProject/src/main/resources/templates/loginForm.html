@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="kr-ko">
-<head>
+<head th:include="layout/header :: header-head">
     <meta charset="UTF-8">
     <title>Login</title>
     <script>
@@ -133,6 +133,9 @@
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </head>
 <body>
+<!-- 헤더 포함 -->
+  <div th:include="layout/header :: header"></div>
+
     <div class="login-container">
 	loginErrorCount:[[${session.loginErrorCount}]] <br>
 	error:[[${error}]] <br>

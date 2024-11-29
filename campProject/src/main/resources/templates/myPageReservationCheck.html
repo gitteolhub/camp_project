@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:include="layout/header :: header-head">
   <title>마이페이지 일반유저 예약 확인</title>
   
   <style>
@@ -79,6 +79,8 @@
   </style>
 </head>
 <body>
+<!-- 헤더 포함 -->
+  <div th:include="layout/header :: header"></div>
 
   <div class="container">
     <div class="left-menu">

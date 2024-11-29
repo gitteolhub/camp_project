@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:include="layout/header :: header-head">
     <meta charset="UTF-8">
     <title>아이디 찾기</title>
     <style>
@@ -74,6 +74,9 @@
     </style>
 </head>
 <body>
+<!-- 헤더 포함 -->
+  <div th:include="layout/header :: header"></div>
+
     <div class="login-container">
         <h2>아이디 찾기</h2>
         <form th:action="@{/findUserIdProc}" method="get">

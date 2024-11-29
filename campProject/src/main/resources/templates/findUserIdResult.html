@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:include="layout/header :: header-head">
     <meta charset="UTF-8">
     <title>아이디 찾기 결과</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -36,6 +36,9 @@
     </style>
 </head>
 <body>
+<!-- 헤더 포함 -->
+  <div th:include="layout/header :: header"></div>
+
     <div class="container mt-5">
         <h2 class="text-center">아이디 찾기 결과</h2>
         <div class="card">
