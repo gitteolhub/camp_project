@@ -43,7 +43,7 @@ h2{
     height: 32px;
 }
 .page-link {
-    padding: 5px 8px; 
+    padding: 5px 8px;
     font-size: 11px;
 }
 
@@ -73,7 +73,7 @@ window.onload = function() {
 		} //
 
 	} //
-	
+
 	// 관리자 모드일 경우만 나오는 버튼이므로 일반 모드에는 에러로 오인됨 (추후 처리)
 	boardDeletebtn.onclick = function() {
 
@@ -89,7 +89,7 @@ window.onload = function() {
 
 			} //
 		} //
-		
+
 		// 삭제할 게시글 아이디들 확인
 		for (deleteExpectedBoardId of deleteExpectedBoardIds) {
 
@@ -105,22 +105,22 @@ window.onload = function() {
 
 	<!-- layout -->
 	<div layout:fragment="content" class="container">
-	
+
 		<div class="main_sect_pnl">
-	
+
 			<div class="content_sect_pnl">
-	
+
 				<!-- (검색할) 게시글 정보가 없을 경우 -->
 				<div th:if="${#lists.isEmpty(boardList)}">
-	
+
 					<script>
 						alert('검색 결과가 없습니다.')
 					</script>
-	
+
 				</div>
-				
+
 				<div id="boardArgs" class="collapse" th:if="${#lists.isEmpty(boardList) == false}">
-	
+
 					<table class="table table-sm table-striped">
 						<tr>
 						    <th style="width:150px;">총 게시글 수</th><td th:text="${pageVO.listCount}"></td>
@@ -138,13 +138,13 @@ window.onload = function() {
 						</tr>
 					</table>
 				</div>
-				
+
 				<h2 class="d-flex justify-content-center m-5">
 					문의 게시판
 					<!-- 인자 현황 버튼 -->
 					<!-- &nbsp;<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#boardArgs">인자 현황</button> -->
 				</h2>
-				
+
 				<table class="table mx-2 mx-auto" style="width:50vw">
 					<thead>
 						<tr>
@@ -155,7 +155,7 @@ window.onload = function() {
 							<th>작성자</th>
 							<th>제목</th>
 							<th>작성일</th>
-	
+
 							<!-- 조회수 추가 -->
 							<th>조회수</th>
 						</tr>
@@ -174,18 +174,18 @@ window.onload = function() {
 								<span th:if="${#strings.contains(board.boardContent, 'img')}">
 									<i class="bi bi-card-image"></i>
 								</span>
-								
+
 								<!-- 업로드 파일 존재 여부 -->
 								<span th:if="${!#strings.isEmpty(board.boardFile)}">
 									<i class="bi bi-paperclip"></i>
 								</span>
 							</td>
 							<td th:utext="${#dates.format(board.boardDate, 'yyyy.MM.dd HH:mm')}"></td>
-	
+
 							<!-- 조회수 추가 -->
 							<td th:utext="${board.boardReadCount}"></td>
 						</tr>
-						
+
 						<!-- 검색 결과가 없을 경우 -->
 						<tr th:if="${#lists.isEmpty(boardList) && pageVO.listCount == 0}">
 							<td colspan="17">
@@ -195,41 +195,41 @@ window.onload = function() {
 							</td>
 						</tr>
 					</tbody>
-	
+
 				</table>
-				
+
 				<!-- 게시판 메뉴 :
 			         ex) 관리자 모드 : 체크박스 제어에 따른 관리자 모드에서의 메뉴(삭제 등). 관리자 등급이어야 표기됨
 				-->
 				<div id="board_menu" class="mx-auto d-flex justify-content-end mt-4 pe-5" style="width:60vw;">
-	
+
 					 <!-- 게시글 목록에서 바로 삭제 못하도록 임시 생략 처리-->
 					 <!-- <a href="#" id="board_delete_btn" class="btn btn-primary me-2"
 					 	sec:authorize="isAuthenticated()">삭제</a> -->
-	
+
 					 <a th:href="@{/board/inquiryBoardWrite}" class="btn btn-custom me-4"
 					 	sec:authorize="isAuthenticated()">
 					 	<i class="bi bi-pen"></i>&nbsp;글쓰기
 				 	 </a>
-				 	 
+
 				 	 <!-- 게시글 목록 -->
 				 	 <!-- <a class="btn btn-custom" th:href="@{/board/inquiryBoardList}">
 						게시글 목록
 					 </a> -->
 				</div>
-	
+
 				<!-- 페이징 -->
 				<!-- 검색이 아닌 경우 -->
 				<div class="d-flex justify-content-center mt-4" th:if="${#strings.isEmpty(searchKey)}">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
-						
+
 							<!--  첫 페이지 -->
 							<li class="page-item"><a class="page-link"
 								th:href="@{/board/inquiryBoardList?currentPage=1}" aria-label="Start">
 									<span aria-hidden="true">&Lt;</span>
 							</a></li>
-							
+
 							<!-- 이전 페이지 -->
 							<li class="page-item">
 								<!-- <a class="page-link" th:href="@{'/board/list?currentPage='+${pageVO.currentPage-1 < 1 ? 1 : pageVO.currentPage-1}}" aria-label="Previous"> -->
@@ -238,12 +238,12 @@ window.onload = function() {
 								aria-label="Previous"> <span aria-hidden="true">&lt;</span>
 							</a>
 							</li>
-							
+
 							<!-- 현재 페이지 -->
 							<li class="page-item active"><a class="page-link"
 								th:href="@{'/board/inquiryBoardList?currentPage='+${pageVO.currentPage}}"
 								th:utext="${pageVO.currentPage}"></a></li>
-								
+
 							<!-- 다음 페이지 -->
 							<li class="page-item">
 								<!-- <a class="page-link" th:href="@{'/board/list?currentPage='+${pageVO.currentPage+1 > pageVO.endPage ? pageVO.endPage : pageVO.currentPage+1}}" aria-label="Next"> -->
@@ -252,7 +252,7 @@ window.onload = function() {
 								aria-label="Next"> <span aria-hidden="true">&gt;</span>
 							</a>
 							</li>
-							
+
 							<!-- 마지막 페이지 -->
 							<li class="page-item"><a class="page-link"
 								th:href="@{'/board/inquiryBoardList?currentPage='+${pageVO.endPage}}"
@@ -261,12 +261,12 @@ window.onload = function() {
 						</ul>
 					</nav>
 				</div>
-				
+
 				<!-- 검색인 경우 -->
 				<div class="d-flex justify-content-center mt-4" th:if="${!#strings.isEmpty(searchKey)}">
 					<nav aria-label="Page navigation example">
 					  <ul class="pagination">
-	
+
 					    <!--  첫 페이지 -->
 					    <li class="page-item">
 					      <a class="page-link"
@@ -274,19 +274,19 @@ window.onload = function() {
 					        <span aria-hidden="true">&Lt;</span>
 					      </a>
 					    </li>
-					    
+
 					    <!-- 이전 페이지 -->
 					    <li class="page-item">
 					      <a class="page-link" th:href="@{'/board/searchlist?currentPage='+${pageVO.previousPage}+'&searchKey='+${searchKey}+'&searchWord='+${searchWord}}" aria-label="Previous">
 					        <span aria-hidden="true">&lt;</span>
 					      </a>
 					    </li>
-					    
+
 					    <!-- 현재 페이지 -->
 					    <li class="page-item active">
 					    	<a class="page-link" th:href="@{'/board/searchlist?currentPage='+${pageVO.currentPage}+'&searchKey='+${searchKey}+'&searchWord='+${searchWord}}" th:utext="${pageVO.currentPage}"></a>
 				    	</li>
-				    	
+
 				    	<!-- 다음 페이지 -->
 					    <li class="page-item">
 					      <a class="page-link" th:href="@{'/board/searchlist?currentPage='+${pageVO.nextPage}+'&searchKey='+${searchKey}+'&searchWord='+${searchWord}}" aria-label="Next">
@@ -302,17 +302,17 @@ window.onload = function() {
 					  </ul>
 					</nav>
 				</div>
-				
+
 				<!-- 검색 -->
 				<!-- 간격 : mt-2 mb-5, 줄 단위 배치 : row, 레이아웃 배분 비율 : ex) col-3 (3/12) -->
 				<form th:action="@{/board/searchlist}" method="get">
-	
+
 					<div id="search_pnl" class="mx-auto row mt-2 mb-5" style="width:50vw">
-					
+
 						<!-- 게시글 목록 이동에 따른 조치 : 빈 영역 -->
 						<div class="col-3">
 						</div>
-	
+
 						<div id="select_pnl" class="col-2 pe-0">
 							<select class="form-select" id="searchKey" name="searchKey" aria-label="검색 구분">
 							  <option selected value="board_subject">글제목</option>
@@ -320,29 +320,29 @@ window.onload = function() {
 							  <option value="board_writer">작성자</option>
 							</select>
 						</div>
-						
+
 						<div id="search_pnl" class="col-4">
-	
+
 							<input type="text" class="form-control" id="searchWord" name="searchWord" />
 						</div>
-	
+
 						<div id="search_btn_pnl" class="col-1 ps-0">
 							<button id="search_btn" class="btn btn-primary">
 								<!-- bootstrap icon
 								     : https://icons.getbootstrap.com/icons/search/  -->
 								<i class="bi bi-search"></i>
 							</button>
-	
+
 						</div>
-	
+
 					</div>
-	
+
 				</form>
-				
+
 			</div>
-			
+
 		</div>
-	
+
 	</div>
 </body>
 </html>

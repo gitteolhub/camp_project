@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.campReservationMapper">
+
+	<insert id="insertReservation" parameterType="com.javateam.campProject.domain.campReservationVO">
+        INSERT INTO CAMP_RESERVATION_TBL
+        	(CAMP_C_NO,  CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME,
+        	 USER_EMAIL, USER_PHONE)
+        VALUES
+        	(#{campCNo},   #{campName}, #{checkIn}, #{checkOut}, #{userName},
+        	 #{userEmail}, #{userPhone})
+    </insert>
+
+</mapper>

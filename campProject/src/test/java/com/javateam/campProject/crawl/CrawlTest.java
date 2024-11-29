@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.javateam.campProject.domain.CampCrawlDTO;  // 무슨 파일?
+import com.javateam.campProject.domain.CampImageVO;
 import com.javateam.campProject.domain.CampImgVO;
 import com.javateam.campProject.repository.CampImgRepository;
 
@@ -47,7 +48,7 @@ public class CrawlTest {
 		String url = "https://gocamping.or.kr/bsite/camp/info/read.do?c_no="+cNo;
 
 
-		CampImgVO campimgVO = new CampImgVO();
+		CampImageVO campimgVO = new CampImageVO();
 		campimgVO.setCNo(cNo);
 		campimgVO.setImgKind("M");
 
@@ -103,7 +104,7 @@ public class CrawlTest {
 		String url = "https://gocamping.or.kr/bsite/camp/info/read.do?c_no="+cNo;
 
 
-		CampImgVO campimgVO = null;
+		CampImageVO campimgVO = null;
 
 
 		try {
@@ -116,7 +117,7 @@ public class CrawlTest {
 			for (Element img : imgs) {
 
 
-				campimgVO = new CampImgVO();
+				campimgVO = new CampImageVO();
 				campimgVO.setCNo(cNo);
 				campimgVO.setImgKind("S");
 
@@ -242,7 +243,7 @@ public class CrawlTest {
 		this.saveCampSubImg(4);
 	} //
 /////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// 위쪽 코드는 코드 생성 과정이므로 실제 사용x
 	// 전체 캠핑장 이미지 저장(DB + 저장소)
 	@Test

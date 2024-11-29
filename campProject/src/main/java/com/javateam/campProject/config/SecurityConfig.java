@@ -36,31 +36,32 @@ public class SecurityConfig {
 					   .frameOptions(Customizer.withDefaults()).disable());
 
 		// 요청 권한 설정
-		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests -> 
+		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests ->
 	    authorizeHttpRequests
 	        .requestMatchers(
-	            "/", 
-	            "/resources/**", 
-	            "/loginError", 
+	            "/",
+	            "/resources/**",
+	            "/loginError",
 	            "/loginForm",
-	            "/home", 
-	            "/captcha", 
-	            "/checkCaptcha", 
-	            "/captcha/image/**", 
+	            "/home",
+	            "/captcha",
+	            "/checkCaptcha",
+	            "/captcha/image/**",
 	            "/refreshImage",
-	            "/socialAddInformation", 
-	            "/findUserId", 
-	            "/findUserPw", 
+	            "/socialAddInformation",
+	            "/findUserId",
+	            "/findUserPw",
 	            "/findUserIdProc",
-	            "/pwVerificationCode", 
-	            "/findUserPwProc", 
-	            "/findUserPwResult", 
-	            "/choiceJoin", 
-	            "/userJoin", 
-	            "/ceoJoin", 
+	            "/pwVerificationCode",
+	            "/findUserPwProc",
+	            "/findUserPwResult",
+	            "/choiceJoin",
+	            "/userJoin",
+	            "/ceoJoin",
 	            "/member/joinProc2",
-	            "/myPageGeneralUserModification", 
-	            "/myPageGeneralUserReservationCheck" // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
+	            "/myPageGeneralUserModification",
+	            "/myPageGeneralUserReservationCheck", // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
+	            "/campDetail"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**")
@@ -118,6 +119,6 @@ public class SecurityConfig {
 
 		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
 				   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
-				   "/summernote/**", "/jquery/**", "/images/**", "/resources/**");
+				   "/summernote/**", "/jquery/**", "/images/**", "/resources/**", "/campImgPath/**");
 	}
 }

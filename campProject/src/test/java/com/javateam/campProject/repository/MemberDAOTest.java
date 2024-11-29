@@ -60,4 +60,10 @@ class MemberDAOTest {
 		socialUserDAO.insertSocialUser(socialUser);
 
 	}
+
+	@Test
+	void test() {
+		String email = memberDAO.findUserEmailByID("abcd1111");
+		log.info("[MemberDAOTest][email]: {}", email);
+	}
 }

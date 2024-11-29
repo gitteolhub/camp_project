@@ -2,8 +2,8 @@ package com.javateam.campProject.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.javateam.campProject.domain.CampImgVO;
+import com.javateam.campProject.domain.CampImageVO;
 
-public interface CampImgRepository extends CrudRepository<CampImgVO, Integer>{
+public interface CampImgRepository extends CrudRepository<CampImageVO, Integer>{
 
 }
