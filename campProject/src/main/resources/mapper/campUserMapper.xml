@@ -141,6 +141,4 @@
 		       )  
 		 WHERE PAGE = #{page}
 	</select>
-		
-	
 </mapper>
