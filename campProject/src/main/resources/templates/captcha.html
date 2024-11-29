@@ -76,7 +76,7 @@
 </head>
 <body>
 <!-- 헤더 포함 -->
-	<th:block th:replace="layout/header :: header"></th:block>
+	<th:block th:include="layout/header :: header"></th:block>
 
     <div class="container">
     	loginErrorCount:[[${session.loginErrorCount}]] <br>
