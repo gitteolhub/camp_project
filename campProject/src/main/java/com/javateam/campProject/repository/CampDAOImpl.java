@@ -51,4 +51,20 @@ public class CampDAOImpl implements CampDAO {
 		
 		return sqlSession.selectList(MAPPER_PATH + "selectCate3NameByPaging", map);
 	}
+
+	@Override
+	public int countCampName(String campName) {
+		
+		return sqlSession.selectOne(MAPPER_PATH + "countCampName", campName);
+	}
+
+	@Override
+	public List<CampVO> selectCameNameByPaging(String searchName, int page, int limit) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("searchName", searchName);
+		map.put("page", page);
+		map.put("limit", limit);
+		
+		return sqlSession.selectList(MAPPER_PATH + "selectCameNameByPaging", map);
+	}
 }

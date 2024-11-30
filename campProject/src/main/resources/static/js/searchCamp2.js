@@ -35,7 +35,7 @@ function searchByCate3Name(keyword, page, limit) {
 		console.log("data.maxPage:"+data.pageVO.maxPage);
 		
 		console.log("data.campList:"+data.campList[0].roadAddress);
-
+		
 		// 페이징 버튼에 페이지 할당
 		let pagingContent=
 				   `<li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
@@ -82,98 +82,9 @@ function searchByCate3Name(keyword, page, limit) {
     });
 } // 카테고리 검색 요청
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// 검색어로 검색 수행 함수
-function searchByCampName(keyword, page, limit) {
-	
-    // 검색 결과 영역 초기화
-    const results = document.getElementById('results');
-    results.innerHTML = ""; // 기존 결과 초기화
-
-    // 카테고리 검색 요청
-    fetch(`/campProject/searchCamp?campName=${encodeURIComponent(keyword)}&page=${page}&limit=${limit}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('서버 응답이 정상적이지 않습니다.');
-        }
-        return response.json(); // JSON 응답 처리
-    })
-    .then(data => {
-        // 데이터가 없으면 메시지 출력
-        if (!data || data.length === 0) {
-            results.innerHTML = `<p>${keyword}에 대한 결과가 없습니다.</p>`;
-            return;
-        }
-		
-		console.log("data.campList:"+data.campList.length);
-		console.log("data.pageVO:"+data.pageVO);
-		
-		console.log("data.startPage:"+data.pageVO.startPage);
-		console.log("data.prePage:"+data.pageVO.prePage);
-		console.log("data.currPage:"+data.pageVO.currPage);
-		console.log("data.nextPage:"+data.pageVO.nextPage);
-		console.log("data.maxPage:"+data.pageVO.maxPage);
-		
-		console.log("data.campList:"+data.campList[0].roadAddress);
-
-		// 페이징 버튼에 페이지 할당
-		let pagingContent=
-				   `<li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
-				    <li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
-					
-					<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
-					
-					<li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
-					<li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>
-				   `;
-				   
-		document.querySelector("#pagingSectionTop ul#pagingsTop").innerHTML=pagingContent;
-		document.querySelector("#pagingSectionBottom ul#pagingsBottom").innerHTML=pagingContent;
-		
-		
-        // 결과를 표시할 HTML 초기화
-        let resultsHTML = `<h4>카테고리: ${keyword}</h4>`;
-
-        // 데이터 행 추가
-        data.campList.forEach(camp => {
-            const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
-            
-            let campImg = camp.mainImg=='' || camp.mainImg==null ? 'noimg.jpg' : `${camp.mainImg}`;
-
-            resultsHTML += `
-                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
-					<p><img src="/campProject/campImg/${campImg}"></p>                	
-                    <h3> ${camp.campName}</h3>
-                    <p><strong>종류:</strong> ${camp.cate3}</p>
-                    <p><strong>주소:</strong> ${address}</p>
-                    <p><strong>시설 특징:</strong> ${camp.facilCharacteristics}</p>
-                    <p><strong>시설 상세:</strong> ${camp.facilDetail}</p>
-                </div>
-            `;
-        });
-        
-
-        // 결과를 HTML로 표시
-        results.innerHTML = resultsHTML;
-    })
-    .catch(error => {
-        console.error('추가 검색 중 오류가 발생했습니다:', error);
-        results.innerHTML = `<p>추가 검색 중 오류가 발생했습니다.</p>`;
-    });
-} // 검색어로 검색 수행 함수
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 // 캠핑 이름 검색 요청
 window.onload = () => {
 	
-	// 엔터 키로 검색	
 	let campName = document.getElementById('campName');
 	
 	campName.addEventListener('keyup', function(event) {
@@ -234,50 +145,18 @@ window.onload = () => {
 		                    <p><strong>시설 상세:</strong> ${camp.facilDetail}</p>
 		                </div>
 		            `;
-		        }); // 데이터 행 추가 forEach
-		        
+		        });
+		
 		        // 결과를 HTML로 표시
 		        document.getElementById('results').innerHTML = resultsHTML;
-		        
-		        // 페이징 생성
-				console.log("data.campList:"+data.campList.length);
-				console.log("data.pageVO.listCount:"+data.pageVO.listCount);
-				console.log("data.pageVO:"+data.pageVO);
-				
-				console.log("data.startPage:"+data.pageVO.startPage);
-				console.log("data.prePage:"+data.pageVO.prePage);
-				console.log("data.currPage:"+data.pageVO.currPage);
-				console.log("data.nextPage:"+data.pageVO.nextPage);
-				console.log("data.maxPage:"+data.pageVO.maxPage);
-				
-				console.log("data.campList:"+data.campList[0].roadAddress);
-				
-				console.log("캠프네임:"+campName);
-				
-				// 페이징 버튼에 페이지 할당
-				let pagingContent=
-						   `<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
-						    <li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
-							
-							<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
-							
-							<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
-							<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>
-						   `;
-						   
-				document.querySelector("#pagingSectionTop ul#pagingsTop").innerHTML=pagingContent;
-				document.querySelector("#pagingSectionBottom ul#pagingsBottom").innerHTML=pagingContent;
 		    })
 		    .catch(error => {
 		        console.error('검색 중 오류가 발생했습니다:', error);
 		        document.getElementById('results').innerHTML = `<p>검색 중 오류가 발생했습니다.</p>`;
 		    });
 		}
-	});// 엔터 키로 검색	
+	});
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	
-	// 검색 버튼 클릭 시
 	document.getElementById('sendBtn').addEventListener('click', function(event) {
 	    event.preventDefault(); // 폼 제출 시 페이지 새로고침을 방지
 	
@@ -338,42 +217,13 @@ window.onload = () => {
 	
 	        // 결과를 HTML로 표시
 	        document.getElementById('results').innerHTML = resultsHTML;
-	        
-	        // 페이징 생성
-			console.log("data.campList:"+data.campList.length);
-			console.log("data.pageVO.listCount:"+data.pageVO.listCount);
-			console.log("data.pageVO:"+data.pageVO);
-			
-			console.log("data.startPage:"+data.pageVO.startPage);
-			console.log("data.prePage:"+data.pageVO.prePage);
-			console.log("data.currPage:"+data.pageVO.currPage);
-			console.log("data.nextPage:"+data.pageVO.nextPage);
-			console.log("data.maxPage:"+data.pageVO.maxPage);
-			
-			console.log("data.campList:"+data.campList[0].roadAddress);
-			
-			console.log("캠프네임:"+campName);
-			
-			// 페이징 버튼에 페이지 할당
-			let pagingContent=
-					   `<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
-					    <li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
-						
-						<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
-						
-						<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
-						<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>
-					   `;
-					   
-			document.querySelector("#pagingSectionTop ul#pagingsTop").innerHTML=pagingContent;
-			document.querySelector("#pagingSectionBottom ul#pagingsBottom").innerHTML=pagingContent;
 	    })
 	    .catch(error => {
 	        console.error('검색 중 오류가 발생했습니다:', error);
 	        document.getElementById('results').innerHTML = `<p>검색 중 오류가 발생했습니다.</p>`;
 	    });
 	    
-	}); // 검색 버튼 클릭 시
+	}); // 캠핑 이름 검색 요청
 
 	
 	// 키워드 버튼 클릭 이벤트 추가

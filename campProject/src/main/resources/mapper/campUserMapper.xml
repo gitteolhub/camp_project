@@ -141,4 +141,24 @@
 		       )  
 		 WHERE PAGE = #{page}
 	</select>
+	
+	<!-- 캠핑 이름 레코드 수 조회 -->
+	<select id="countCampName" parameterType = "String" resultType="int">
+		SELECT count(*) FROM camp_info_tbl
+		WHERE camp_name LIKE '%${cate3}%'
+	</select>
+	
+	
+	<!-- 캠핑 이름 레코드 조회 (페이징) -->
+	<select id="selectCameNameByPaging" parameterType ="map" resultType="com.javateam.campProject.domain.CampVO">
+		SELECT  *
+		  FROM ( SELECT M.*  
+		                , FLOOR((ROWNUM - 1) / #{limit} + 1) PAGE  
+		           FROM ( SELECT *
+		                    FROM CAMP_INFO_TBL
+		                   WHERE camp_name LIKE '%${searchName}%'
+		                   ORDER BY ID DESC ) M
+		       )  
+		 WHERE PAGE = #{page}
+	</select>
 </mapper>

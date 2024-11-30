@@ -14,4 +14,8 @@ public interface CampDAO {
 	
 	List<CampVO> selectCate3NameByPaging(String searchName, int page, int limit);
 	
+	int countCampName(String campName);
+	
+	List<CampVO> selectCameNameByPaging(String searchName, int page, int limit);
+	
 }

@@ -54,5 +54,17 @@ public class CampService2Impl implements CampService2 {
 		return campDAO.countCate3Name(cate3);
 	}
 	
+	@Transactional(readOnly = true)
+	@Override
+	public List<CampVO> selectCampNameByPaging(String searchName, int page, int limit) {
+		
+		return campDAO.selectCameNameByPaging(searchName, page, limit);
+	}
 	
+	@Transactional(readOnly = true)
+	@Override
+	public int countCampName(String campName) {
+
+		return campDAO.countCampName(campName);
+	}
 }

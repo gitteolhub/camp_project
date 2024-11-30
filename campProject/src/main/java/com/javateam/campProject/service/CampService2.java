@@ -23,5 +23,13 @@ public interface CampService2 {
 	
 	// 캠핑장 카테고리 레코드 총수 조회
 	int countCate3Name(String cate3);
+
+	// 캠핑장 이름 레코드 조회(페이징)
+	List<CampVO> selectCampNameByPaging(String searchName, int page, int limit);
+	
+	// 캠핑장 이름 레코드 총수 조회
+	int countCampName(String campName);
+	
+	
 }
 	

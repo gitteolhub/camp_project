@@ -14,17 +14,17 @@
 </head>
 <body>
      <div class="container">
-        <h1>캠핑장 검색</h1>
-        <form id="searchForm">
+        <h1 style="margin: 20px 0;">캠핑장 검색</h1>
+        <div id="searchForm">
 		    <label for="campName"></label>
-		    <input type="text" id="campName" name="campName" placeholder="캠핑장 이름을 입력하세요" required>
-		    
-		    <button type="submit">검색</button>
-		</form>
+		    <div id="searchMenu">
+		    	<input type="text" id="campName" name="campName" placeholder="캠핑장 이름을 입력하세요" required>
+		    	<button type="button" id="sendBtn">검색</button>
+		    </div>
+		</div>
 		
 		   <!-- 버튼 영역 -->
         <div class="button-container">
-        	<!-- page입력<input type="number" id="page" name="page"/> -->
         
 		    <a href="javascript:void(0);" id="searchCamping" class="searchCamps">
 		        <img th:src="@{/img/camp.png}" alt="일반야영장" style="width: 100px; height: auto;">
