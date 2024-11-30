@@ -4,92 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>캠핑 추천</title>
+    <title>캠핑 검색</title>
     <!-- 부트 스트랩 -->
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/5.3.3/css/bootstrap.min.css}">
     <!-- 부트 스트랩 아이콘 -->
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/recomCampStyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/searchRecom.css}">
 
-    <script>
-	function parseCheck(obj) {
-
-		console.log("아이디 : ", obj.id);
-		obj.value = obj.checked == true ? "1" : "0";
-	}
-
-	window.onload = () =>{
-
-		let sendBtn = document.getElementById("sendBtn");
-
-		sendBtn.onclick = () => {
-
-			let form = document.getElementById("recomForm");
-			let formData = new FormData(form);
-
-			// 카테고리 검색 요청
-		    fetch(`/campProject/recomCampProc`, {
-		        method: 'POST',
-		        cache: 'no-cache',
-		        body : formData,
-		    })
-		    .then(response => {
-		        if (!response.ok) {
-		            throw new Error('서버 응답이 정상적이지 않습니다.');
-		        }
-		        return response.json(); // JSON 응답 처리
-		    })
-		    .then(data => {
-
-		    	console.log("data.length : " + data.length);
-
-		        // 데이터가 없으면 메시지 출력
-		        if (!data || data.length === 0) {
-		            results.innerHTML = `<p>검색에 대한 결과가 없습니다.</p>`;
-		            return;
-		        }
-
-		        let resultRecom = document.getElementById("resultRecom");
-
-		        let resultsHTML = ''; // 추가
-
-		        // 데이터 행 추가
-		        data.forEach(camp => {
-
-		            const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
-
-		            resultsHTML += `
-		                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
-		               		<p><img src="/campProject/campImg/${camp.imgName}" style="width:100%"></p>
-		                	<h3> ${camp.campName}</h3>
-		                    <p><strong>종류:</strong> ${camp.cate3}</p>
-		                    <p><strong>주소:</strong> ${address}</p>
-		                    <p><strong>시설 특징:</strong> ${camp.facilCharacteristics}</p>
-		                    <p><strong>시설 상세:</strong> ${camp.facilDetail}</p>
-		                    <p><strong>고객 요청 만족도 : ${camp.satisfaction}</strong></p>
-		                    <p><strong>네이버 평점 :</strong> ${camp.avgRating == 0 ? "없음" : camp.avgRating}</p>
-		                    <p><strong>네이버 긍정평 갯수 :</strong> ${camp.reviewPositive}</p>
-		                    <p><strong>네이버 부정평 갯수 :</strong> ${camp.reviewNegative}</p>
-		                </div>
-		            `;
-		        });
-
-		        // 결과를 HTML로 표시
-		        resultRecom.innerHTML = resultsHTML;
-		    })
-		    .catch(error => {
-		        console.error('추가 검색 중 오류가 발생했습니다:', error);
-		    });
-
-		} // 클릭
-
-	}
-    </script>
 </head>
 <body>
-	<div class="container">
-        <h1 style="margin: 20px 0;">캠핑장 추천!!!</h1>
+     <div class="container">
 
+     	<!-- 검색 -->
+        <h1 style="margin: 20px 0;">캠핑장 검색&추천</h1>
+        <div id="searchForm">
+		    <label for="campName"></label>
+		    <div id="searchMenu">
+		    	<input type="text" id="campName" name="campName" placeholder="캠핑장 이름을 입력하세요" required>
+		    	<button type="button" id="sendBtn">검색</button>
+		    </div>
+		</div>
+
+
+	    <!-- 버튼 영역 -->
+        <div class="button-container">
+
+		    <a href="javascript:void(0);" id="searchCamping" class="searchCamps">
+		        <img th:src="@{/img/camp.png}" alt="일반야영장" style="width: 100px; height: auto;">
+		    </a>
+
+		    <a href="javascript:void(0);" id="searchGlamping" class="searchCamps">
+		        <img th:src="@{/img/glamping.png}" alt="글램핑" style="width: 100px; height: auto;">
+		    </a>
+
+		    <a href="javascript:void(0);" id="searchCaraban" class="searchCamps">
+		        <img th:src="@{/img/caraban.png}" alt="카라반" style="width: 100px; height: auto;">
+		    </a>
+
+		    <a href="javascript:void(0);" id="searchCar" class="searchCamps">
+		        <img th:src="@{/img/car.png}" alt="자동차야영장" style="width: 100px; height: auto;">
+		    </a>
+		</div>
+		<!-- // 검색 -->
+
+		<!-- 추천 -->
 		<div id="recomMenu">
 
         	<form id="recomForm">
@@ -134,7 +92,7 @@
 					<input type="checkbox" class="btn-check" autocomplete="off" id="petYn" name="petYn"  value="0" onclick="parseCheck(this)" />
 					<label class="btn btn-outline-primary" for="petYn">펫 동반</label>
 
-			    	<button type="button" id="sendBtn">검색</button>
+			    	<button type="button" id="recomBtn">검색</button>
 
 		    	</div>
 
@@ -142,12 +100,33 @@
 
 		</div>
 
-		<!-- 추천 캠프 리스트 -->
-		<div id="resultRecom">
+		<!-- // 추천 -->
 
+		<!-- 페이징 상단 -->
+		<div id="pagingSectionTop">
+			<ul id="pagingsTop">
+	 		</ul>
 		</div>
 
+		<!-- 검색 결과 -->
+        <div id="results">
+            <!-- 검색 결과가 이곳에 표시됩니다 -->
+        </div>
+        <!-- // 검색 결과 -->
 
-	</div>
+        <!-- 추천 캠프 결과 리스트 -->
+		<div id="resultRecom">
+		</div>
+		<!-- // 추천 캠프 결과 리스트 -->
+
+        <script th:src="@{'/js/searchRecomCamp.js'}" charset="UTF-8"></script>
+
+        <!-- 페이징 하단 -->
+		<div id="pagingSectionBottom">
+			<ul id="pagingsBottom">
+	 		</ul>
+		</div>
+
+    </div>
 </body>
 </html>

@@ -40,8 +40,8 @@ public class SecurityConfig {
 											   authorizeHttpRequests.requestMatchers("/",     "/resources/**", "/loginError",   "/join",             "/loginForm",
 														   							 "/home",  "/captcha",     "/checkCaptcha", "/captcha/image/**", "/refreshImage",
 														   							 "/socialAddInformation", "/findUserId", "/findUserPw", "/findUserIdProc",
-														   							 "/pwVerificationCode", "/findUserPwProc", "/findUserPwResult", "/choiceJoin", "/userJoin", "/ceoJoin", 
-														   							 "/member/joinProc2",  "/search", "/searchCamp", "/searchCate3Name", "/recomCamp" ,"/recomCampProc")// "/search", "/searchCamping",
+														   							 "/pwVerificationCode", "/findUserPwProc", "/findUserPwResult", "/choiceJoin", "/userJoin", "/ceoJoin",
+														   							 "/member/joinProc2",  "/search", "/searchCamp", "/searchCate3Name", "/recomCamp" ,"/recomCampProc", "/searchRecomCamp")// "/search", "/searchCamping",
 												   					.permitAll()
 												   					.requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")				// ROLE_ADMIN 권한이 필요한 경로
 												   					.requestMatchers("/myPage")  // TODO 추후 변경
@@ -85,7 +85,7 @@ public class SecurityConfig {
 	public WebSecurityCustomizer webSecurityCustomizer() {
 
 		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
-													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", 
+													   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs",
 													   "/img/**", "/campImg/**", "/bootstrap-icons/**");
 
 	}

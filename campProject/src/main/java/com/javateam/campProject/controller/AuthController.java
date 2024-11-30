@@ -51,23 +51,17 @@ public class AuthController {
         log.info("[home]");
         return "home"; // home.html 뷰를 반환
     }
-    
+
     @GetMapping("/myPage")
     public String myPage(Model model) {
         log.info("[myPage]");
-        
+
 		log.info("로그인 인증됨");
 		model.addAttribute("msg", "로그인 되었습니다.");
-        
+
         return "myPage"; // home.html 뷰를 반환
     }
-    
-    @GetMapping("/search")
-    public String search() {
-        log.info("[search]");
-        return "search"; 
-    }
-    
+
 	// 로그인 페이지를 반환
     @GetMapping("/loginForm")
 	public String login( HttpServletRequest request, Model model, HttpSession httpSession) {	//RedirectAttributes redirectAttributes
@@ -98,14 +92,14 @@ public class AuthController {
 			model.addAttribute("msg", msg);
 
 			log.info("[loginErrorCount_2: {}]", loginErrorCount);
-			
+
 			if(loginErrorCount >= maxCount) {
-				
+
 				log.info("[if(loginErrorCount >= maxCount)]");
 				log.info("[AuthController][msg]: {} ", msg);
 				log.info("[AuthController][error]: {} ", error);
 				captchaController.captcha(error, msg, model);
-			
+
 			}
 
 		}
@@ -188,7 +182,7 @@ public class AuthController {
 	        return "redirect:/home"; // 홈으로 이동
 		}
 	}
-	
+
 	// 비정상 로그인 상황 처리
 	@GetMapping("/error")
 	public String error() {
@@ -201,7 +195,7 @@ public class AuthController {
     public String choiceJoin() {
     	return "choiceJoin";
     }
-    
+
     @GetMapping("/userJoin")
     public String userJoin(Model model) {
     	MemberVO memberVO = new MemberVO();
@@ -216,5 +210,5 @@ public class AuthController {
 		model.addAttribute("memberDTO", memberVO);
     	return "memberJoin";
 	}
-    
+
 }

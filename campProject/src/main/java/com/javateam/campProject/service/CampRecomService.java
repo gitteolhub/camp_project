@@ -15,12 +15,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.javateam.campProject.domain.CampEntity;
+import com.javateam.campProject.domain.CampImageVO;
 import com.javateam.campProject.domain.CampReviewVO;
+import com.javateam.campProject.domain.CampSiteVO;
 import com.javateam.campProject.domain.UserRequestVO;
 import com.javateam.campProject.domain.UserResultVO;
 import com.javateam.campProject.repository.CampDAOMyBatis;
+import com.javateam.campProject.repository.CampImgRepository;
 import com.javateam.campProject.repository.CampRepository;
 import com.javateam.campProject.repository.CampReviewRepository;
+import com.javateam.campProject.repository.CampSiteRepository;
 
 /*import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;*/
@@ -37,9 +41,15 @@ public class CampRecomService {
 	@Autowired
 	CampReviewRepository campReviewDAO;
 
+	@Autowired
+	CampImgRepository campImgRepository;
+
 	// 추가
 	@Autowired
 	CampDAOMyBatis campDAOMyBatis;
+
+	@Autowired
+	CampSiteRepository campSiteRepository;
 
 	private static final int EARTH_RADIUS = 6371; // 지구 반경(km)
 
@@ -201,17 +211,6 @@ public class CampRecomService {
 		String dest = userRequestVO.getDestination();
 		log.info("행선 예정지 : {}", dest);
 
-//		long nameless = legacyCampList.stream()
-//							.filter(x -> x.getSigugunName() != null && x.getSigugunName().equals("")).count();
-//
-//		log.info("시구군명이 없는 캠핑장 수 : {}", nameless);
-
-		// filter 메서드에서 null 값 점검 주의 !
-//		legacyCampList.stream()
-//					  .filter(x -> (x.getSigugunName() != null && (x.getSidoName().contains(dest) || x.getSigugunName().contains(dest))))
-//					  .toList()
-//					  .forEach(x -> { log.info("{}", x); });
-
 		// filter 메서드에서 null 값 점검 주의 !
 		legacyCampList = legacyCampList.stream()
 									   .filter(x -> (x.getSigugunName() != null && (x.getSidoName().contains(dest) || x.getSigugunName().contains(dest))))
@@ -263,6 +262,10 @@ public class CampRecomService {
 			userResult.setLatitude(campEntity.getLatitude());
 			userResult.setLongitude(campEntity.getLongitude());
 
+			// 펫 동반 여부
+			CampSiteVO campSiteVO = campSiteRepository.findById(campEntity.getCNo()).get();
+			userResult.setPetYn(campSiteVO.getPetYn());
+
 			// 만족도 계산
 			int satisfaction = this.calcSatisfaction(userResult);
 
@@ -300,6 +303,21 @@ public class CampRecomService {
 
 			userResult.setReviewPositive(positiveDegree + "");
 			userResult.setReviewNegative(negativeDegree + "");
+
+			///////////////////////////////////////////////////////////////////////////////////////////
+
+			// 캠핑 종류
+			userResult.setCate3(campEntity.getCate3());
+
+			// 시설 특징
+			userResult.setFacilCharacteristics(campEntity.getFacilCharacteristics());
+
+			// 시설 상세
+			userResult.setFacilDetail(campEntity.getFacilDetail());
+
+			// 캠핑 메인 이미지
+			CampImageVO campImageVO = campImgRepository.findBycNoAndImgKind(campEntity.getCNo(), "M");
+			userResult.setImgName(campImageVO.getImgName());
 
 			log.info("추천 캠핑장 : {}", userResult);
 

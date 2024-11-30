@@ -115,4 +115,23 @@ public class UserResultVO {
 	@Column(name="review_negative")
 	private String reviewNegative;
 
+	/** 캠핑 종류(cate3) */
+	@Column(name="cate3")
+	private String cate3;
+
+	/** 시설 특징 */
+	@Column(name="FACIL_CHARACTERISTICS")
+	private String facilCharacteristics;
+
+	/** 시설 상세 */
+	@Column(name="FACIL_DETAIL")
+	private String facilDetail;
+
+	/** 캠핑 이미지(Main) */
+	@Column(name="IMG_NAME")
+	private String imgName;
+
+	/** 펫 동반 여부*/
+	@Column(name="PET_YN")
+	private String petYn;
 }

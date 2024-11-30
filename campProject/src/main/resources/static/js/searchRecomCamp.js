@@ -1,3 +1,9 @@
+// 추천
+function parseCheck(obj) {
+	console.log("아이디 : ", obj.id);
+	obj.value = obj.checked == true ? "1" : "0";
+}
+
 // 고정된 키워드로 검색 수행 함수
 function searchByCate3Name(keyword, page, limit) {
 
@@ -173,6 +179,7 @@ function searchByCampName(keyword, page, limit) {
 // 캠핑 이름 검색 요청
 window.onload = () => {
 
+	console.log("검색 시작");
 	// 엔터 키로 검색
 	let campName = document.getElementById('campName');
 
@@ -393,4 +400,72 @@ window.onload = () => {
 		});
 
 	}
+
+	/////////////////////////////////////////////////////////////
+
+	console.log("추천 시작");
+	let recomSendBtn = document.getElementById("recomBtn");
+
+	recomSendBtn.onclick = () => {
+
+		alert("추천");
+
+		let form = document.getElementById("recomForm");
+		let formData = new FormData(form);
+
+		// 카테고리 검색 요청
+	    fetch(`/campProject/recomCampProc`, {
+	        method: 'POST',
+	        cache: 'no-cache',
+	        body : formData,
+	    })
+	    .then(response => {
+	        if (!response.ok) {
+	            throw new Error('서버 응답이 정상적이지 않습니다.');
+	        }
+	        return response.json(); // JSON 응답 처리
+	    })
+	    .then(data => {
+
+	    	console.log("data.length : " + data.length);
+
+	        // 데이터가 없으면 메시지 출력
+	        if (!data || data.length === 0) {
+	            results.innerHTML = `<p>검색에 대한 결과가 없습니다.</p>`;
+	            return;
+	        }
+
+	        let resultRecom = document.getElementById("resultRecom");
+
+	        let resultsHTML = ''; // 추가
+
+	        // 데이터 행 추가
+	        data.forEach(camp => {
+
+	            const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
+
+	            resultsHTML += `
+	                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
+	               		<p><img src="/campProject/campImg/${camp.imgName}" style="width:100%"></p>
+	                	<h3> ${camp.campName}</h3>
+	                    <p><strong>종류:</strong> ${camp.cate3}</p>
+	                    <p><strong>주소:</strong> ${address}</p>
+	                    <p><strong>시설 특징:</strong> ${camp.facilCharacteristics}</p>
+	                    <p><strong>시설 상세:</strong> ${camp.facilDetail}</p>
+	                    <p><strong>고객 요청 만족도 : ${camp.satisfaction}</strong></p>
+	                    <p><strong>네이버 평점 :</strong> ${camp.avgRating == 0 ? "없음" : camp.avgRating}</p>
+	                    <p><strong>네이버 긍정평 갯수 :</strong> ${camp.reviewPositive}</p>
+	                    <p><strong>네이버 부정평 갯수 :</strong> ${camp.reviewNegative}</p>
+	                </div>
+	            `;
+	        });
+
+	        // 결과를 HTML로 표시
+	        resultRecom.innerHTML = resultsHTML;
+	    })
+	    .catch(error => {
+	        console.error('추가 검색 중 오류가 발생했습니다:', error);
+	    });
+
+	} // 클릭
 }

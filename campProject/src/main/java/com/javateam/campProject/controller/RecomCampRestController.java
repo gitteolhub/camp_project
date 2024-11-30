@@ -20,22 +20,22 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class RecomCampRestController {
-	
+
 	@Autowired
 	CampRecomService campRecomSvc;
-	
+
 	@GetMapping("/recomCamp")
 	public String recomCamp() {
-		
+
 		return "recomCamp";
 	}
 
-	@GetMapping("/recomCampProc")
+	@PostMapping("/recomCampProc")
 	@ResponseBody
-	public ResponseEntity<Object> recomCampProc(@ModelAttribute UserRequestVO userRequestVO){
-		
-		log.info("UserRequestVO : {}" , userRequestVO);
-		
+	public ResponseEntity<Object> recomCampProc(@ModelAttribute UserRequestVO userRequestVO) {
+
+		log.info("UserRequestVO : {}", userRequestVO);
+
 		// 질의(Query) 판정
 		List<UserResultVO> campList = null;
 
@@ -43,11 +43,9 @@ public class RecomCampRestController {
 		ResponseEntity<Object> response = null;
 		try {
 
-			/*
-			 * campList = campRecomSvc.predictCamp(userRequestVO) .stream() .sorted((o1, o2)
-			 * -> o2.getSatisfaction() - o1.getSatisfaction()) // 만족도 순으로 내림차순 정렬(rank-Top)
-			 * .limit(10) .toList();
-			 */
+			campList = campRecomSvc.predictCamp(userRequestVO).stream()
+					.sorted((o1, o2) -> o2.getSatisfaction() - o1.getSatisfaction()) // 만족도 순으로 내림차순 정렬(rank-Top)
+					.limit(10).toList();
 
 			if (campList.isEmpty() == true) {
 
