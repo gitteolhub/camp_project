@@ -62,11 +62,11 @@ public class CampRestController {
 		pageVO.setEndPage(endPage);
 		pageVO.setListCount(listCount);
 		pageVO.setMaxPage(maxPage);
-		pageVO.setCurrPage(page);
+		pageVO.setCurrentPage(page);
 		pageVO.setStartPage(startPage);
 
-		pageVO.setPrePage(pageVO.getCurrPage()-1 < 1 ? 1 : pageVO.getCurrPage()-1);
-		pageVO.setNextPage(pageVO.getCurrPage()+1 > pageVO.getEndPage() ? pageVO.getEndPage() : pageVO.getCurrPage()+1);
+		pageVO.setPreviousPage(pageVO.getCurrentPage()-1 < 1 ? 1 : pageVO.getCurrentPage()-1);
+		pageVO.setNextPage(pageVO.getCurrentPage()+1 > pageVO.getEndPage() ? pageVO.getEndPage() : pageVO.getCurrentPage()+1);
 
 		List<CampVO> resultList = new ArrayList<>();
 
@@ -116,11 +116,11 @@ public class CampRestController {
 		pageVO.setEndPage(endPage);
 		pageVO.setListCount(listCount);
 		pageVO.setMaxPage(maxPage);
-		pageVO.setCurrPage(page);
+		pageVO.setCurrentPage(page);
 		pageVO.setStartPage(startPage);
 
-		pageVO.setPrePage(pageVO.getCurrPage()-1 < 1 ? 1 : pageVO.getCurrPage()-1);
-		pageVO.setNextPage(pageVO.getCurrPage()+1 > pageVO.getEndPage() ? pageVO.getEndPage() : pageVO.getCurrPage()+1);
+		pageVO.setPreviousPage(pageVO.getCurrentPage()-1 < 1 ? 1 : pageVO.getCurrentPage()-1);
+		pageVO.setNextPage(pageVO.getCurrentPage()+1 > pageVO.getEndPage() ? pageVO.getEndPage() : pageVO.getCurrentPage()+1);
 
 		List<CampVO> resultList = new ArrayList<>();
 
