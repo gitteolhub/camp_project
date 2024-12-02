@@ -35,8 +35,8 @@ function searchByCate3Name(keyword, page, limit) {
 		console.log("data.pageVO:"+data.pageVO);
 
 		console.log("data.startPage:"+data.pageVO.startPage);
-		console.log("data.prePage:"+data.pageVO.prePage);
-		console.log("data.currPage:"+data.pageVO.currPage);
+		console.log("data.previousPage:"+data.pageVO.previousPage);
+		console.log("data.currentPage:"+data.pageVO.currentPage);
 		console.log("data.nextPage:"+data.pageVO.nextPage);
 		console.log("data.maxPage:"+data.pageVO.maxPage);
 
@@ -45,9 +45,9 @@ function searchByCate3Name(keyword, page, limit) {
 		// 페이징 버튼에 페이지 할당
 		let pagingContent=
 				   `<li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
-				    <li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
+				    <li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.previousPage}, 10)"><i title="${data.pageVO.previousPage}" class="bi bi-chevron-left"></i></a></li>
 
-					<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
+					<li><a title="${data.pageVO.currentPage}" class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.currentPage}, 10)">${data.pageVO.currentPage}</a></li>
 
 					<li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
 					<li><a class="pagingButton" href="javascript:searchByCate3Name('${keyword}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>
@@ -121,8 +121,8 @@ function searchByCampName(keyword, page, limit) {
 		console.log("data.pageVO:"+data.pageVO);
 
 		console.log("data.startPage:"+data.pageVO.startPage);
-		console.log("data.prePage:"+data.pageVO.prePage);
-		console.log("data.currPage:"+data.pageVO.currPage);
+		console.log("data.previousPage:"+data.pageVO.previousPage);
+		console.log("data.currentPage:"+data.pageVO.currentPage);
 		console.log("data.nextPage:"+data.pageVO.nextPage);
 		console.log("data.maxPage:"+data.pageVO.maxPage);
 
@@ -131,9 +131,9 @@ function searchByCampName(keyword, page, limit) {
 		// 페이징 버튼에 페이지 할당
 		let pagingContent=
 				   `<li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
-				    <li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
+				    <li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.previousPage}, 10)"><i title="${data.pageVO.previousPage}" class="bi bi-chevron-left"></i></a></li>
 
-					<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
+					<li><a title="${data.pageVO.currentPage}" class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.currentPage}, 10)">${data.pageVO.currentPage}</a></li>
 
 					<li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
 					<li><a class="pagingButton" href="javascript:searchByCampName('${keyword}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>
@@ -252,8 +252,8 @@ window.onload = () => {
 				console.log("data.pageVO:"+data.pageVO);
 
 				console.log("data.startPage:"+data.pageVO.startPage);
-				console.log("data.prePage:"+data.pageVO.prePage);
-				console.log("data.currPage:"+data.pageVO.currPage);
+				console.log("data.previousPage:"+data.pageVO.previousPage);
+				console.log("data.currentPage:"+data.pageVO.currentPage);
 				console.log("data.nextPage:"+data.pageVO.nextPage);
 				console.log("data.maxPage:"+data.pageVO.maxPage);
 
@@ -264,9 +264,9 @@ window.onload = () => {
 				// 페이징 버튼에 페이지 할당
 				let pagingContent=
 						   `<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
-						    <li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
+						    <li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.previousPage}, 10)"><i title="${data.pageVO.previousPage}" class="bi bi-chevron-left"></i></a></li>
 
-							<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
+							<li><a title="${data.pageVO.currentPage}" class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.currentPage}, 10)">${data.pageVO.currentPage}</a></li>
 
 							<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
 							<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>
@@ -333,8 +333,9 @@ window.onload = () => {
 	            // HTML 생성
 	            resultsHTML += `
 	                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px; min-width:500px;">
-	                    <p><img src="/campProject/campImg/${campImg}" style="width:100%"></p>
+	                    <p><img src="/campProject/campImg/${campImg}" style="width:100%; min-width:500px;"></p>
 	                    <h3> ${camp.campName}</h3>
+	                    <p>campId: ${camp.id} </p>
 	                    <p><strong>종류:</strong> ${camp.cate3}</p>
 	                    <p><strong>주소:</strong> ${address}</p>
 	                    <p><strong>시설 특징:</strong> ${camp.facilCharacteristics}</p>
@@ -352,8 +353,8 @@ window.onload = () => {
 			console.log("data.pageVO:"+data.pageVO);
 
 			console.log("data.startPage:"+data.pageVO.startPage);
-			console.log("data.prePage:"+data.pageVO.prePage);
-			console.log("data.currPage:"+data.pageVO.currPage);
+			console.log("data.previousPage:"+data.pageVO.previousPage);
+			console.log("data.currentPage:"+data.pageVO.currentPage);
 			console.log("data.nextPage:"+data.pageVO.nextPage);
 			console.log("data.maxPage:"+data.pageVO.maxPage);
 
@@ -364,9 +365,9 @@ window.onload = () => {
 			// 페이징 버튼에 페이지 할당
 			let pagingContent=
 					   `<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.startPage}, 10)"><i title="${data.pageVO.startPage}" class="bi bi-chevron-double-left"></i></a></li>
-					    <li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.prePage}, 10)"><i title="${data.pageVO.prePage}" class="bi bi-chevron-left"></i></a></li>
+					    <li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.previousPage}, 10)"><i title="${data.pageVO.previousPage}" class="bi bi-chevron-left"></i></a></li>
 
-						<li><a title="${data.pageVO.currPage}" class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.currPage}, 10)">${data.pageVO.currPage}</a></li>
+						<li><a title="${data.pageVO.currentPage}" class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.currentPage}, 10)">${data.pageVO.currentPage}</a></li>
 
 						<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.nextPage}, 10)"><i title="${data.pageVO.nextPage}" class="bi bi-chevron-right"></i></a></li>
 						<li><a class="pagingButton" href="javascript:searchByCampName('${campName}', ${data.pageVO.maxPage}, 10)"><i id="maxPage" title="${data.pageVO.maxPage}" class="bi bi-chevron-double-right"></i></a></li>

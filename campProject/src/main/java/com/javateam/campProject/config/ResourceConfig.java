@@ -35,7 +35,8 @@ public class ResourceConfig implements WebMvcConfigurer{
 
 		// 캠핑 이미지
 		registry.addResourceHandler("/campImg/**")
-				.addResourceLocations("file:///D:/work/campImage/");
+//				.addResourceLocations("file:///D:/work/campImage/");
+				.addResourceLocations("file:///D:/coding/work/crawl/campImage/");
 
 		// 부트 스트랩 아이콘
 		registry.addResourceHandler("/bootstrap-icons/**")
