@@ -26,10 +26,20 @@ public class ResourceConfig implements WebMvcConfigurer{
 
 		registry.addResourceHandler("/axios/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/axios/");
-		
+
 		// 게시판 관련 : summernote 자원 경로 추가
 		registry.addResourceHandler("/summernote/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/summernote/");
+		registry.addResourceHandler("/webjars/**")
+				.addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+		// 캠핑 이미지
+		registry.addResourceHandler("/campImg/**")
+				.addResourceLocations("file:///D:/work/campImage/");
+
+		// 부트 스트랩 아이콘
+		registry.addResourceHandler("/bootstrap-icons/**")
+				.addResourceLocations("classpath:/META-INF/resources/webjars/bootstrap-icons/");
 	}
 
 	@Override

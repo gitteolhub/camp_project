@@ -36,34 +36,16 @@ public class SecurityConfig {
 					   .frameOptions(Customizer.withDefaults()).disable());
 
 		// 요청 권한 설정
-		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests -> 
+		// 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
+		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests ->
 	    authorizeHttpRequests
-	        .requestMatchers(
-	            "/", 
-	            "/resources/**", 
-	            "/loginError", 
-	            "/loginForm",
-	            "/home", 
-	            "/captcha", 
-	            "/checkCaptcha", 
-	            "/captcha/image/**", 
-	            "/refreshImage",
-	            "/socialAddInformation", 
-	            "/findUserId", 
-	            "/findUserPw", 
-	            "/findUserIdProc",
-	            "/pwVerificationCode", 
-	            "/findUserPwProc", 
-	            "/findUserPwResult", 
-	            "/choiceJoin", 
-	            "/userJoin", 
-	            "/ceoJoin", 
-	            "/member/joinProc2",
-	            "/myPageModification", 
-	            "/myPageReservationCheck", // 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
-	            "/userManagement",
-	            "/campGroundManagement",
-	            "/adminManagement"
+	        .requestMatchers("/",                   "/resources/**",           "/loginError",       "/loginForm",            "/home",
+	        				 "/captcha",            "/checkCaptcha",           "/captcha/image/**", "/refreshImage",         "/socialAddInformation",
+	        				 "/findUserId",         "/findUserPw",             "/findUserIdProc",   "/pwVerificationCode",   "/findUserPwProc",
+	        				 "/findUserPwResult",   "/choiceJoin",             "/userJoin",         "/ceoJoin",              "/member/joinProc2",
+	        				 "/myPageModification", "/myPageReservationCheck", "/userManagement",   "/campGroundManagement", "/adminManagement",
+	        				 "/search",             "/searchCamp",             "/searchCate3Name",   "/recomCamp" ,          "/recomCampProc",
+	        				 "/searchRecomCamp"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**")
@@ -120,7 +102,9 @@ public class SecurityConfig {
 	public WebSecurityCustomizer webSecurityCustomizer() {
 
 		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
-				   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
-				   "/summernote/**", "/jquery/**", "/images/**", "/resources/**");
+				   									   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
+				   									   "/summernote/**", "/jquery/**", "/images/**", "/resources/**", "/img/**",
+				   									   "/campImg/**");
+
 	}
 }

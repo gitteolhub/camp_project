@@ -48,6 +48,7 @@ class MemberDAOTest {
 //		assertEquals("#Abcd1111", objMemberVO.getPw());
 //	}
 
+
 	@Test
 	@Transactional
 	@Rollback(false)

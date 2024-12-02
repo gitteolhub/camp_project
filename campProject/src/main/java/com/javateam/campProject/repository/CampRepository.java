@@ -23,5 +23,4 @@ public interface CampRepository extends CrudRepository<CampEntity, Integer> {
 															  @Param("longitude1") double logitude1,
 															  @Param("longitude2") double logitude2);
 
-
 }

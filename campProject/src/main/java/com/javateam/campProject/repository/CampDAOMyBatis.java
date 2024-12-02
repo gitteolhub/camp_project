@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Update;
 
 import com.javateam.campProject.domain.CampEntity;
 
-
 @Mapper
 public interface CampDAOMyBatis {
 

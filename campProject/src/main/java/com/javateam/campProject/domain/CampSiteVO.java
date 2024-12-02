@@ -33,4 +33,6 @@ public class CampSiteVO {
 	@Column(name="PET_YN")
 	private String petYn;
 
+//	@Column(name="SITE")
+//	private String site;
 }
