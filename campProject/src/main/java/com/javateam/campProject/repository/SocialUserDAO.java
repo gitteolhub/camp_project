@@ -13,4 +13,7 @@ public interface SocialUserDAO {
 	// social (google) 회원정보 수정
 	void updateSocialGoogleUser(SocialUser socialUser);
 
+	// 예약시 예약테이블에 넣을 정보 조회
+	SocialUser socialReservationInfo(String strId);
+
 }

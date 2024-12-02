@@ -48,4 +48,7 @@ public interface CampDAOMyBatis {
 		  + "(CAMP_IMG_TBL_SEQ.NEXTVAL, #{cNo}, #{imgKind}, #{imgName})")
 	public void insertCampImg(@Param("cNo") int cNo, @Param("imgKind") String imgKind, @Param("imgName") String imgName);
 
+	// 예약시 예약테이블에 넣을 정보 조회
+	@Select("SELECT C_NO, CAMP_NAME FROM camp_info_tbl WHERE C_NO = #{cNo}")
+	CampEntity campReservationInfo(@Param("cNo") int cNo);
 }

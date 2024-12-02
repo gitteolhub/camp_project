@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Builder
 @Slf4j
-public class campReservationDTO {
+public class CampReservationDTO {
 
 	private int campCNo;
 

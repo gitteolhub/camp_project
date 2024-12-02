@@ -39,4 +39,11 @@
 		 WHERE EMAIL = #{email} AND AUTH_VENDOR = #{authVendor}
 	</select>
 
+	<!-- 예약시 예약테이블에 넣을 정보 조회 -->
+	<select id="socialReservationInfo" parameterType="String" resultType="com.javateam.campProject.domain.SocialUser">
+		SELECT NAME, EMAIL, MOBILE
+		  FROM SOCIAL_USER
+		 WHERE ID = #{id}
+	</select>
+
 </mapper>

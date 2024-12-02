@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
-public class campReservationVO {
+public class CampReservationVO {
 
 	private int campCNo;
 	private String campName;
@@ -22,4 +22,13 @@ public class campReservationVO {
 	private String userName;
 	private String userEmail;
 	private String userPhone;
+
+
+	public void setCheckIn(Date checkIn) {
+	    this.checkIn = checkIn;
+	}
+
+	public void setCheckOut(Date checkOut) {
+	    this.checkOut = checkOut;
+	}
 }

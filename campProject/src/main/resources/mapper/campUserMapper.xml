@@ -43,21 +43,21 @@
 		  FROM USER_TBL
 		 WHERE ID = #{id}
 	</select>
-	
+
 	<!-- 이메일로 아이디 조회 -->
 	<select id="findUserIdByEmail" parameterType = "String" resultType="String">
 		SELECT ID
 		  FROM USER_TBL
 		 WHERE EMAIL = #{email}
 	</select>
-	
+
 	<!-- 비밀번호 업데이트 -->
 	<update id="updatePw">
 		UPDATE USER_TBL
 		   SET PW = #{pw}
 		 WHERE ID = #{id}
 	</update>
-	
+
 	<!-- 회원정보 삽입(생성) -->
 	<insert id="insertMember"
 			parameterType="com.javateam.campProject.domain.MemberVO">
@@ -109,4 +109,11 @@
 		       , #{role}
 		   )
 	</insert>
+
+	<!-- 예약시 예약테이블에 넣을 정보 조회 -->
+	<select id="memberReservationInfo" parameterType="String" resultType="com.javateam.campProject.domain.MemberVO">
+		SELECT NAME, EMAIL, PHONE
+		  FROM USER_TBL
+		 WHERE ID = #{id}
+	</select>
 </mapper>

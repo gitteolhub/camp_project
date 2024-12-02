@@ -30,13 +30,22 @@ public class SocialUserDAOImpl implements SocialUserDAO{
 	// social(naver, google) 회원정보 저장
 	@Override
 	public void insertSocialUser(SocialUser socialUser) {
+
 		sqlSession.insert(MAPPER_PATH + "insertSocialUser", socialUser);
 	}
 
 	// social (google) 회원정보 수정
 	@Override
 	public void updateSocialGoogleUser(SocialUser socialUser) {
+
 		sqlSession.update(MAPPER_PATH + "updateSocialGoogleUser", socialUser);
+	}
+
+	// 예약시 예약테이블에 넣을 정보 조회
+	@Override
+	public SocialUser socialReservationInfo(String strId) {
+
+		return sqlSession.selectOne(MAPPER_PATH + "socialReservationInfo", strId);
 	}
 
 }
