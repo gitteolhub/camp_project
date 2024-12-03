@@ -1,5 +1,7 @@
 package com.javateam.campProject.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,5 +31,18 @@ public class CampReservationDAOImpl implements CampReservationDAO{
 			log.error("[CampReservationDAOImpl][insertReservation] Exception : " + ex);
 		}
 		return blRetVal;
+	}
+
+	// 개인 예약정보 조회
+	public CampReservationVO selectReservation(CampReservationVO objCampReservationVO) {
+
+		return sqlSession.selectOne(MAPPER_PATH + "selectReservation", objCampReservationVO);
+	}
+
+	// 개인 예약정보 리스트 조회
+	@Override
+	public List<CampReservationVO> selectReservationList(CampReservationVO objCampReservationVO) {
+
+		return sqlSession.selectList(MAPPER_PATH + "selectReservationList", objCampReservationVO);
 	}
 }

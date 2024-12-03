@@ -9,6 +9,12 @@
          WHERE EMAIL = #{email}
     </select>
 
+    <select id="selectSocialMemberByEmailAndAuthVendor" resultType="com.javateam.campProject.domain.SocialUser">
+        SELECT *
+          FROM SOCIAL_USER
+         WHERE EMAIL = #{email} AND AUTH_VENDOR = #{authVendor}
+    </select>
+
     <!-- social(naver, google) 회원정보 저장 -->
   	<insert id="insertSocialUser" parameterType="com.javateam.campProject.domain.SocialUser">
 	 	INSERT INTO SOCIAL_USER (ID, NAME, EMAIL, GENDER, BIRTHDAY, MOBILE, MEMBER_TYPE, CREATED_DATE, MODIFIED_DATE, AUTH_VENDOR, ROLE)
@@ -40,10 +46,10 @@
 	</select>
 
 	<!-- 예약시 예약테이블에 넣을 정보 조회 -->
-	<select id="socialReservationInfo" parameterType="String" resultType="com.javateam.campProject.domain.SocialUser">
+	<select id="socialReservationInfo" parameterType="map" resultType="com.javateam.campProject.domain.SocialUser">
 		SELECT NAME, EMAIL, MOBILE
 		  FROM SOCIAL_USER
-		 WHERE ID = #{id}
+		 WHERE EMAIL = #{email} AND AUTH_VENDOR = #{authVendor}
 	</select>
 
 </mapper>

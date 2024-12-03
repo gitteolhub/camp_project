@@ -320,13 +320,18 @@ document.addEventListener('DOMContentLoaded', function() {
         fp.open();
     });
 
-    document.getElementById('reservationBtn').addEventListener('click', function() {
+    let frm = document.getElementById('reservationForm');
+    let reservationBtn = document.getElementById('reservationBtn');
+
+    reservationBtn.addEventListener('click', function() {
         const selectedDates = dateInput.value;
         if (selectedDates) {
             alert(`선택된 날짜: ${selectedDates}`);
+            frm.submit();
             // 여기에 예약 처리 로직 추가 (AJAX 요청 등)
         } else {
             alert('날짜를 선택하세요.');
+            frm.reset();
         }
     });
 });
@@ -340,6 +345,9 @@ subImgs: [[${subImgs}]] -->
 	<!-- layout -->
 	<div layout:fragment="content" class="container">
 	<!-- 전체 레이아웃 -->
+	authentication:[[${#authentication}]]<br>
+	socialUser:[[${session.socialUser}]]<br>
+	memberId:[[${#authentication.name}]]
 		<div id="campDetailWrap">
 
 			<!-- 메인 이미지, 캠핑장 기본 소개 -->
@@ -428,19 +436,34 @@ subImgs: [[${subImgs}]] -->
 						</tr>
 					</table>
 
-					<!-- <form id="reservationForm" action="/camp/campReserve" method="post"> -->
+					<form id="reservationForm" th:action="@{/camp/campReserve}" method="post">
 
-						<input type="hidden" name="memberId" value="[[${memberId}]]" />
-					    <input type="hidden" name="socialUserId" value="[[${socialUserId}]]" />
-					    <input type="hidden" name="campCNO" value="${camp.campCNO}" />
+						<div sec:authorize="isAuthenticated()">
+
+							<!-- 자체 로그인 -->
+							<div th:if="${session.socialUser == null}">
+								<input type="hidden" name="memberId" th:value="${#authentication.name}" />
+								<input type="hidden" name="socialUserId" value="" />
+							</div>
+
+							<!-- 소셜 로그인 -->
+							<div th:if="${session.socialUser != null}">
+								<input type="hidden" name="memberId" value="" />
+								<input type="hidden" name="socialUserId" th:value="${session.socialUser.email + '_' + session.socialUser.authVendor}" />
+							</div>
+
+						</div>
+
+					    <input type="hidden" name="campCNO" th:value="${camp.cNo}" />
+					    <input type="hidden" name="campId" th:value="${camp.id}" />
 
 						<!-- 예약(찜) 버튼 -->
 						<div id="reservation">
-					        <input type="text" id="dates" placeholder="날짜 선택" class="date-input" />
-							<button type="submit" class="btn btn-primary" id="reservationBtn">예약하기</button>
+					        <input type="text" name="dates" id="dates" placeholder="날짜 선택" class="date-input" />
+							<button type="button" class="btn btn-primary" id="reservationBtn">예약하기</button>
 						</div>
 
-					<!-- </form> -->
+					</form>
 
 				</div>
 				<!--// 캠핑장 기본 소개 -->

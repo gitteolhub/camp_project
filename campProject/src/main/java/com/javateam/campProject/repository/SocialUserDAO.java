@@ -7,6 +7,9 @@ public interface SocialUserDAO {
 	// email로 소셜 회원 정보 조회
 	SocialUser selectSocialMemberByEmail(String strEmail);
 
+	// id로 소셜 회원 정보 조회
+	SocialUser selectSocialMemberByEmailAndAuthVendor(String strEmail, String strAuthVendor);
+
 	// social(naver, google) 회원정보 저장
 	void insertSocialUser(SocialUser socialUser);
 
@@ -14,6 +17,6 @@ public interface SocialUserDAO {
 	void updateSocialGoogleUser(SocialUser socialUser);
 
 	// 예약시 예약테이블에 넣을 정보 조회
-	SocialUser socialReservationInfo(String strId);
+	SocialUser socialReservationInfo(String strEmail, String authVendor);
 
 }

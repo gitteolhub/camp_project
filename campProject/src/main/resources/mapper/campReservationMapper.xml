@@ -4,11 +4,32 @@
 
 	<insert id="insertReservation" parameterType="com.javateam.campProject.domain.CampReservationVO">
         INSERT INTO CAMP_RESERVATION_TBL
-        	(CAMP_C_NO,  CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME,
+        	(CAMP_ID, CAMP_C_NO,  CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME,
         	 USER_EMAIL, USER_PHONE)
         VALUES
-        	(#{campCNo},   #{campName}, #{checkIn}, #{checkOut}, #{userName},
+        	(#{campId}, #{campCNo},   #{campName}, #{checkIn}, #{checkOut}, #{userName},
         	 #{userEmail}, #{userPhone})
     </insert>
+
+	<select id="selectReservation" parameterType="com.javateam.campProject.domain.CampReservationVO"
+								   resultType="com.javateam.campProject.domain.CampReservationVO">
+			SELECT CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
+ 			  FROM CAMP_RESERVATION_TBL
+ 			 WHERE USER_NAME=#{userName}
+ 			   AND USER_EMAIL=#{userEmail}
+ 			   AND USER_PHONE=#{userPhone}
+ 			   AND CHECK_IN=#{checkIn}
+ 			   AND CHECK_OUT=#{checkOut}
+	</select>
+
+	<!-- 개인 예약정보 리스트 조회 -->
+	<select id="selectReservationList" parameterType="com.javateam.campProject.domain.CampReservationVO"
+			 					       resultType="com.javateam.campProject.domain.CampReservationVO">
+			SELECT CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
+ 			  FROM CAMP_RESERVATION_TBL
+ 			 WHERE USER_NAME = #{userName}
+ 			   AND USER_EMAIL = #{userEmail}
+ 			   AND USER_PHONE = #{userPhone}
+	</select>
 
 </mapper>
