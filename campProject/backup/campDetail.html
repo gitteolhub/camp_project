@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>개별 캠핑장 소개</title>
+<style>
+/* 전체 레이아웃 */
+#campDetailWrap {
+	display:flex;
+	flex-direction:column;
+	/* justify-content:center; */
+	margin:auto;
+	width:1500px;
+}
+
+/* 메인 이미지, 캠핑장 기본 소개 */
+#campMainImageIntro {
+	display:flex;
+	flex-direction:row;
+	width:1500px;
+	height:600px;
+}
+
+/* 메인 이미지(M) 패널 */
+#campMainImage {
+	width:900px;
+	height:600px;
+}
+
+/* 메인 이미지(M) */
+#campMainImage img {
+	width:900px;
+	height:600px;
+}
+
+/* 캠핑장 기본 소개 */
+#campIntro {
+	width:600px;
+	height:600px;
+}
+
+/* 캠핑장 기본 소개 테이블 */
+table#campIntroTbl {
+	width:95%;
+	/* border:1px solid #000; */
+	margin:auto;
+}
+
+table#campIntroTbl th {
+	width:170px;
+}
+
+table#campIntroTbl th, table#campIntroTbl td {
+	border-bottom: 1px solid #ccc;
+	padding:15px;
+}
+
+/* 예약(찜) 버튼 패널 */
+#reservation {
+	width:600px;
+	height:120px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 예약(찜) 버튼 */
+#reservation button {
+	width:150px;
+	height:50px;
+}
+
+/* 캠핑장 지도 패널 */
+#campMapWrap {
+	width:1500px;
+	margin-top:30px;
+}
+
+/* 캠핑장 지도 */
+#campMap {
+	width:1500px;
+	height:800px;
+	margin-top:20px;
+}
+
+/* 서브 이미지들(S) */
+#campSubImages {
+	display:flex;
+	justify-content:space-between;
+	width:1500px;
+	height:410px;
+}
+
+/* 서브 이미지(S) 패널 */
+.campSubImage {
+	background-color:yellow;
+	width:470px;
+	height:350px;
+	margin:25px 0;
+}
+
+/* 서브 이미지(S) */
+.campSubImage img {
+	width:470px;
+	height:350px;
+}
+
+/* 캠핑장 상세 소개 */
+#campDetail {
+	width:1500px;
+	border-top: 2px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding:20px 0;
+	line-height:1.8em;
+
+}
+
+/* 캠핑장 시설 정보 */
+#campFacil {
+	width:1500px;
+	height:200px;
+	padding:20px 0;
+}
+
+/* 파트별 제목 아이콘 */
+.partTitle {
+	display:flex;
+	flex-direction:row;
+	margin-bottom:10px;
+}
+
+.partTitle span {
+	font-size:1.5em;
+	color:#3F48CC;
+	margin-top:10px;
+	margin-right:10px;
+}
+
+.partTitle h3 {
+	margin-top:5px;
+}
+
+/* 캠핑장 시설 정보 아이콘 패널 */
+#campFacilIcons {
+	display:flex;
+	justify-content: space-around;
+	padding:20px 0;
+}
+
+/* 캠핑장 시설 정보 아이콘 */
+#campFacilIcons span.facilTitle {
+	font-size:4em;
+	color:#60C5F1;
+}
+
+/* 캠핑장 기타 주요 시설 */
+#campMiscFacil {
+	width:1500px;
+}
+
+/* 캠핑장 기타 주요 시설 테이블 */
+table#campMiscFacilTbl {
+	width:100%;
+	/* border:1px solid #000; */
+	margin:auto;
+	margin-top:20px;
+	border-top:1px solid #ccc;
+	margin-bottom:20px;
+}
+
+table#campMiscFacilTbl th {
+	background-color:#E9E8E8;
+	width:150px;
+}
+
+table#campMiscFacilTbl th, table#campMiscFacilTbl td {
+	border-bottom: 1px solid #ccc;
+	padding:15px;
+}
+</style>
+
+<!-- bootstrap / bootstrap-icon -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- 구글 아이콘 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c648c60c121e6bf00c31d150fc2cdbf5"></script>
+
+<script>
+window.onload = function() {
+
+	let container = document.getElementById('campMap');
+
+	// GPS 좌표
+	let latitude = [[${camp.latitude}]];	// 위도
+	let longitude = [[${camp.longitude}]];	// 경도
+    let latlng = new kakao.maps.LatLng(latitude, longitude);
+
+	// 캠핑장 명
+	let campName = '[[${camp.campName}]]';
+
+	// 도로명 주소
+	let roadAddress = '[[${camp.roadAddress}]]';
+
+	// 캠핑장 연락처
+	let phone = '[[${camp.phone}]]';
+
+	// 마커 이미지
+	let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+	// 마커 이미지의 이미지 크기 입니다
+    let imageSize = new kakao.maps.Size(40, 60);
+
+    // 마커 이미지를 생성합니다
+    let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+	var options = {
+		center: latlng,
+		level: 8
+	};
+
+	var map = new kakao.maps.Map(container, options);
+
+	// 마커 생성
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: latlng, // 마커를 표시할 위치
+        title : campName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지
+    });
+
+	// 마커에 인포윈도우 표시하기
+    let iwContent = `<div style="padding:20px; width:330px; min-height:70px; line-height:1.5em">
+    					<b>${campName}</b> <br>
+    					${roadAddress} <br>
+    					${phone}
+   				    </div>`;
+
+	// 인포윈도우를 생성
+	let infowindow = new kakao.maps.InfoWindow({
+	    position : latlng,
+	    content : iwContent
+	});
+
+	// 마커 위에 인포윈도우를 표시
+	infowindow.open(map, marker);
+
+} //
+</script>
+
+</head>
+<body>
+<!-- camp: [[${camp}]] <br>
+subImgs: [[${subImgs}]] -->
+	<!-- 전체 레이아웃 -->
+	<div id="campDetailWrap">
+
+		<!-- 메인 이미지, 캠핑장 기본 소개 -->
+		<div id="campMainImageIntro">
+
+			<!-- 메인 이미지(M) 패널 -->
+			<div id="campMainImage">
+				<img th:src="@{'/campImgPath/' + ${camp.imgName}}" />
+			</div>
+			<!--// 메인 이미지(M) 패널 -->
+
+			<!-- 캠핑장 기본 소개 : 주소(roadAddress), 문의처(phone), 캠핑장 유형(cate3),
+				 운영기간(봄: springOpStatus, 여름: summerOpStatus, 가을: fallOpStatus, 겨울: winterOpStatus),
+				 운영일(평일: weekdayOpStatus, 주말: weekendOpStatus), 홈페이지(homepage),
+				 주변이용가능시설(
+				 부대시설 산책로: facilTrail,
+				 부대시설 물놀이장: facilPool,
+				 부대시설 놀이터: facilPlayground,
+				 부대시설 마트: facilMart,
+				 주변 시설 낚시: surrFacilFishing,
+				 주변 시설 산책로: surrFacilTrail,
+				 주변 시설 물놀이(해수욕): surrFacilBeach,
+				 주변 시설 물놀이(수상레저): surrFacilMaritimeLeisure,
+				 주변 시설 물놀이(계곡): surrFacilValley,
+				 주변 시설 물놀이(강): surrFacilStream,
+				 주변 시설 물놀이(수영장): surrFacilPool,
+				 주변 시설 청소년체험시설: surrFacilYouthExperience,
+				 주변 시설 농어촌체험시설: surrFacilRuralExperience,
+				 주변 시설 어린이놀이시설: surrFacilChildrensPlay)
+			-->
+			<div id="campIntro">
+
+				<!-- 캠핑장 기본 소개 테이블 -->
+				<table id="campIntroTbl">
+					<tr>
+						<th>주소</th>
+						<td th:text="${camp.roadAddress}"></td>
+					</tr>
+					<tr>
+						<th>문의처</th>
+						<td th:text="${camp.phone}"></td>
+					</tr>
+					<tr>
+						<th>캠핑장 유형</th>
+						<td th:text="${camp.cate3}"></td>
+					</tr>
+					<tr>
+						<th>운영기간</th>
+						<td>
+							 [[${camp.springOpStatus=='Y' ? '봄' : ' '}]]
+						     [[${camp.summerOpStatus=='Y' ? '여름' : ' '}]]
+						     [[${camp.fallOpStatus=='Y' ? '가을' : ' '}]]
+						     [[${camp.winterOpStatus=='Y' ? '겨울' : ' '}]]
+						</td>
+					</tr>
+					<tr>
+						<th>운영일</th>
+						<td>
+							[[${camp.weekdayOpStatus=='Y' ? '평일' : ' '}]]
+							[[${camp.weekdayOpStatus=='Y' and camp.weekendOpStatus=='Y' ? '+' : ''}]]
+							[[${camp.weekendOpStatus=='Y' ? '주말' : ' '}]]
+						</td>
+					</tr>
+					<tr>
+						<th>홈페이지</th>
+						<td th:text="${camp.homepage}"></td>
+					</tr>
+					<tr>
+						<th>주변이용가능시설</th>
+						<td>
+							[[${camp.facilTrail=='Y' ? '산책로' : ' '}]]
+							[[${camp.facilPool=='Y' ? '물놀이장' : ' '}]]
+							[[${camp.facilPlayground=='Y' ? '놀이터' : ' '}]]
+							[[${camp.facilMart=='Y' ? '마트' : ' '}]]
+							[[${camp.surrFacilFishing=='Y' ? '낚시' : ' '}]]
+							[[${camp.surrFacilTrail=='Y' ? '산책로' : ' '}]]
+							[[${camp.surrFacilBeach=='Y' ? '물놀이(해수욕)' : ' '}]]
+							[[${camp.surrFacilMaritimeLeisure=='Y' ? '물놀이(수상레저)' : ' '}]]
+							[[${camp.surrFacilValley=='Y' ? '물놀이(계곡)' : ' '}]]
+							[[${camp.surrFacilStream=='Y' ? '물놀이(강)' : ' '}]]
+							[[${camp.surrFacilPool=='Y' ? '물놀이(수영장)' : ' '}]]
+							[[${camp.surrFacilYouthExperience=='Y' ? '청소년체험시설' : ' '}]]
+							[[${camp.surrFacilRuralExperience=='Y' ? '농어촌체험시설' : ' '}]]
+							[[${camp.surrFacilChildrensPlay=='Y' ? '어린이놀이시설' : ' '}]]
+						</td>
+					</tr>
+				</table>
+
+				<!-- 예약(찜) 버튼 -->
+				<div id="reservation">
+					<button type="button" class="btn btn-primary" id="reservationBtn">예약(찜)하기</button>
+				</div>
+
+			</div>
+			<!--// 캠핑장 기본 소개 -->
+
+		</div>
+		<!--// 메인 이미지, 캠핑장 기본 소개 -->
+
+		<!-- 캠핑장 지도 -->
+		<div id="campMapWrap">
+
+			<div class="partTitle">
+				<span class="material-symbols-outlined">arrow_circle_right</span>
+				<h3>
+					위치/주변정보(지도)
+				</h3>
+			</div>
+
+			<div id="campMap"></div>
+
+		</div>
+		<!--// 캠핑장 지도 -->
+
+		<!-- 서브 이미지(S) : 3장 -->
+		<div id="campSubImages">
+
+			<!-- foreach -->
+			<div th:each="campSubImage : ${subImgs}" class="campSubImage">
+				<img th:src="@{'/campImgPath/' + ${campSubImage}}" />
+			</div>
+
+		</div>
+		<!--// 서브 이미지(S) : 3장 -->
+
+		<!-- 캠핑장 상세 소개 -->
+		<div id="campDetail">
+
+			<div class="partTitle">
+				<span class="material-symbols-outlined">arrow_circle_right</span>
+				<h3>
+					캠핑장 소개
+				</h3>
+			</div>
+
+			<div>
+				[[${camp.facilDetail}]]
+			</div>
+
+		</div>
+		<!--// 캠핑장 상세 소개 -->
+
+		<!-- 캠핑장 시설 정보 : 전기, 와이파이, 장작판매, 온수, 물놀이장, 놀이터, 운동시설, 반려동물 동반여부 -->
+		<div id="campFacil">
+
+			<div class="partTitle">
+				<span class="material-symbols-outlined">arrow_circle_right</span>
+				<h3>
+					캠핑장 시설정보
+				</h3>
+			</div>
+
+			<div id="campFacilIcons">
+
+				<!-- 전기(FACIL_ELECTRICITY) -->
+				<div><span th:if="${camp.facilElectricity=='Y'}" class="material-symbols-outlined facilTitle">bolt</span></div>
+
+				<!-- 와이파이(FACIL_WIFI) -->
+				<div><span th:if="${camp.facilWifi=='Y'}" class="material-symbols-outlined facilTitle">wifi</span></div>
+
+				<!-- 장작판매(FACIL_CAMPFIRE) -->
+				<div><span th:if="${camp.facilCampfire=='Y'}" class="material-symbols-outlined facilTitle">local_fire_department</span></div>
+
+				<!-- 온수(FACIL_HOT_WATER) -->
+				<div><span th:if="${camp.facilHotWater=='Y'}" class="material-symbols-outlined facilTitle">onsen</span></div>
+
+				<!-- 물놀이장(FACIL_POOL) -->
+				<div><span th:if="${camp.facilPool=='Y'}" class="material-symbols-outlined facilTitle">pool</span></div>
+
+				<!-- 놀이터/운동시설(FACIL_PLAYGROUND) -->
+				<div><span th:if="${camp.facilPlayground=='Y'}" class="material-symbols-outlined facilTitle">sports_and_outdoors</span></div>
+
+				<!-- 반려동물 동반여부(PET_YN) -->
+				<div><span th:if="${camp.petYn=='Y'}" class="material-symbols-outlined facilTitle">pets</span></div>
+
+			</div>
+
+		</div>
+		<!--// 캠핑장 시설 정보 -->
+
+		<!-- 캠핑장 기타 주요 시설 -->
+		<div id="campMiscFacil">
+
+			<div class="partTitle">
+				<span class="material-symbols-outlined">arrow_circle_right</span>
+				<h3>
+					기타 주요시설
+				</h3>
+			</div>
+
+			<!-- 캠핑장 기타 주요 테이블 -->
+			<table id="campMiscFacilTbl">
+				<tr>
+					<th>주요시설</th>
+					<td th:text="${#strings.isEmpty(camp.siteContent)==true ? '없음' : camp.siteContent}"></td>
+				</tr>
+				<tr>
+					<th>시설특징</th>
+					<td th:text="${camp.facilCharacteristics}"></td>
+				</tr>
+				<tr>
+					<th>사이트 크기</th>
+					<td th:text="${camp.site}"></td>
+				</tr>
+				<tr>
+					<th>안전시설</th>
+					<td>
+						 소화기([[${camp.facilExtinguisher}]])
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		<!--// 캠핑장 기타 주요 시설 -->
+	</div>
+	<!--// 전체 레이아웃 -->
+</body>
+</html>

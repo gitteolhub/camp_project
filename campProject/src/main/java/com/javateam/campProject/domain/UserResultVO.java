@@ -115,6 +115,7 @@ public class UserResultVO {
 	@Column(name="review_negative")
 	private String reviewNegative;
 
+//TODO 추후 확인
 	/** 캠핑 종류(cate3) */
 	@Column(name="cate3")
 	private String cate3;
@@ -134,4 +135,5 @@ public class UserResultVO {
 	/** 펫 동반 여부*/
 	@Column(name="PET_YN")
 	private String petYn;
+//
 }

@@ -33,6 +33,12 @@ public class SocialUserServiceImpl implements SocialUserService{
 		return blRetVal;
 	}
 
+	// social 회원 조회
+	@Override
+	public SocialUser selectSocialUser(String email, String authVendor) {
+		return socialUserDAO.selectSocialMemberByEmailAndAuthVendor(email, authVendor);
+	}
+
 }
 
 

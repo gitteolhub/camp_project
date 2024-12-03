@@ -45,12 +45,12 @@ public class SecurityConfig {
 	        				 "/findUserPwResult",   "/choiceJoin",             "/userJoin",         "/ceoJoin",              "/member/joinProc2",
 	        				 "/myPageModification", "/myPageReservationCheck", "/userManagement",   "/campGroundManagement", "/adminManagement",
 	        				 "/search",             "/searchCamp",             "/searchCate3Name",   "/recomCamp" ,          "/recomCampProc",
-	        				 "/searchRecomCamp"
+	        				 "/searchRecomCamp",    "/campDetail"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**")
 	        .hasAnyAuthority("ROLE_ADMIN") // ROLE_ADMIN 권한이 필요한 경로
-	        .requestMatchers("/myPage") // TODO: 추후 변경
+	        .requestMatchers("/myPage", "/campReserve") // TODO: 추후 변경
 	        .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_CEO", "ROLE_SUPERADMIN")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
 			// 게시판 관련 링크 추가
 			.requestMatchers("/board/inquiryBoardWrite","/board/inquiryBoardWriteProc",
@@ -101,10 +101,10 @@ public class SecurityConfig {
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 
-		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",        "/js/**",       "/axios/**", "/webjars/**",
-				   									   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs", "/bootstrap-icons/**",
-				   									   "/summernote/**", "/jquery/**", "/images/**", "/resources/**", "/img/**",
-				   									   "/campImg/**");
+		return (web) -> web.ignoring().requestMatchers("/bootstrap/**",        "/css/**",     "/js/**",         "/axios/**",     "/webjars/**",
+				   									   "/social_login_img/**", "/swagger-ui", "/swagger-ui/**", "/v3/api-docs",  "/bootstrap-icons/**",
+				   									   "/summernote/**",       "/jquery/**",  "/images/**",     "/resources/**", "/img/**",
+				   									   "/campImg/**",          "/campImgPath/**");
 
 	}
 }

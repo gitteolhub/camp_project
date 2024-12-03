@@ -191,4 +191,10 @@
 		       )
 		 WHERE PAGE = #{page}
 	</select>
+	<!-- 예약시 예약테이블에 넣을 정보 조회 -->
+	<select id="memberReservationInfo" parameterType="String" resultType="com.javateam.campProject.domain.MemberVO">
+		SELECT NAME, EMAIL, PHONE
+		  FROM USER_TBL
+		 WHERE ID = #{id}
+	</select>
 </mapper>

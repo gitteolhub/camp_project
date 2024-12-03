@@ -30,6 +30,7 @@ public class ResourceConfig implements WebMvcConfigurer{
 		// 게시판 관련 : summernote 자원 경로 추가
 		registry.addResourceHandler("/summernote/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/summernote/");
+
 		registry.addResourceHandler("/webjars/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/");
 
@@ -41,6 +42,10 @@ public class ResourceConfig implements WebMvcConfigurer{
 		// 부트 스트랩 아이콘
 		registry.addResourceHandler("/bootstrap-icons/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/bootstrap-icons/");
+
+		// 캠핑장 이미지 경로 추가
+		registry.addResourceHandler("/campImgPath/**")
+				.addResourceLocations("file:///D:/coding/work/crawl/campImage/");
 	}
 
 	@Override

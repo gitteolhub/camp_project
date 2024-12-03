@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.javateam.campProject.domain.MemberVO;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Repository
@@ -63,7 +65,7 @@ public class MemberDAOImpl implements MemberDAO {
 			log.error("[MemberDAO][updatePw] Exception: {}", ex);
 
 		}
-		
+
 	}
 	// 새로운 회원을 데이터베이스에 추가
 	@Override
@@ -166,6 +168,13 @@ public class MemberDAOImpl implements MemberDAO {
 			ex.printStackTrace();
 		}
 		return blRetVal;
+	}
+
+	// 예약시 예약테이블에 넣을 정보 조회
+	@Override
+	public MemberVO memberReservationInfo(String strId) {
+
+		return sqlSession.selectOne(MAPPER_PATH + "memberReservationInfo", strId);
 	}
 }
 
