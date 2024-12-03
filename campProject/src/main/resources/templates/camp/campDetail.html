@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorate="~{layout}"
 	  lang="ko-kr">
 <head>
+<th:block th:replace="layout/header :: header-head"></th:block>
 <meta charset="UTF-8">
 <title>개별 캠핑장 소개</title>
 <style>
@@ -342,12 +341,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- camp: [[${camp}]] <br>
 subImgs: [[${subImgs}]] -->
 
-	<!-- layout -->
-	<div layout:fragment="content" class="container">
+	<!-- 헤더 포함 -->
+    <th:block th:include="layout/header :: header"></th:block>
+
+	<div class="container">
+	<br>
 	<!-- 전체 레이아웃 -->
-	authentication:[[${#authentication}]]<br>
+	<!-- authentication:[[${#authentication}]]<br>
 	socialUser:[[${session.socialUser}]]<br>
-	memberId:[[${#authentication.name}]]
+	memberId:[[${#authentication.name}]] -->
 		<div id="campDetailWrap">
 
 			<!-- 메인 이미지, 캠핑장 기본 소개 -->

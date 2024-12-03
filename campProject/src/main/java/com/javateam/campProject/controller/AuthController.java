@@ -42,7 +42,7 @@ public class AuthController {
 	public String root() {
 
 		log.info("[root]");
-		return "redirect:/home";
+		return "redirect:/searchRecomCamp";
 	}
 
 	 // 홈 페이지 메서드 추가
@@ -178,8 +178,8 @@ public class AuthController {
 	    	log.info("[socialAddInformation]");
 			return "socialAddInformation";
 		} else {
-			log.info("[home]");
-	        return "redirect:/home"; // 홈으로 이동
+			log.info("[searchRecomCamp]");
+	        return "redirect:/searchRecomCamp"; // 홈으로 이동
 		}
 	}
 
@@ -187,7 +187,7 @@ public class AuthController {
 	@GetMapping("/error")
 	public String error() {
 		log.info("[error 비정상 로그인 상황 처리]");
-		return "redirect:/home";
+		return "redirect:/searchRecomCamp";
 	}
 
     // 회원가입 메서드

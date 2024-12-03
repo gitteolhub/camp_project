@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<th:block th:replace="layout/header :: header-head"></th:block>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>캡차 인증</title>
 <style>
     body {
-        
+
         background-color: #f2f2f2;
         display: flex;
         justify-content: center;
@@ -75,8 +74,6 @@
 <script th:src="@{/axios/1.7.4/dist/axios.min.js}"></script>
 </head>
 <body>
-<!-- 헤더 포함 -->
-	<th:block th:replace="layout/header :: header"></th:block>
 
     <div class="container">
     	loginErrorCount:[[${session.loginErrorCount}]] <br>

@@ -106,7 +106,7 @@ public class OAuthAttributes {
 						   .mobile(mobile)
 
 						   .authVendor(authVendor)
-						   .role(SocialRole.USER)
+						   .role(SocialRole.ROLE_USER)
 						  .build();
 	}
 }
