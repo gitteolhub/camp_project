@@ -71,7 +71,7 @@ public class GoCampingImgSaveCrawlTest {
 			} //
 
 			// DB Table(camp_img_tbl) 저장
-			campImgRepository.save(campImageVO);
+//			campImgRepository.save(campImageVO);
 
 		} catch (IOException e) {
 			log.error("해당 사이트를 크롤링할 수 없습니다.");
@@ -119,7 +119,7 @@ public class GoCampingImgSaveCrawlTest {
 				} //
 
 				// DB Table(camp_img_tbl) 저장
-				campImgRepository.save(campImageVO);
+//				campImgRepository.save(campImageVO);
 
 			} // for
 
