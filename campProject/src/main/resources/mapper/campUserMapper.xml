@@ -107,7 +107,7 @@
 		       USER_ROLES_SEQ.NEXTVAL
 		       , #{id}
 		       , #{role}
-		   )+
+		   )
 	</insert>
 
 	<!-- 회원정보 수정 -->
