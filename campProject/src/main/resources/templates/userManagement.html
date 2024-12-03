@@ -74,16 +74,16 @@
     .search-btn:hover {
       background-color: #23527c;
     }
-    .user-table {
+    .admin-table {
       width: 100%;
       border-collapse: collapse;
     }
-    .user-table th, .user-table td {
+    .admin-table th, .admin-table td {
       padding: 10px;
       border: 1px solid #ddd;
       text-align: center;
     }
-    .user-table th {
+    .admin-table th {
       background-color: #337ab7;
       color: white;
     }
@@ -102,26 +102,25 @@
 </head>
 <body>
 
-	<!-- 헤더 포함 -->
-	<th:block th:include="layout/header :: header"></th:block>
+<!-- 헤더 포함 -->
+ 	<th:block th:include="layout/header :: header"></th:block>
 
 	<div class="container">
 	  <div class="left-menu">
 	    <ul>
-	      <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
+	      <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
 	      <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
 	      <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
-	      <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
-	      <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/adminManagement">관리자 관리</a></li>
+	      <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
 	    </ul>
 	  </div>
 	  <div class="content">
 	    <h2>사용자 관리</h2>
 	    <div class="search-bar">
-	      <input type="text" class="search-input" placeholder="사용자 검색...">
+	      <input type="text" class="search-input" placeholder="관리자 검색...">
 	      <button class="search-btn">검색</button>
 	    </div>
-	    <table class="user-table">
+	    <table class="admin-table">
 	      <thead>
 	        <tr>
 	          <th>ID</th>
@@ -135,16 +134,15 @@
 	      <tbody>
 	        <tr>
 	          <td>1</td>
-	          <td>홍길동</td>
-	          <td>hong@example.com</td>
-	          <td>일반회원</td>
+	          <td>김관리자</td>
+	          <td>admin@example.com</td>
+	          <td>관리자</td>
 	          <td>활성</td>
 	          <td>
-	            <button class="action-btn">활성화</button>
-	            <button class="action-btn">정지</button>
+	            <button class="action-btn">관리자 임명/해제</button>
 	          </td>
 	        </tr>
-	        <!-- 더 많은 사용자 행들... -->
+	        <!-- 더 많은 관리자 행들... -->
 	      </tbody>
 	    </table>
 	  </div>

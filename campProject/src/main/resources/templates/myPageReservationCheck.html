@@ -86,11 +86,10 @@
   <div class="container">
     <div class="left-menu">
       <ul>
-        <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
-		<li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
-		<li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
-		<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
-		<li sec:authorize="hasRole('ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/adminManagement">관리자 관리</a></li>
+        <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
+	      <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
+	      <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
+	      <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
       </ul>
     </div>
     <div class="content">
