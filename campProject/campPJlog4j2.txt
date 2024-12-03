@@ -1,0 +1,1764 @@
+INFO : org.springframework.boot.StartupInfoLogger ==> Starting CampProjectApplication using Java 17.0.7 with PID 12484 (C:\Users\USER\Desktop\programming\works\spring\camp_project\campProject\bin\main started by USER in C:\Users\USER\Desktop\programming\works\spring\camp_project\campProject) : [2024-12-03 17:48:58.715]
+
+INFO : org.springframework.boot.SpringApplication ==> The following 3 profiles are active: "oauth-naver", "oauth-google", "email" : [2024-12-03 17:48:58.716]
+
+INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate ==> Bootstrapping Spring Data JPA repositories in DEFAULT mode. : [2024-12-03 17:48:59.092]
+
+INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate ==> Finished Spring Data repository scanning in 51 ms. Found 9 JPA repository interfaces. : [2024-12-03 17:48:59.146]
+
+INFO : org.springframework.boot.web.embedded.tomcat.TomcatWebServer ==> Tomcat initialized with port(s): 8181 (http) : [2024-12-03 17:48:59.303]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Initializing ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:48:59.304]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting service [Tomcat] : [2024-12-03 17:48:59.304]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting Servlet engine: [Apache Tomcat/10.1.24] : [2024-12-03 17:48:59.304]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Initializing Spring embedded WebApplicationContext : [2024-12-03 17:48:59.346]
+
+INFO : org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext ==> Root WebApplicationContext: initialization completed in 629 ms : [2024-12-03 17:48:59.346]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Starting... : [2024-12-03 17:48:59.381]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection opened : [2024-12-03 17:48:59.410]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.new Connection returned  : [2024-12-03 17:48:59.410]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getNetworkTimeout() returned 0 : [2024-12-03 17:48:59.410]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.410]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.410]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.isValid(1) returned true : [2024-12-03 17:48:59.411]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getTransactionIsolation() returned 2 : [2024-12-03 17:48:59.411]
+
+INFO : com.zaxxer.hikari.pool.HikariPool ==> hikariCP - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@69e840a1 : [2024-12-03 17:48:59.412]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Start completed. : [2024-12-03 17:48:59.412]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@46049c62 : [2024-12-03 17:48:59.412]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.clearWarnings() returned  : [2024-12-03 17:48:59.412]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@46049c62 : [2024-12-03 17:48:59.413]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.clearWarnings() returned  : [2024-12-03 17:48:59.413]
+
+INFO : org.hibernate.jpa.internal.util.LogHelper ==> HHH000204: Processing PersistenceUnitInfo [name: default] : [2024-12-03 17:48:59.427]
+
+INFO : org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo ==> No LoadTimeWeaver setup: ignoring JPA class transformer : [2024-12-03 17:48:59.438]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@46049c62 : [2024-12-03 17:48:59.439]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Statement.new Statement returned  : [2024-12-03 17:48:59.439]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.createStatement() returned net.sf.log4jdbc.sql.jdbcapi.StatementSpy@420c445b : [2024-12-03 17:48:59.440]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:48:59.440]
+
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:48:59.441]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:48:59.442]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) FAILED! select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ {FAILED after 1 msec} : [2024-12-03 17:48:59.443]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Statement.close() returned  : [2024-12-03 17:48:59.443]
+
+WARN : org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl ==> HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) : [2024-12-03 17:48:59.443]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getCatalog() returned null : [2024-12-03 17:48:59.443]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getSchema() returned CAMP : [2024-12-03 17:48:59.445]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getSchema() returned CAMP : [2024-12-03 17:48:59.445]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@46049c62 : [2024-12-03 17:48:59.445]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.createClob() returned oracle.sql.CLOB@48031bc2 : [2024-12-03 17:48:59.447]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.createNClob() returned oracle.sql.NCLOB@c18db94 : [2024-12-03 17:48:59.447]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.clearWarnings() returned  : [2024-12-03 17:48:59.447]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 32. Connection opened : [2024-12-03 17:48:59.553]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 32. Connection.new Connection returned  : [2024-12-03 17:48:59.555]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 32. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.555]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 32. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.555]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 33. Connection opened : [2024-12-03 17:48:59.599]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 33. Connection.new Connection returned  : [2024-12-03 17:48:59.599]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 33. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.599]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 33. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.599]
+
+INFO : org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator ==> HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) : [2024-12-03 17:48:59.616]
+
+INFO : org.springframework.orm.jpa.AbstractEntityManagerFactoryBean ==> Initialized JPA EntityManagerFactory for persistence unit 'default' : [2024-12-03 17:48:59.616]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 34. Connection opened : [2024-12-03 17:48:59.651]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 34. Connection.new Connection returned  : [2024-12-03 17:48:59.651]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 34. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.651]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 34. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.651]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 35. Connection opened : [2024-12-03 17:48:59.703]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 35. Connection.new Connection returned  : [2024-12-03 17:48:59.703]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 35. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.703]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 35. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.703]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 36. Connection opened : [2024-12-03 17:48:59.759]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 36. Connection.new Connection returned  : [2024-12-03 17:48:59.759]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 36. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.759]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 36. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.759]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.BoardDAO : [2024-12-03 17:48:59.777]
+
+INFO : com.javateam.campProject.service.FileUploadService ==> [FileUploadService][uploadPath]: D:/coding/work/project2/camp_project/campProject/src/main/resources/static/board_upFile/file/ : [2024-12-03 17:48:59.794]
+
+INFO : com.javateam.campProject.service.ImageService ==> [ImageService][uploadPath]: D:/coding/work/project2/camp_project/campProject/src/main/resources/static/board_upFile/image/ : [2024-12-03 17:48:59.797]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 37. Connection opened : [2024-12-03 17:48:59.802]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 37. Connection.new Connection returned  : [2024-12-03 17:48:59.802]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 37. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.802]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 37. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.802]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.FileDAO : [2024-12-03 17:48:59.805]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampRepository : [2024-12-03 17:48:59.829]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampReviewRepository : [2024-12-03 17:48:59.843]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 38. Connection opened : [2024-12-03 17:48:59.847]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 38. Connection.new Connection returned  : [2024-12-03 17:48:59.847]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 38. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.847]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 38. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.847]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 39. Connection opened : [2024-12-03 17:48:59.896]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 39. Connection.new Connection returned  : [2024-12-03 17:48:59.897]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 39. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.897]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 39. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.897]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampImgRepository : [2024-12-03 17:48:59.919]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 40. Connection opened : [2024-12-03 17:48:59.940]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 40. Connection.new Connection returned  : [2024-12-03 17:48:59.940]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 40. Connection.isReadOnly() returned false : [2024-12-03 17:48:59.941]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 40. Connection.getAutoCommit() returned true : [2024-12-03 17:48:59.941]
+
+WARN : org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration ==> spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning : [2024-12-03 17:49:00.007]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e67bc4f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5550f027, org.springframework.security.web.context.SecurityContextHolderFilter@75323db1, org.springframework.security.web.authentication.logout.LogoutFilter@7252441, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@5908b828, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@33a00c65, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@77a19db1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f54a0a4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@21ab503e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4905db5d, org.springframework.security.web.access.ExceptionTranslationFilter@2e7d815c, org.springframework.security.web.access.intercept.AuthorizationFilter@66bf7cb2] : [2024-12-03 17:49:00.101]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/bootstrap/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.105]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/bootstrap/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/css/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/js/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/axios/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/axios/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/webjars/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/social_login_img/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/social_login_img/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/swagger-ui']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/swagger-ui'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/swagger-ui/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/swagger-ui/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/v3/api-docs']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/v3/api-docs'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/bootstrap-icons/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/bootstrap-icons/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/summernote/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/summernote/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/jquery/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/jquery/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/images/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/resources/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/img/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/img/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/campImg/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/campImg/**'] : [2024-12-03 17:49:00.106]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/campImgPath/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:00.106]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/campImgPath/**'] : [2024-12-03 17:49:00.107]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.isValid(5) returned true : [2024-12-03 17:49:00.201]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@46049c62 : [2024-12-03 17:49:00.202]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.clearWarnings() returned  : [2024-12-03 17:49:00.202]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@46049c62 : [2024-12-03 17:49:00.202]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.clearWarnings() returned  : [2024-12-03 17:49:00.202]
+
+INFO : org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer ==> LiveReload server is running on port 35729 : [2024-12-03 17:49:00.216]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:00.229]
+
+INFO : org.springframework.boot.web.embedded.tomcat.TomcatWebServer ==> Tomcat started on port(s): 8181 (http) with context path '/campProject' : [2024-12-03 17:49:00.234]
+
+INFO : org.springframework.boot.StartupInfoLogger ==> Started CampProjectApplication in 1.579 seconds (process running for 207.96) : [2024-12-03 17:49:00.243]
+
+INFO : org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener ==> Condition evaluation unchanged : [2024-12-03 17:49:00.246]
+
+INFO : org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener ==> Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) : [2024-12-03 17:49:06.994]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Pausing ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:07.009]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Stopping service [Tomcat] : [2024-12-03 17:49:07.009]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Stopping ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:07.011]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Destroying ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:07.014]
+
+INFO : org.springframework.orm.jpa.AbstractEntityManagerFactoryBean ==> Closing JPA EntityManagerFactory for persistence unit 'default' : [2024-12-03 17:49:07.015]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Shutdown initiated... : [2024-12-03 17:49:07.016]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection closed : [2024-12-03 17:49:07.019]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 31. Connection.close() returned  : [2024-12-03 17:49:07.019]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 32. Connection closed : [2024-12-03 17:49:07.020]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 32. Connection.close() returned  : [2024-12-03 17:49:07.020]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 33. Connection closed : [2024-12-03 17:49:07.020]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 33. Connection.close() returned  : [2024-12-03 17:49:07.020]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 34. Connection closed : [2024-12-03 17:49:07.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 34. Connection.close() returned  : [2024-12-03 17:49:07.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 35. Connection closed : [2024-12-03 17:49:07.022]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 35. Connection.close() returned  : [2024-12-03 17:49:07.022]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 36. Connection closed : [2024-12-03 17:49:07.023]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 36. Connection.close() returned  : [2024-12-03 17:49:07.024]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 37. Connection closed : [2024-12-03 17:49:07.024]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 37. Connection.close() returned  : [2024-12-03 17:49:07.024]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 38. Connection closed : [2024-12-03 17:49:07.025]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 38. Connection.close() returned  : [2024-12-03 17:49:07.025]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 39. Connection closed : [2024-12-03 17:49:07.026]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 39. Connection.close() returned  : [2024-12-03 17:49:07.026]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 40. Connection closed : [2024-12-03 17:49:07.027]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 40. Connection.close() returned  : [2024-12-03 17:49:07.027]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Shutdown completed. : [2024-12-03 17:49:07.027]
+
+INFO : org.springframework.boot.StartupInfoLogger ==> Starting CampProjectApplication using Java 17.0.7 with PID 12484 (C:\Users\USER\Desktop\programming\works\spring\camp_project\campProject\bin\main started by USER in C:\Users\USER\Desktop\programming\works\spring\camp_project\campProject) : [2024-12-03 17:49:07.122]
+
+INFO : org.springframework.boot.SpringApplication ==> The following 3 profiles are active: "oauth-naver", "oauth-google", "email" : [2024-12-03 17:49:07.123]
+
+INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate ==> Bootstrapping Spring Data JPA repositories in DEFAULT mode. : [2024-12-03 17:49:07.488]
+
+INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate ==> Finished Spring Data repository scanning in 41 ms. Found 9 JPA repository interfaces. : [2024-12-03 17:49:07.530]
+
+INFO : org.springframework.boot.web.embedded.tomcat.TomcatWebServer ==> Tomcat initialized with port(s): 8181 (http) : [2024-12-03 17:49:07.688]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Initializing ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:07.688]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting service [Tomcat] : [2024-12-03 17:49:07.688]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting Servlet engine: [Apache Tomcat/10.1.24] : [2024-12-03 17:49:07.689]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Initializing Spring embedded WebApplicationContext : [2024-12-03 17:49:07.729]
+
+INFO : org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext ==> Root WebApplicationContext: initialization completed in 606 ms : [2024-12-03 17:49:07.729]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Starting... : [2024-12-03 17:49:07.768]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection opened : [2024-12-03 17:49:07.795]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.new Connection returned  : [2024-12-03 17:49:07.795]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getNetworkTimeout() returned 0 : [2024-12-03 17:49:07.795]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.isReadOnly() returned false : [2024-12-03 17:49:07.795]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getAutoCommit() returned true : [2024-12-03 17:49:07.795]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.isValid(1) returned true : [2024-12-03 17:49:07.796]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getTransactionIsolation() returned 2 : [2024-12-03 17:49:07.797]
+
+INFO : com.zaxxer.hikari.pool.HikariPool ==> hikariCP - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@1afdfc8e : [2024-12-03 17:49:07.798]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Start completed. : [2024-12-03 17:49:07.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@6d80bf8e : [2024-12-03 17:49:07.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.clearWarnings() returned  : [2024-12-03 17:49:07.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@6d80bf8e : [2024-12-03 17:49:07.799]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.clearWarnings() returned  : [2024-12-03 17:49:07.799]
+
+INFO : org.hibernate.jpa.internal.util.LogHelper ==> HHH000204: Processing PersistenceUnitInfo [name: default] : [2024-12-03 17:49:07.818]
+
+INFO : org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo ==> No LoadTimeWeaver setup: ignoring JPA class transformer : [2024-12-03 17:49:07.844]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@6d80bf8e : [2024-12-03 17:49:07.845]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Statement.new Statement returned  : [2024-12-03 17:49:07.846]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.createStatement() returned net.sf.log4jdbc.sql.jdbcapi.StatementSpy@221ead1 : [2024-12-03 17:49:07.846]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:49:07.846]
+
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:49:07.848]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:49:07.850]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) FAILED! select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ {FAILED after 2 msec} : [2024-12-03 17:49:07.850]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Statement.close() returned  : [2024-12-03 17:49:07.851]
+
+WARN : org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl ==> HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) : [2024-12-03 17:49:07.851]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getCatalog() returned null : [2024-12-03 17:49:07.851]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getSchema() returned CAMP : [2024-12-03 17:49:07.852]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getSchema() returned CAMP : [2024-12-03 17:49:07.852]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@6d80bf8e : [2024-12-03 17:49:07.852]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.createClob() returned oracle.sql.CLOB@72c0cdc3 : [2024-12-03 17:49:07.853]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.createNClob() returned oracle.sql.NCLOB@49a5e5bd : [2024-12-03 17:49:07.853]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.clearWarnings() returned  : [2024-12-03 17:49:07.853]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 42. Connection opened : [2024-12-03 17:49:07.930]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 42. Connection.new Connection returned  : [2024-12-03 17:49:07.931]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 42. Connection.isReadOnly() returned false : [2024-12-03 17:49:07.931]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 42. Connection.getAutoCommit() returned true : [2024-12-03 17:49:07.931]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 43. Connection opened : [2024-12-03 17:49:07.976]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 43. Connection.new Connection returned  : [2024-12-03 17:49:07.976]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 43. Connection.isReadOnly() returned false : [2024-12-03 17:49:07.976]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 43. Connection.getAutoCommit() returned true : [2024-12-03 17:49:07.976]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 44. Connection opened : [2024-12-03 17:49:08.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 44. Connection.new Connection returned  : [2024-12-03 17:49:08.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 44. Connection.isReadOnly() returned false : [2024-12-03 17:49:08.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 44. Connection.getAutoCommit() returned true : [2024-12-03 17:49:08.021]
+
+INFO : org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator ==> HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) : [2024-12-03 17:49:08.032]
+
+INFO : org.springframework.orm.jpa.AbstractEntityManagerFactoryBean ==> Initialized JPA EntityManagerFactory for persistence unit 'default' : [2024-12-03 17:49:08.033]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 45. Connection opened : [2024-12-03 17:49:08.063]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 45. Connection.new Connection returned  : [2024-12-03 17:49:08.063]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 45. Connection.isReadOnly() returned false : [2024-12-03 17:49:08.063]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 45. Connection.getAutoCommit() returned true : [2024-12-03 17:49:08.063]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 46. Connection opened : [2024-12-03 17:49:08.111]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 46. Connection.new Connection returned  : [2024-12-03 17:49:08.111]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 46. Connection.isReadOnly() returned false : [2024-12-03 17:49:08.111]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 46. Connection.getAutoCommit() returned true : [2024-12-03 17:49:08.111]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 47. Connection opened : [2024-12-03 17:49:08.151]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 47. Connection.new Connection returned  : [2024-12-03 17:49:08.151]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 47. Connection.isReadOnly() returned false : [2024-12-03 17:49:08.151]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 47. Connection.getAutoCommit() returned true : [2024-12-03 17:49:08.151]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.BoardDAO : [2024-12-03 17:49:08.189]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 48. Connection opened : [2024-12-03 17:49:08.193]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 48. Connection.new Connection returned  : [2024-12-03 17:49:08.193]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 48. Connection.isReadOnly() returned false : [2024-12-03 17:49:08.193]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 48. Connection.getAutoCommit() returned true : [2024-12-03 17:49:08.193]
+
+INFO : com.javateam.campProject.service.FileUploadService ==> [FileUploadService][uploadPath]: D:/coding/work/project2/camp_project/campProject/src/main/resources/static/board_upFile/file/ : [2024-12-03 17:49:08.213]
+
+INFO : com.javateam.campProject.service.ImageService ==> [ImageService][uploadPath]: D:/coding/work/project2/camp_project/campProject/src/main/resources/static/board_upFile/image/ : [2024-12-03 17:49:08.218]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.FileDAO : [2024-12-03 17:49:08.226]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 49. Connection opened : [2024-12-03 17:49:08.240]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 49. Connection.new Connection returned  : [2024-12-03 17:49:08.240]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 49. Connection.isReadOnly() returned false : [2024-12-03 17:49:08.240]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 49. Connection.getAutoCommit() returned true : [2024-12-03 17:49:08.240]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampRepository : [2024-12-03 17:49:08.258]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampReviewRepository : [2024-12-03 17:49:08.273]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 50. Connection opened : [2024-12-03 17:49:08.282]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 50. Connection.new Connection returned  : [2024-12-03 17:49:08.282]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 50. Connection.isReadOnly() returned false : [2024-12-03 17:49:08.282]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 50. Connection.getAutoCommit() returned true : [2024-12-03 17:49:08.282]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampImgRepository : [2024-12-03 17:49:08.334]
+
+WARN : org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration ==> spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning : [2024-12-03 17:49:08.406]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1c54ea0d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@49c9e7f9, org.springframework.security.web.context.SecurityContextHolderFilter@4c4d347d, org.springframework.security.web.authentication.logout.LogoutFilter@7b0eca4d, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@14287bf8, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@54ee3e79, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@19798638, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37c96e7f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ec426e7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e69b283, org.springframework.security.web.access.ExceptionTranslationFilter@4f7bfd56, org.springframework.security.web.access.intercept.AuthorizationFilter@68d404c5] : [2024-12-03 17:49:08.491]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/bootstrap/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/bootstrap/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/css/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/js/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/axios/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/axios/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/webjars/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/social_login_img/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/social_login_img/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/swagger-ui']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/swagger-ui'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/swagger-ui/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/swagger-ui/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/v3/api-docs']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/v3/api-docs'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/bootstrap-icons/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/bootstrap-icons/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/summernote/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/summernote/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/jquery/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/jquery/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/images/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/resources/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/img/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/img/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/campImg/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/campImg/**'] : [2024-12-03 17:49:08.494]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/campImgPath/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:08.494]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/campImgPath/**'] : [2024-12-03 17:49:08.494]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.isValid(5) returned true : [2024-12-03 17:49:08.588]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@6d80bf8e : [2024-12-03 17:49:08.588]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.clearWarnings() returned  : [2024-12-03 17:49:08.589]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@6d80bf8e : [2024-12-03 17:49:08.589]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.clearWarnings() returned  : [2024-12-03 17:49:08.589]
+
+INFO : org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer ==> LiveReload server is running on port 35729 : [2024-12-03 17:49:08.600]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:08.615]
+
+INFO : org.springframework.boot.web.embedded.tomcat.TomcatWebServer ==> Tomcat started on port(s): 8181 (http) with context path '/campProject' : [2024-12-03 17:49:08.619]
+
+INFO : org.springframework.boot.StartupInfoLogger ==> Started CampProjectApplication in 1.541 seconds (process running for 216.342) : [2024-12-03 17:49:08.625]
+
+INFO : org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener ==> Condition evaluation unchanged : [2024-12-03 17:49:08.627]
+
+INFO : org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener ==> Restarting due to 127 class path changes (0 additions, 0 deletions, 127 modifications) : [2024-12-03 17:49:39.945]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Pausing ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:39.954]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Stopping service [Tomcat] : [2024-12-03 17:49:39.956]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Stopping ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:39.958]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Destroying ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:39.960]
+
+INFO : org.springframework.orm.jpa.AbstractEntityManagerFactoryBean ==> Closing JPA EntityManagerFactory for persistence unit 'default' : [2024-12-03 17:49:39.963]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Shutdown initiated... : [2024-12-03 17:49:39.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection closed : [2024-12-03 17:49:39.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 41. Connection.close() returned  : [2024-12-03 17:49:39.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 42. Connection closed : [2024-12-03 17:49:39.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 42. Connection.close() returned  : [2024-12-03 17:49:39.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 43. Connection closed : [2024-12-03 17:49:39.966]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 43. Connection.close() returned  : [2024-12-03 17:49:39.966]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 44. Connection closed : [2024-12-03 17:49:39.967]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 44. Connection.close() returned  : [2024-12-03 17:49:39.967]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 45. Connection closed : [2024-12-03 17:49:39.968]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 45. Connection.close() returned  : [2024-12-03 17:49:39.968]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 46. Connection closed : [2024-12-03 17:49:39.969]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 46. Connection.close() returned  : [2024-12-03 17:49:39.969]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 47. Connection closed : [2024-12-03 17:49:39.970]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 47. Connection.close() returned  : [2024-12-03 17:49:39.971]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 48. Connection closed : [2024-12-03 17:49:39.971]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 48. Connection.close() returned  : [2024-12-03 17:49:39.971]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 49. Connection closed : [2024-12-03 17:49:39.973]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 49. Connection.close() returned  : [2024-12-03 17:49:39.973]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 50. Connection closed : [2024-12-03 17:49:39.976]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 50. Connection.close() returned  : [2024-12-03 17:49:39.976]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Shutdown completed. : [2024-12-03 17:49:39.976]
+
+INFO : org.springframework.boot.StartupInfoLogger ==> Starting CampProjectApplication using Java 17.0.7 with PID 12484 (C:\Users\USER\Desktop\programming\works\spring\camp_project\campProject\bin\main started by USER in C:\Users\USER\Desktop\programming\works\spring\camp_project\campProject) : [2024-12-03 17:49:40.102]
+
+INFO : org.springframework.boot.SpringApplication ==> The following 3 profiles are active: "oauth-naver", "oauth-google", "email" : [2024-12-03 17:49:40.103]
+
+INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate ==> Bootstrapping Spring Data JPA repositories in DEFAULT mode. : [2024-12-03 17:49:40.493]
+
+INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate ==> Finished Spring Data repository scanning in 50 ms. Found 9 JPA repository interfaces. : [2024-12-03 17:49:40.544]
+
+INFO : org.springframework.boot.web.embedded.tomcat.TomcatWebServer ==> Tomcat initialized with port(s): 8181 (http) : [2024-12-03 17:49:40.707]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Initializing ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:40.707]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting service [Tomcat] : [2024-12-03 17:49:40.708]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting Servlet engine: [Apache Tomcat/10.1.24] : [2024-12-03 17:49:40.708]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Initializing Spring embedded WebApplicationContext : [2024-12-03 17:49:40.742]
+
+INFO : org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext ==> Root WebApplicationContext: initialization completed in 637 ms : [2024-12-03 17:49:40.742]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Starting... : [2024-12-03 17:49:40.773]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection opened : [2024-12-03 17:49:40.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.new Connection returned  : [2024-12-03 17:49:40.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getNetworkTimeout() returned 0 : [2024-12-03 17:49:40.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.isReadOnly() returned false : [2024-12-03 17:49:40.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getAutoCommit() returned true : [2024-12-03 17:49:40.798]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.isValid(1) returned true : [2024-12-03 17:49:40.800]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getTransactionIsolation() returned 2 : [2024-12-03 17:49:40.800]
+
+INFO : com.zaxxer.hikari.pool.HikariPool ==> hikariCP - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@1a5cecf9 : [2024-12-03 17:49:40.801]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Start completed. : [2024-12-03 17:49:40.801]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@1d8519cf : [2024-12-03 17:49:40.801]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.clearWarnings() returned  : [2024-12-03 17:49:40.801]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@1d8519cf : [2024-12-03 17:49:40.802]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.clearWarnings() returned  : [2024-12-03 17:49:40.802]
+
+INFO : org.hibernate.jpa.internal.util.LogHelper ==> HHH000204: Processing PersistenceUnitInfo [name: default] : [2024-12-03 17:49:40.817]
+
+INFO : org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo ==> No LoadTimeWeaver setup: ignoring JPA class transformer : [2024-12-03 17:49:40.825]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@1d8519cf : [2024-12-03 17:49:40.827]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Statement.new Statement returned  : [2024-12-03 17:49:40.827]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.createStatement() returned net.sf.log4jdbc.sql.jdbcapi.StatementSpy@2306d07 : [2024-12-03 17:49:40.827]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:49:40.827]
+
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:49:40.829]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ : [2024-12-03 17:49:40.829]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+ERROR: net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Statement.executeQuery(select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t) FAILED! select p.name, t.region, t.base_size, t.service, t.infrastructure
+from v$pdbs p, JSON_TABLE(p.cloud_identity, '$' COLUMNS (region path '$.REGION', base_size number path '$.BASE_SIZE', service path '$.SERVICE', infrastructure path '$.INFRASTRUCTURE')) t
+ {FAILED after 2 msec} : [2024-12-03 17:49:40.830]
+
+java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:298) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:511) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:122) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:968) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1270) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1148) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1660) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1469) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:2054) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:393) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeQuery(StatementSpy.java:731) ~[log4jdbc-log4j2-jdbc4.1-1.16.jar:?]
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.dialect.OracleDialect.isAutonomous(OracleDialect.java:190) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.dialect.OracleDialect.<init>(OracleDialect.java:183) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.lambda$constructDialect$0(DialectFactoryImpl.java:130) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:240) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect(DialectFactoryImpl.java:122) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:358) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:280) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:56) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.25.Final.jar:6.2.25.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:378) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:354) ~[spring-orm-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1764) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:596) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:518) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) [spring-beans-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1168) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) [spring-context-6.0.21.jar:6.0.21]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:739) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:441) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1327) [spring-boot-3.1.12.jar:3.1.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1316) [spring-boot-3.1.12.jar:3.1.12]
+	at com.javateam.campProject.CampProjectApplication.main(CampProjectApplication.java:10) [main/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.12.jar:3.1.12]
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00933: SQL command not properly ended
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636) ~[ojdbc11-21.9.0.0.jar:21.9.0.0.0]
+	... 74 more
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Statement.close() returned  : [2024-12-03 17:49:40.830]
+
+WARN : org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl ==> HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) : [2024-12-03 17:49:40.830]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getCatalog() returned null : [2024-12-03 17:49:40.831]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getSchema() returned CAMP : [2024-12-03 17:49:40.832]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getSchema() returned CAMP : [2024-12-03 17:49:40.832]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@1d8519cf : [2024-12-03 17:49:40.832]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.createClob() returned oracle.sql.CLOB@67147063 : [2024-12-03 17:49:40.833]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.createNClob() returned oracle.sql.NCLOB@d885195 : [2024-12-03 17:49:40.834]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.clearWarnings() returned  : [2024-12-03 17:49:40.834]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 52. Connection opened : [2024-12-03 17:49:40.927]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 52. Connection.new Connection returned  : [2024-12-03 17:49:40.927]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 52. Connection.isReadOnly() returned false : [2024-12-03 17:49:40.927]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 52. Connection.getAutoCommit() returned true : [2024-12-03 17:49:40.927]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 53. Connection opened : [2024-12-03 17:49:40.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 53. Connection.new Connection returned  : [2024-12-03 17:49:40.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 53. Connection.isReadOnly() returned false : [2024-12-03 17:49:40.964]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 53. Connection.getAutoCommit() returned true : [2024-12-03 17:49:40.964]
+
+INFO : org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator ==> HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) : [2024-12-03 17:49:40.994]
+
+INFO : org.springframework.orm.jpa.AbstractEntityManagerFactoryBean ==> Initialized JPA EntityManagerFactory for persistence unit 'default' : [2024-12-03 17:49:40.994]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 54. Connection opened : [2024-12-03 17:49:41.002]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 54. Connection.new Connection returned  : [2024-12-03 17:49:41.002]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 54. Connection.isReadOnly() returned false : [2024-12-03 17:49:41.002]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 54. Connection.getAutoCommit() returned true : [2024-12-03 17:49:41.002]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 55. Connection opened : [2024-12-03 17:49:41.045]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 55. Connection.new Connection returned  : [2024-12-03 17:49:41.045]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 55. Connection.isReadOnly() returned false : [2024-12-03 17:49:41.045]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 55. Connection.getAutoCommit() returned true : [2024-12-03 17:49:41.045]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 56. Connection opened : [2024-12-03 17:49:41.084]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 56. Connection.new Connection returned  : [2024-12-03 17:49:41.084]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 56. Connection.isReadOnly() returned false : [2024-12-03 17:49:41.084]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 56. Connection.getAutoCommit() returned true : [2024-12-03 17:49:41.084]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 57. Connection opened : [2024-12-03 17:49:41.123]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 57. Connection.new Connection returned  : [2024-12-03 17:49:41.123]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 57. Connection.isReadOnly() returned false : [2024-12-03 17:49:41.123]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 57. Connection.getAutoCommit() returned true : [2024-12-03 17:49:41.123]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.BoardDAO : [2024-12-03 17:49:41.132]
+
+INFO : com.javateam.campProject.service.FileUploadService ==> [FileUploadService][uploadPath]: D:/coding/work/project2/camp_project/campProject/src/main/resources/static/board_upFile/file/ : [2024-12-03 17:49:41.154]
+
+INFO : com.javateam.campProject.service.ImageService ==> [ImageService][uploadPath]: D:/coding/work/project2/camp_project/campProject/src/main/resources/static/board_upFile/image/ : [2024-12-03 17:49:41.157]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 58. Connection opened : [2024-12-03 17:49:41.163]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 58. Connection.new Connection returned  : [2024-12-03 17:49:41.163]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 58. Connection.isReadOnly() returned false : [2024-12-03 17:49:41.163]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 58. Connection.getAutoCommit() returned true : [2024-12-03 17:49:41.164]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.FileDAO : [2024-12-03 17:49:41.164]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampRepository : [2024-12-03 17:49:41.188]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampReviewRepository : [2024-12-03 17:49:41.199]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 59. Connection opened : [2024-12-03 17:49:41.201]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 59. Connection.new Connection returned  : [2024-12-03 17:49:41.201]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 59. Connection.isReadOnly() returned false : [2024-12-03 17:49:41.201]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 59. Connection.getAutoCommit() returned true : [2024-12-03 17:49:41.201]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 60. Connection opened : [2024-12-03 17:49:41.240]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 60. Connection.new Connection returned  : [2024-12-03 17:49:41.241]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 60. Connection.isReadOnly() returned false : [2024-12-03 17:49:41.241]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 60. Connection.getAutoCommit() returned true : [2024-12-03 17:49:41.241]
+
+WARN : org.springframework.core.LocalVariableTableParameterNameDiscoverer ==> Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.javateam.campProject.repository.CampImgRepository : [2024-12-03 17:49:41.264]
+
+WARN : org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration ==> spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning : [2024-12-03 17:49:41.343]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@40636d03, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@481e9dc5, org.springframework.security.web.context.SecurityContextHolderFilter@1a138551, org.springframework.security.web.authentication.logout.LogoutFilter@d718790, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@7493e16b, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@1ce9e554, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@75dfb547, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@24bb9437, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77713cdc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@23edb514, org.springframework.security.web.access.ExceptionTranslationFilter@17dd63c4, org.springframework.security.web.access.intercept.AuthorizationFilter@bfae597] : [2024-12-03 17:49:41.424]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/bootstrap/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.427]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/bootstrap/**'] : [2024-12-03 17:49:41.427]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.427]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/css/**'] : [2024-12-03 17:49:41.427]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.427]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/js/**'] : [2024-12-03 17:49:41.427]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/axios/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.427]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/axios/**'] : [2024-12-03 17:49:41.427]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.427]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/webjars/**'] : [2024-12-03 17:49:41.427]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/social_login_img/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.427]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/social_login_img/**'] : [2024-12-03 17:49:41.427]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/swagger-ui']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.427]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/swagger-ui'] : [2024-12-03 17:49:41.427]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/swagger-ui/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/swagger-ui/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/v3/api-docs']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/v3/api-docs'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/bootstrap-icons/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/bootstrap-icons/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/summernote/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/summernote/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/jquery/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/jquery/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/images/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/resources/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/img/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/img/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/campImg/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/campImg/**'] : [2024-12-03 17:49:41.428]
+
+WARN : org.springframework.security.config.annotation.web.builders.WebSecurity ==> You are asking Spring Security to ignore Mvc [pattern='/campImgPath/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead. : [2024-12-03 17:49:41.428]
+
+INFO : org.springframework.security.web.DefaultSecurityFilterChain ==> Will not secure Mvc [pattern='/campImgPath/**'] : [2024-12-03 17:49:41.428]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.isValid(5) returned true : [2024-12-03 17:49:41.525]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@1d8519cf : [2024-12-03 17:49:41.526]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.clearWarnings() returned  : [2024-12-03 17:49:41.526]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@1d8519cf : [2024-12-03 17:49:41.526]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.clearWarnings() returned  : [2024-12-03 17:49:41.526]
+
+INFO : org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer ==> LiveReload server is running on port 35729 : [2024-12-03 17:49:41.541]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Starting ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:49:41.555]
+
+INFO : org.springframework.boot.web.embedded.tomcat.TomcatWebServer ==> Tomcat started on port(s): 8181 (http) with context path '/campProject' : [2024-12-03 17:49:41.559]
+
+INFO : org.springframework.boot.StartupInfoLogger ==> Started CampProjectApplication in 1.52 seconds (process running for 249.284) : [2024-12-03 17:49:41.567]
+
+INFO : org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener ==> Condition evaluation unchanged : [2024-12-03 17:49:41.572]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.isValid(5) returned true : [2024-12-03 17:50:00.002]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getAutoCommit() returned true : [2024-12-03 17:50:00.003]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.setAutoCommit(false) returned  : [2024-12-03 17:50:00.003]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. PreparedStatement.new PreparedStatement returned  : [2024-12-03 17:50:00.003]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.prepareStatement(DELETE FROM SPRING_SESSION
+WHERE EXPIRY_TIME < ?
+) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@79e0d7c1 : [2024-12-03 17:50:00.003]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. PreparedStatement.setObject(1, 1733215800003) returned  : [2024-12-03 17:50:00.003]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> DELETE FROM SPRING_SESSION
+WHERE EXPIRY_TIME < 1733215800003
+ : [2024-12-03 17:50:00.003]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> DELETE FROM SPRING_SESSION
+WHERE EXPIRY_TIME < 1733215800003
+ {executed in 0 msec} : [2024-12-03 17:50:00.003]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. PreparedStatement.executeUpdate() returned 0 : [2024-12-03 17:50:00.005]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. PreparedStatement.close() returned  : [2024-12-03 17:50:00.005]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.commit() returned  : [2024-12-03 17:50:00.006]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.setAutoCommit(true) returned  : [2024-12-03 17:50:00.006]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.getWarnings() returned null : [2024-12-03 17:50:00.006]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.clearWarnings() returned  : [2024-12-03 17:50:00.006]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.clearWarnings() returned  : [2024-12-03 17:50:00.006]
+
+INFO : org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener ==> Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) : [2024-12-03 17:50:39.996]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Pausing ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:50:40.009]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Stopping service [Tomcat] : [2024-12-03 17:50:40.009]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Stopping ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:50:40.012]
+
+INFO : org.apache.juli.logging.DirectJDKLog ==> Destroying ProtocolHandler ["http-nio-8181"] : [2024-12-03 17:50:40.014]
+
+INFO : org.springframework.orm.jpa.AbstractEntityManagerFactoryBean ==> Closing JPA EntityManagerFactory for persistence unit 'default' : [2024-12-03 17:50:40.017]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Shutdown initiated... : [2024-12-03 17:50:40.017]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection closed : [2024-12-03 17:50:40.019]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 51. Connection.close() returned  : [2024-12-03 17:50:40.019]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 52. Connection closed : [2024-12-03 17:50:40.019]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 52. Connection.close() returned  : [2024-12-03 17:50:40.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 53. Connection closed : [2024-12-03 17:50:40.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 53. Connection.close() returned  : [2024-12-03 17:50:40.021]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 54. Connection closed : [2024-12-03 17:50:40.022]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 54. Connection.close() returned  : [2024-12-03 17:50:40.022]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 55. Connection closed : [2024-12-03 17:50:40.024]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 55. Connection.close() returned  : [2024-12-03 17:50:40.024]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 56. Connection closed : [2024-12-03 17:50:40.024]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 56. Connection.close() returned  : [2024-12-03 17:50:40.025]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 57. Connection closed : [2024-12-03 17:50:40.026]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 57. Connection.close() returned  : [2024-12-03 17:50:40.026]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 58. Connection closed : [2024-12-03 17:50:40.027]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 58. Connection.close() returned  : [2024-12-03 17:50:40.027]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 59. Connection closed : [2024-12-03 17:50:40.027]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 59. Connection.close() returned  : [2024-12-03 17:50:40.027]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 60. Connection closed : [2024-12-03 17:50:40.028]
+
+INFO : net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator ==> 60. Connection.close() returned  : [2024-12-03 17:50:40.028]
+
+INFO : com.zaxxer.hikari.HikariDataSource ==> hikariCP - Shutdown completed. : [2024-12-03 17:50:40.028]
+

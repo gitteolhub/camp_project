@@ -1,6 +1,7 @@
 package com.javateam.campProject.repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -175,6 +176,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO memberReservationInfo(String strId) {
 
 		return sqlSession.selectOne(MAPPER_PATH + "memberReservationInfo", strId);
+	}
+
+	@Override
+	public List<Map<String, String>> selectAllUsersWithRole() {
+		return sqlSession.selectList(MAPPER_PATH + "selectAllUsersWithRole");
 	}
 }
 

@@ -1,5 +1,6 @@
 package com.javateam.campProject.repository;
 
+import java.util.List;
 import java.util.Map;
 
 import com.javateam.campProject.domain.MemberVO;
@@ -39,5 +40,8 @@ public interface MemberDAO {
 
 	// 예약시 예약테이블에 넣을 정보 조회
 	MemberVO memberReservationInfo(String strId);
+	
+	// 관리자 모드에서 사용자 조회 및 관리
+	List<Map<String, String>> selectAllUsersWithRole();
 
 }

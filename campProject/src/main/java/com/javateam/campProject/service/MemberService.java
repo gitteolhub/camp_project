@@ -1,5 +1,8 @@
 package com.javateam.campProject.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.javateam.campProject.domain.MemberVO;
 import com.javateam.campProject.domain.Role;
 
@@ -34,4 +37,7 @@ public interface MemberService {
 	
 	// 회원정보 수정
 	boolean updateMember (MemberVO objMemberVO);
+	
+	// 관리자 모드에서 사용자 조회 및 관리
+	List<Map<String, String>> selectAllUsersWithRole();
 }

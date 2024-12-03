@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.campSocialUserMapper">
 
+	<!-- 전체 소셜 회원 정보 조회 -->
+	 <select id="selectSocialAllMembers" resultType="com.javateam.campProject.domain.SocialUser">
+        SELECT *
+          FROM SOCIAL_USER
+    </select>
+
 	<!-- email로 소셜 회원 정보 조회 -->
 	 <select id="selectSocialMemberByEmail" resultType="com.javateam.campProject.domain.SocialUser">
         SELECT *

@@ -1,5 +1,7 @@
 package com.javateam.campProject.repository;
 
+import java.util.List;
+
 import com.javateam.campProject.domain.SocialUser;
 
 public interface SocialUserDAO {
@@ -18,5 +20,8 @@ public interface SocialUserDAO {
 
 	// 예약시 예약테이블에 넣을 정보 조회
 	SocialUser socialReservationInfo(String strEmail, String authVendor);
+	
+	// 전체 소셜 회원 정보 조회
+	List<SocialUser> selectSocialAllMembers();
 
 }

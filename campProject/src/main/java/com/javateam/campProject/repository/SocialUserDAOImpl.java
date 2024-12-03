@@ -1,6 +1,7 @@
 package com.javateam.campProject.repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -56,6 +57,11 @@ public class SocialUserDAOImpl implements SocialUserDAO{
 		map.put("email", strEmail);
 		map.put("authVendor", strAuthVendor);
 		return sqlSession.selectOne(MAPPER_PATH + "selectSocialMemberByEmailAndAuthVendor", map);
+	}
+
+	@Override
+	public List<SocialUser> selectSocialAllMembers() {
+		return sqlSession.selectList(MAPPER_PATH + "selectSocialAllMembers");
 	}
 
 }

@@ -197,4 +197,12 @@
 		  FROM USER_TBL
 		 WHERE ID = #{id}
 	</select>
+	
+	<!-- 관리자 모드에서 사용자 조회 및 관리 -->
+	<select id="selectAllUsersWithRole" resultType="map">
+		SELECT U.ID id, U.NAME name, U.EMAIL email, R.ROLE role
+		  FROM USER_TBL U, USER_ROLES R
+		 WHERE U.ID = R.USERID
+	</select>
+	
 </mapper>

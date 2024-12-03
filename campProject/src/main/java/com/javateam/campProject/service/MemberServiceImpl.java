@@ -1,6 +1,7 @@
 package com.javateam.campProject.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -244,5 +245,10 @@ public class MemberServiceImpl implements MemberService {
 				return blRetVal;
 			}
 		});
+	}
+
+	@Override
+	public List<Map<String, String>> selectAllUsersWithRole() {
+		return memberDAO.selectAllUsersWithRole();
 	}
 }
