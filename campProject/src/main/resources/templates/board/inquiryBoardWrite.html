@@ -9,6 +9,9 @@
 <title>문의 게시글 쓰기</title>
 
 <style>
+.main_sect_pnl {
+	margin-top: 70px;
+}
 h2 {
     font-size: 25px;
 }
@@ -41,12 +44,12 @@ h2 {
 <script>
 // summmernote 삽입 이미지 파일 업로드 전송
 function sendFile(file, el) {
-	
+
 	// FormData 객체
     // : https://developer.mozilla.org/ko/docs/Web/API/FormData
     let formData = new FormData();
     formData.append('file', file);
-    
+
  	// jQuery AJAX
     $.ajax({
 
@@ -131,7 +134,7 @@ window.onload = function() {
 		let boardFile = document.getElementById("boardFile");
 		boardFile.value = "";
 	} //
-	
+
 	// TODO
 	// case-2
 	// 게시글 내용
@@ -228,7 +231,7 @@ window.onload = function() {
 
 <!-- 헤더 포함 -->
   <th:block th:include="layout/header :: header"></th:block>
-	
+
 	<!-- layout -->
 	<div layout:fragment="content" class="main_sect_pnl">
 
@@ -247,16 +250,16 @@ window.onload = function() {
 
 						<!-- 인증 회원이상 작성할 수 있으므로 작성자는 기본값 자동 완성/읽기전용 처리 -->
 						<td th:if="${session.socialUser == null}" th:text="${#authentication.name}"></td>
-						
+
 						<!-- 자체 로그인일 경우 -->
 						<input th:if="${session.socialUser == null}"
 						       type="hidden" class="form-control" id="boardWriter"
 							   name="boardWriter" th:value="${#authentication.name}" readonly />
-							   
+
 						<!-- Naver Or Google 로그인일 경우 -->
-						
+
 						<td th:if="${session.socialUser != null}" th:text="${session.socialUser.email}"></td>
-						
+
 						<input th:if="${session.socialUser != null}"
 						       type="hidden" class="form-control" id="boardWriter"
 							   name="boardWriter" th:value="${session.socialUser.email + '_' + session.socialUser.authVendor}" readonly />
