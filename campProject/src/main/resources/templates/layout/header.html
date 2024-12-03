@@ -5,8 +5,38 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <title>[[${headerName}]]</title>
-</head>
+
+<script type="text/javascript">
+
+	var naverLoginPopup;
+
+	function openPopUp() {
+		let maxX = screen.availWidth;
+		let maxY = screen.availHeight;
+
+		console.log("maxX = ", maxX, ", maxY = ", maxY);
+
+		naverLoginPopup = window.open("https://nid.naver.com/nidlogin.logout", "_blank",
+									  "toolbar=0,scrollbars=0,resizable=0,toolbar=0,location=0," +
+									  "status=0,menubar=0,width=1,height=1," + 'left=${maxX}, top=${maxY}');
+	}
+
+	function naverLogout() {
+		console.log("naverLogout()");
+		openPopUp();
+
+		setTimeout(function() {
+
+			naverLoginPopup.close();
+			alert("로그아웃 되었습니다");
+			location.href = "/campProject/logoutProc";
+
+		}, 1000); <!-- 1초 후에 팝업을 닫고 로그아웃  -->
+	}
+
+</script>
 <body>
+</head>
 
 <header th:fragment="header">
     <nav>
