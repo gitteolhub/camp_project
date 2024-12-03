@@ -5,6 +5,7 @@
 	  layout:decorate="~{layout}"
 	  lang="ko-kr">
 <head>
+<th:block th:replace="layout/header :: header-head"></th:block>
 <meta charset="UTF-8">
 <title>관리자 문의 게시판</title>
 
@@ -102,6 +103,9 @@ window.onload = function() {
 </script>
 </head>
 <body>
+
+<!-- 헤더 포함 -->
+  <th:block th:include="layout/header :: header"></th:block>
 
 	<!-- layout -->
 	<div layout:fragment="content" class="container">
