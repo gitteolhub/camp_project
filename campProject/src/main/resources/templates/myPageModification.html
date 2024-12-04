@@ -80,13 +80,18 @@
       background-color: #23527c;  /* 버튼에 마우스 올렸을 때 버튼색 변경 */
     }
   </style>
+
   <script>
   //"회원정보 수정 메시지"
   let msg = '[[${msg}]]';
   if(msg.trim() != '') {
 	  alert(msg);
   }
+  </script>
 
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  
+  <script>
 	// 주소 검색
 	function getPostcodeAddress() {
   	new daum.Postcode({
