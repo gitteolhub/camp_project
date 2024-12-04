@@ -30,7 +30,7 @@ h2{
 	font-size: 15px;
 }
 .btn-custom {
-    background-color: #a9a9a9; /* 원하는 배경색 */
+    background-color: #a9a9a9;
     color: white; /* 텍스트 색상 */
     border: none; /* 테두리 제거 */
 }
@@ -49,6 +49,9 @@ h2{
 .page-link {
     padding: 5px 8px;
     font-size: 11px;
+}
+.hidden-checkbox {
+    display: none; /* 체크박스를 숨김 */
 }
 
 </style>
@@ -156,7 +159,7 @@ window.onload = function() {
 					<thead>
 						<tr>
 							<th>
-								<input type="checkbox" th:id="${'check_'+ pageVO.currentPage}" th:name="${'check_'+ pageVO.currentPage}">
+								<input type="checkbox" th:id="${'check_'+ pageVO.currentPage}" th:name="${'check_'+ pageVO.currentPage}" class="hidden-checkbox">
 							</th>
 							<th>번호</th>
 							<th>작성자</th>
@@ -171,7 +174,7 @@ window.onload = function() {
 						<tr th:if="${not #lists.isEmpty(boardList) && pageVO.listCount > 0}"
 							th:each="board, st : ${boardList}">
 							<td>
-								<input type="checkbox" th:id="${'check_'+ board.boardNum}" th:name="${'check_'+ board.boardNum}">
+								<input type="checkbox" th:id="${'check_'+ board.boardNum}" th:name="${'check_'+ board.boardNum}" class="hidden-checkbox">
 							</td>
 							<td th:text="${st.count + (pageVO.currentPage - 1) * 10}"></td>
 							<td th:utext="${board.boardWriter}"></td>
@@ -210,15 +213,16 @@ window.onload = function() {
 				-->
 				<div id="board_menu" class="mx-auto d-flex justify-content-end mt-4 pe-5" style="width:60vw;">
 
-					 <!-- 게시글 목록에서 바로 삭제 못하도록 임시 생략 처리-->
-					 <!-- <a href="#" id="board_delete_btn" class="btn btn-primary me-2"
-					 	sec:authorize="isAuthenticated()">삭제</a> -->
-
-					 <a th:href="@{/board/inquiryBoardWrite}" class="btn btn-custom me-4"
+					 <a th:href="@{/board/inquiryBoardWrite}" class="btn btn-custom me-1"
 					 	sec:authorize="isAuthenticated()">
 					 	<i class="bi bi-pen"></i>&nbsp;글쓰기
 				 	 </a>
 
+				 	 <!-- (원)글삭제 링크 추가 -->
+				 	<!--  <div sec:authorize="hasRole('ROLE_ADMIN')">
+						 <a class="btn btn-custom ms-2" href="#" id="board_delete_btn"
+						    sec:authorize="isAuthenticated()">글삭제</a>
+					 </div> -->
 				 	 <!-- 게시글 목록 -->
 				 	 <!-- <a class="btn btn-custom" th:href="@{/board/inquiryBoardList}">
 						게시글 목록

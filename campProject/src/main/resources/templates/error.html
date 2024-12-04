@@ -9,11 +9,12 @@
 	<script th:inline="javascript" charset="UTF-8">
 		let errMsg=[[${errMsg}]]
 		let movePage=[[${movePage}]]
-		
-		if(errMsg==''){
-			alert("홈페이지로 이동됩니다.");
+
+		if(errMsg=='' || errMsg==null){
+			// alert("홈페이지로 이동됩니다.");
 			location.href='/campProject/';
 		} else {
+
 			alert(errMsg);
 			location.href='/campProject' + movePage;
 		}

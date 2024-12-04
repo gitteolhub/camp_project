@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>비밀번호 재설정</title>
     <style>
-        body {
+
+        .pwForm {
             background-color: #f4f4f4;
             display: flex;
             justify-content: center;
@@ -86,7 +87,7 @@
                // submitButton.disabled = false; // 버튼 활성화
                alert("비밀번호 일치합니다.");
                let regex=/\d{6}/;
-               
+
                if(regex.test(code)==true){
                	   frm.submit();
                } else {
@@ -99,35 +100,36 @@
 <body>
 <!-- 헤더 포함 -->
 	<th:block th:include="layout/header :: header"></th:block>
-
-    <div class="login-container">
-        <h2>비밀번호 재설정</h2>
-        <h5>신규 비밀번호를 입력해 주세요.</h5>
-        <h5>이메일로 전송된 인증 번호를 입력해 주세요.</h5>
-        <br>
-        <form id="frm" th:action="@{/pwVerificationCode}" method="post">
-            <div class="form-group">
-                <label for="newPw">신규 비밀번호:</label>
-                <input type="text" id="newPw" name="newPw" required 
-                	   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,20}"
-					   title="비밀번호는 영문 대소문자 및 숫자, 특수문자를 최소 1개 이상 포함하여 8~20 사이로 작성하여 주십시오." />
-            </div>
-            <div class="form-group">
-                <label for="confirmPw">비밀번호 확인:</label>
-                <input type="text" id="confirmPw" name="confirmPw" required 
-                	   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,20}"
-					   title="비밀번호는 영문 대소문자 및 숫자, 특수문자를 최소 1개 이상 포함하여 8~20 사이로 작성하여 주십시오." />
-            </div>
-            <div class="form-group">
-                <label for="code">인증 번호:</label>
-                <input type="text" id="code" name="code" required>
-                <input type="hidden" name="email" th:value="${email}">
-            </div>
-            <input type="button" value="비밀번호 변경" onclick="validatePasswords()">
-        </form>
-        <div class="error" th:if="${error}">
-            <p class="error-message" th:text="${error}"></p>
-        </div>
-    </div>
+	<div class="pwForm">
+	    <div class="login-container">
+	        <h2>비밀번호 재설정</h2>
+	        <h5>신규 비밀번호를 입력해 주세요.</h5>
+	        <h5>이메일로 전송된 인증 번호를 입력해 주세요.</h5>
+	        <br>
+	        <form id="frm" th:action="@{/pwVerificationCode}" method="post">
+	            <div class="form-group">
+	                <label for="newPw">신규 비밀번호:</label>
+	                <input type="password" id="newPw" name="newPw" required
+	                	   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,20}"
+						   title="비밀번호는 영문 대소문자 및 숫자, 특수문자를 최소 1개 이상 포함하여 8~20 사이로 작성하여 주십시오." />
+	            </div>
+	            <div class="form-group">
+	                <label for="confirmPw">비밀번호 확인:</label>
+	                <input type="password" id="confirmPw" name="confirmPw" required
+	                	   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,20}"
+						   title="비밀번호는 영문 대소문자 및 숫자, 특수문자를 최소 1개 이상 포함하여 8~20 사이로 작성하여 주십시오." />
+	            </div>
+	            <div class="form-group">
+	                <label for="code">인증 번호:</label>
+	                <input type="text" id="code" name="code" required>
+	                <input type="hidden" name="email" th:value="${email}">
+	            </div>
+	            <input type="button" value="비밀번호 변경" onclick="validatePasswords()">
+	        </form>
+	        <div class="error" th:if="${error}">
+	            <p class="error-message" th:text="${error}"></p>
+	        </div>
+	    </div>
+	</div>
 </body>
 </html>

@@ -65,15 +65,11 @@ public class AuthController {
 
 	// 로그인 페이지를 반환
     @GetMapping("/loginForm")
-//	public String login( HttpServletRequest request, Model model, HttpSession httpSession) {
-	public String login(@RequestParam(value = "error", defaultValue = "") String error,
-						@RequestParam(value = "msg", defaultValue = "") String msg,
-						Model model, HttpSession httpSession) {
+	public String login( HttpServletRequest request, Model model, HttpSession httpSession) {	//RedirectAttributes redirectAttributes
 
 		log.info("[loginForm]");
-//		String error = request.getParameter("error")== null ? "없음" : request.getParameter("error");
-//		String msg   = request.getParameter("msg")  == null ? "없음" : request.getParameter("msg");
-
+		String error = request.getParameter("error")== null ? "없음" : request.getParameter("error");
+		String msg   = request.getParameter("msg")  == null ? "없음" : request.getParameter("msg");
 		log.info("[loginForm][error]: {}", error);
 		log.info("[loginForm][msg]: {}", msg);
 
@@ -88,12 +84,14 @@ public class AuthController {
 			log.info("[loginErrorCount_1]: {}", loginErrorCount);
 		}
 
-		String returnPath = "loginForm";	// 11월21일 수정 (무한루프 패치)
-		String movePage = "";
+		String movePath="loginForm";	// 11월21일 수정 (무한루프 패치)
 
 		if(auth.getPrincipal() == null || auth.getPrincipal().toString().equals("anonymousUser")) {
 
 			log.info("로그인 인증 안됨");
+			model.addAttribute("error", error);
+			model.addAttribute("msg", msg);
+
 			log.info("[loginErrorCount_2: {}]", loginErrorCount);
 
 			if(loginErrorCount >= maxCount) {
@@ -105,13 +103,10 @@ public class AuthController {
 
 			}
 
-		} else { // 로그인 인증시
-			returnPath = "/myPageModification";
 		}
 
-		log.info("[AuthController][movePath]: {}", returnPath);
-
-		return returnPath;
+		log.info("[AuthController][movePath]: {}", movePath);
+		return movePath;
 	}
 
 	// 로그아웃 처리 메서드

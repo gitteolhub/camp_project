@@ -45,7 +45,7 @@ public class SecurityConfig {
 	        				 "/findUserPwResult",   "/choiceJoin",             "/userJoin",         "/ceoJoin",              "/member/joinProc2",
 	        				 "/myPageModification", "/myPageReservationCheck", "/campGroundManagement", "/adminManagement",
 	        				 "/search",             "/searchCamp",             "/searchCate3Name",   "/recomCamp" ,          "/recomCampProc",
-	        				 "/searchRecomCamp",    "/campDetail"
+	        				 "/searchRecomCamp",    "/campDetail", "/login", "/error"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**", "/userManagement")

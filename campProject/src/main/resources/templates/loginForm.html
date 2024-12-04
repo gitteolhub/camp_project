@@ -22,7 +22,7 @@
 
 
         body {
-            
+
             background-color: #f4f4f4;
             display: flex;
             justify-content: center;
@@ -156,7 +156,7 @@
 
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="text"
+                <input type="password"
 					   class="form-control"
 					   id="password"
 					   name="password"
@@ -182,12 +182,6 @@
 			    </div>
 			</div>
 
-            <div class="error-message" >
-            <script th:if="${msg!='없음'}">
-              	alert('[[${msg}]]');
-            </script>
-            </div>
-            
         </form>
 
 

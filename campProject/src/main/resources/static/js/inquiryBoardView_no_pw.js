@@ -1,11 +1,11 @@
 // 댓글 목록 읽어오기
 function getAllReplies(originalBoardId, boardWriter, originalWriter) {
-	
+
 	axios.get(`/campProject/board/getRepliesAllNoPw?boardNum=${originalBoardId}`)
 		 .then(function(response) {
-			 
+
 			// alert("전체 댓글 가져오기");
-			
+
 			console.log("originalWriter: ",originalWriter);
 			console.log('boardWriter: ', boardWriter);
 			console.log('originalWriter.split("_")[0] == boardWriter: ', originalWriter.split("_")[0] == boardWriter.split("_")[0]);
@@ -18,31 +18,29 @@ function getAllReplies(originalBoardId, boardWriter, originalWriter) {
 
 			let replyListPnl = document.getElementById("reply_list_pnl");
 			let replyData = "";
-			
+
 			for (let reply of resData) {
-				
+
 				/*console.log('originalWriter.split("_")[0]: ', originalWriter.split("_")[0]);
 				console.log('reply.boardWriter.split("_")[0]: ', reply.boardWriter.split("_")[0]);
 				console.log("[작성자 동등여부] = ", originalWriter.split("_")[0] == reply.boardWriter.split("_")[0]);*/
 
 				// 날짜 포매팅(형식화)
 				let replyFormattedBoardDate = reply.boardDate;
-				
+
 				// 댓글 작성자가 원글 작성자와 일치할 경우에는 "작성자"라는 뱃지를 달아준다.
 				let boardWriterBadge = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary writer">
 									    	작성자
 									    	<span class="visually-hidden">unread messages</span>
 									  	</span>`;
-				
-				let originalWriterBadge = originalWriter.split("_")[0] == reply.boardWriter.split("_")[0] ? boardWriterBadge : "";
 
-				/* ------------------------------------------------------------------------------------------------------ */
+				let originalWriterBadge = originalWriter.split("_")[0] == reply.boardWriter.split("_")[0] ? boardWriterBadge : "";
 
 				// 개별 게시글 동적 패널
 				replyData = `<div id="reply_${reply.boardNum}" class="border-bottom border-dark-1 bg-light w-100 ps-4">
 
 								<div class="d-flex flex-row py-2">
-								
+
 									<!-- 사람 아이콘 -->
 									<div class="me-2">
 
@@ -56,16 +54,16 @@ function getAllReplies(originalBoardId, boardWriter, originalWriter) {
 
 									<!-- 실제 댓글 작성자 파악을 위해 id 등록 -->
 									<div id="reply_actual_writer_${reply.boardNum}" class="d-flex align-items-center ms-1 mt-1">
-									
+
 										<!-- 실제 댓글 작성자 파악을 위해 id 등록 -->
 										<button id="reply_writer_${reply.boardWriter}" class="wtfont position-relative">
 
 											${reply.boardWriter.split("_")[0]}
-											
+
 											${originalWriterBadge}
 
 										</button>
-									
+
 									</div>
 									<!--// 작성자 -->
 
@@ -80,7 +78,7 @@ function getAllReplies(originalBoardId, boardWriter, originalWriter) {
 									</div>
 
 								</div>
-								
+
 								<!-- 댓글 작성일,  댓글 수정/삭제 메뉴 -->
 								<div class="my-1 d-flex flow row small-text">
 
@@ -102,7 +100,7 @@ function getAllReplies(originalBoardId, boardWriter, originalWriter) {
 
 								</div>
 							</div>`;
-					
+
 					replyListPnl.innerHTML += replyData;
 
 			} // for
@@ -125,7 +123,7 @@ function writeReply(originalBoardId, boardWriter, originalWriter) {
 	let replyWriteBtn = document.getElementById("reply_write_btn_" + originalBoardId);
 
 	console.log("replyWriteBtn : ", replyWriteBtn);
-	
+
 	// 댓글 작성
 	// replyWriteBtn.onclick = (e) =>  {
 	replyWriteBtn.addEventListener('click', function(e) { // 함수 내부에는 이와 같은 표현 권장
@@ -136,7 +134,7 @@ function writeReply(originalBoardId, boardWriter, originalWriter) {
 		console.log("댓글의 원글 아이디 : ", originalBoardId);
 
 		let replyWriteForm = document.getElementById("reply_write_form");
-		
+
 		console.log("댓글 작성자 : ", boardWriter);
 
 		// 댓글 폼점검
@@ -174,21 +172,21 @@ function writeReply(originalBoardId, boardWriter, originalWriter) {
 				let replyListPnl = document.getElementById("reply_list_pnl");
 				let replyData = "";
 				replyListPnl.innerHTML = ""; // 댓글 목록 초기화
-				
+
 				for (let reply of resData) {
 
 					// 날짜 포매팅(형식화)
 					let replyFormattedBoardDate = reply.boardDate;
-					
+
 					// 댓글 작성자가 원글 작성자와 일치할 경우에는 "작성자"라는 뱃지를 달아준다.
-					
+
 					let boardWriterBadge = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary writer">
 										    	작성자
 										    	<span class="visually-hidden">unread messages</span>
 										  	</span>`;
-					
+
 					let originalWriterBadge = originalWriter.split("_")[0] == reply.boardWriter.split("_")[0] ? boardWriterBadge : "";
-					
+
 					// 개별 게시글 동적 패널
 					replyData = `<div id="reply_${reply.boardNum}" class="border-bottom border-dark-1 bg-light w-100 ps-4">
 
@@ -221,7 +219,7 @@ function writeReply(originalBoardId, boardWriter, originalWriter) {
 										<!--// 작성자 -->
 
 									</div>
-									
+
 									<!-- 댓글 내용 -->
 									<div class="my-1 d-flex flow reply-content">
 
@@ -231,7 +229,7 @@ function writeReply(originalBoardId, boardWriter, originalWriter) {
 										</div>
 
 									</div>
-									
+
 									<!-- 댓글 작성일,  댓글 수정/삭제 메뉴 -->
 									<div class="my-1 d-flex flow row small-text">
 
@@ -253,9 +251,9 @@ function writeReply(originalBoardId, boardWriter, originalWriter) {
 
 									</div>
 									<!--// 댓글 작성일 -->
-									
+
 								</div>`;
-						
+
 						replyListPnl.innerHTML += replyData;
 
 				} // for
@@ -267,11 +265,7 @@ function writeReply(originalBoardId, boardWriter, originalWriter) {
 
 		} // if (replyWriteForm.value.length > 100)
 
-	// } // replyWriteBtn.onclick = (e) => {
-
 	}); // replyWriteBtn.addEventListener('click', function(e) { ...
-
- 	// } // for
 
 } //
 
@@ -290,7 +284,7 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 
 	// 이전 상태 복원 대비 위해 이전 등록 모드 상태 보전 : "취소" 버튼 클릭시 이전 상태 복원
 	let oldReplyPnl = replyPnl.innerHTML;
-	
+
 	// 댓글 수정란 생성
 	let replyUpdateForm = `<div id="reply_write_update_pnl_${replyBoardId}" class="my-3">
 
@@ -300,7 +294,7 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 										  placeholder="댓글을  100자이내로 작성하십시오">${boardContent.innerText.trim()}</textarea>
 
 						   </div>`;
-						   
+
 	// 댓글 수정 내용 전송 버튼 생성
 	let replySubmitBtns = `<div id="reply_submit_btns_${replyBoardId}" class="d-flex justify-content-end my-2">
 
@@ -313,14 +307,14 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 						  		 class="btn btn-sm btn-primary me-2">수정 취소</button>
 
 						  </div>`;
-	
+
 	// 기존의 패널이 없을 경우에만 추가
 	if (document.getElementById(`reply_write_update_pnl_${replyBoardId}`) == null) {
 
 		replyPnl.innerHTML += replyUpdateForm;
 		replyPnl.innerHTML += replySubmitBtns;
 	} //
-	
+
 	// 댓글 수정 (전송)등록 버튼을 클릭시
 	let replySubmitBtn = document.getElementById("reply_submit_btn_" + replyBoardId);
 
@@ -364,7 +358,7 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 			console.log("작성자 아이디 : ", boardWriter);
 			console.log("댓글 내용 : ", replyUpdateForm.value.trim());
 
-			
+
 			// 전송
 			// 주의) 여기서 boardNum 댓글 자체의 아이디입니다.
 			axios.post('/campProject/board/replyUpdateNoPw',
@@ -388,18 +382,18 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 				replyListPnl.innerHTML = ""; // 댓글 목록 초기화
 
 				for (let reply of resData) {
-					
+
 					// 날짜 포매팅(형식화)
 					let replyFormattedBoardDate = reply.boardDate;
-					
+
 					// 댓글 작성자가 원글 작성자와 일치할 경우에는 "작성자"라는 뱃지를 달아준다.
 					let boardWriterBadge = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary writer">
 										    	작성자
 										    	<span class="visually-hidden">unread messages</span>
 										  	</span>`;
-					
+
 					let originalWriterBadge = originalWriter.split("_")[0] == reply.boardWriter.split("_")[0] ? boardWriterBadge : "";
-					
+
 					// 개별 게시글 동적 패널
 					replyData = `<div id="reply_${reply.boardNum}" class="border-bottom border-dark-1 bg-light w-100 ps-4">
 
@@ -422,16 +416,16 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 											<button id="reply_writer_${reply.boardWriter}" class="wtfont position-relative">
 
 												${reply.boardWriter.split("_")[0]}
-				
+
 												${originalWriterBadge}
-												
+
 											</button>
 
 										</div>
 										<!--// 작성자 -->
 
 									</div>
-									
+
 									<!-- 댓글 내용 -->
 									<div class="my-1 d-flex flow reply-content">
 
@@ -442,7 +436,7 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 
 									</div>
 									<!--// 댓글 내용 -->
-									
+
 									<!-- 댓글 작성일,  댓글 수정/삭제 메뉴 -->
 									<div class="my-1 d-flex flow row small-text">
 
@@ -458,15 +452,15 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 
 											<a href="#" id="reply_delete_btn_${reply.boardNum}" class="btn btn-sm btn-outline-primary mb-1 me-3"
 											   onClick="deleteReply(${originalBoardId}, ${reply.boardNum}, '${boardWriter}', '${originalWriter}')">삭제</a>
-											   
+
 										</div>
 										<!--// 댓글 수정/삭제 -->
 
 									</div>
 									<!--// 댓글 작성일 -->
-									
+
 								</div>`;
-								
+
 						replyListPnl.innerHTML += replyData;
 
 				} // for
@@ -487,7 +481,7 @@ function updateReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 		} // if (replyUpdateForm.value.trim() == "") { ....
 
 	} //
-	
+
 	// 댓글 수정 (전송)취소 버튼을 클릭시
 	let replyResetBtn = document.getElementById("reply_reset_btn_" + replyBoardId);
 
@@ -536,7 +530,7 @@ function deleteReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 	let replyActualWriter = document.querySelector(`#reply_actual_writer_${replyBoardId} button`).id;
 
 	replyActualWriter = replyActualWriter.substring("reply_writer_".length); // 실제 작성자 아이디 추출
-	
+
 	// 댓글 삭제 (전송)등록 버튼을 클릭시
 	let replySubmitBtn = document.getElementById("reply_submit_btn_" + replyBoardId);
 
@@ -560,7 +554,7 @@ function deleteReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 
 			console.log("[replyBoardId] : ", replyBoardId);
 			console.log("[originalBoardId] : ", originalBoardId);
-			
+
 			// 삭제를 위한 AJAX 전송
 			// 삭제할 댓글 아이디와 댓글 부모글(원글) 아이디 : 원글은 삭제 후 댓글 목록의 현황 갱신을 위한 전송
 			axios.post(`/campProject/board/replyDeleteNoPw`,
@@ -585,18 +579,18 @@ function deleteReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 				let replyData = "";
 
 				for (let reply of resData) {
-					
+
 					// 날짜 포매팅(형식화)
 					let replyFormattedBoardDate = reply.boardDate;
-					
+
 					// 댓글 작성자가 원글 작성자와 일치할 경우에는 "작성자"라는 뱃지를 달아준다.
 					let boardWriterBadge = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary writer">
 										    	작성자
 										    	<span class="visually-hidden">unread messages</span>
 										  	</span>`;
-					
+
 					let originalWriterBadge = originalWriter.split("_")[0] == reply.boardWriter.split("_")[0] ? boardWriterBadge : "";
-					
+
 					// 개별 게시글 동적 패널
 					replyData = `<div id="reply_${reply.boardNum}" class="border-bottom border-dark-1 bg-light w-100 ps-4">
 
@@ -615,14 +609,14 @@ function deleteReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 
 										<!-- 실제 댓글 작성자 파악을 위해 id 등록 -->
 										<div id="reply_actual_writer_${reply.boardNum}" class="d-flex align-items-center ms-1 mt-1">
-										
+
 											<!-- 실제 댓글 작성자 파악을 위해 id 등록 -->
 											<button id="reply_writer_${reply.boardWriter}" class="wtfont position-relative">
 
 												${reply.boardWriter.split("_")[0]}
 
 												${originalWriterBadge}
-												
+
 											</button>
 
 										</div>
@@ -644,7 +638,7 @@ function deleteReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 
 									</div>
 									<!--// 댓글 내용 -->
-									
+
 									<!-- 댓글 작성일,  댓글 수정/삭제 메뉴 -->
 									<div class="my-1 d-flex flow row small-text">
 
@@ -666,7 +660,7 @@ function deleteReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 
 									</div>
 									<!--// 댓글 작성일 -->
-									
+
 								</div>`;
 						replyListPnl.innerHTML += replyData;
 
@@ -688,7 +682,7 @@ function deleteReply(originalBoardId, replyBoardId, boardWriter, originalWriter)
 		} //
 
 	} // 회원이 실제 댓글 작성자라면...
-	
+
 	// 댓글 삭제 (전송)취소 버튼을 클릭시
 	let replyResetBtn = document.getElementById("reply_reset_btn_" + replyBoardId);
 
@@ -714,7 +708,7 @@ function deleteBoard(boardNum, boardWriter) {
 
 	// 게시글 삭제 버튼
 	let boardDeleteBtn = document.getElementById(`board_delete_btn_${boardNum}`);
-	
+
 	boardDeleteBtn.onclick = function() {
 
 		alert("게시글 삭제");
