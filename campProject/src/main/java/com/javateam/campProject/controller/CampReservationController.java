@@ -36,7 +36,6 @@ public class CampReservationController {
 	public String campReserve(@RequestParam String memberId, @RequestParam String socialUserId,
 							  @RequestParam int campId,      @RequestParam int campCNO,
 							  @RequestParam String dates, Model model) {
-		// @RequestParam String checkIn,  @RequestParam String checkOut,
 		log.info("[CampDetailController][campReserve]");
 		log.info("[CampDetailController][campReserve][memberId]: {}", memberId);
 		log.info("[CampDetailController][campReserve][socialUserId]: {}", socialUserId);

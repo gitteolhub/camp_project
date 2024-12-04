@@ -43,9 +43,9 @@ public class SecurityConfig {
 	        				 "/captcha",            "/checkCaptcha",           "/captcha/image/**", "/refreshImage",         "/socialAddInformation",
 	        				 "/findUserId",         "/findUserPw",             "/findUserIdProc",   "/pwVerificationCode",   "/findUserPwProc",
 	        				 "/findUserPwResult",   "/choiceJoin",             "/userJoin",         "/ceoJoin",              "/member/joinProc2",
-	        				 "/myPageModification", "/myPageReservationCheck", "/campGroundManagement", "/adminManagement",
+	        				 "/myPageModification", "/myPageReservationCheck", "/campGroundManagement", "/adminManagement",  "/error",
 	        				 "/search",             "/searchCamp",             "/searchCate3Name",   "/recomCamp" ,          "/recomCampProc",
-	        				 "/searchRecomCamp",    "/campDetail", "/login", "/error"
+	        				 "/searchRecomCamp",    "/campDetail",             "/login"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**", "/userManagement")
@@ -74,7 +74,7 @@ public class SecurityConfig {
 						   	.loginPage("/loginForm")		// 로그인 이후 주소
 						   	.usernameParameter("userId")	// 아이디
 						   	.passwordParameter("password")	// 비밀번호
-						   	.defaultSuccessUrl("/myPageModification")	// 로그인 성공시 이동 주소
+						   	.defaultSuccessUrl("/searchRecomCamp")	// 로그인 성공시 이동 주소
 						   	.failureUrl("/loginError")		// 로그인 에러 처리
 						   	.permitAll())
 
