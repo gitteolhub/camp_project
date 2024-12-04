@@ -251,4 +251,21 @@ public class MemberServiceImpl implements MemberService {
 	public List<Map<String, String>> selectAllUsersWithRole() {
 		return memberDAO.selectAllUsersWithRole();
 	}
+	
+	@Transactional
+	@Override
+	public void updateRole(String id, String role) {
+
+		try {
+			memberDAO.updateRole(id, role);
+		} catch (Exception ex) {
+			log.error("[MemberService][updateRole]: {}", ex);
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public List<Map<String, String>> selectAllUsersByRole(String role) {
+		return memberDAO.selectAllUsersByRole(role);
+	}
 }

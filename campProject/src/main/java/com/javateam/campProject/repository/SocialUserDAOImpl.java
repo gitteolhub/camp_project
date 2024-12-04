@@ -64,4 +64,22 @@ public class SocialUserDAOImpl implements SocialUserDAO{
 		return sqlSession.selectList(MAPPER_PATH + "selectSocialAllMembers");
 	}
 
+	@Override
+	public SocialUser selectSocialMemberById(int id) {
+		return sqlSession.selectOne(MAPPER_PATH + "selectSocialMemberById", id);
+	}
+
+	@Override
+	public void updateRole(int id, String role) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("role", role);
+		sqlSession.update(MAPPER_PATH + "updateRole", map);
+	}
+
+	@Override
+	public List<SocialUser> selectSocialAllMembersByRole(String role) {
+		return sqlSession.selectList(MAPPER_PATH + "selectSocialAllMembersByRole", role);
+	}
+
 }

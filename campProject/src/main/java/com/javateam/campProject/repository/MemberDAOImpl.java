@@ -132,22 +132,20 @@ public class MemberDAOImpl implements MemberDAO {
 
 
 	// 회원 Role 수정 (관리자 화면에서)
-	public boolean updateRole(String strId, String strRole) {
-		boolean blRetVal = false;
+	@Override
+	public void updateRole(String strId, String strRole) {
 
 		try {
 			 Map<String, String> map = new HashMap<>();
 		     map.put("id", strId);
 		     map.put("role", strRole);
 
-		     int intResult = sqlSession.update(MAPPER_PATH + "updateRole", map);
-		     blRetVal = intResult == 1; // 업데이트 성공 여부 확인
+		     sqlSession.update(MAPPER_PATH + "updateRole", map);
 		} catch (Exception ex) {
 			log.error("[MemberDAOImpl][updateRole] Exception: {}", ex);
 
 		}
 
-		return blRetVal;
 	}
 
 	@Override
@@ -181,6 +179,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<Map<String, String>> selectAllUsersWithRole() {
 		return sqlSession.selectList(MAPPER_PATH + "selectAllUsersWithRole");
+	}
+
+	@Override
+	public List<Map<String, String>> selectAllUsersByRole(String role) {
+		return sqlSession.selectList(MAPPER_PATH + "selectAllUsersByRole", role);
 	}
 }
 

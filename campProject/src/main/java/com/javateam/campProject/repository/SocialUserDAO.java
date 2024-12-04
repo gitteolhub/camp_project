@@ -9,8 +9,11 @@ public interface SocialUserDAO {
 	// email로 소셜 회원 정보 조회
 	SocialUser selectSocialMemberByEmail(String strEmail);
 
-	// id로 소셜 회원 정보 조회
+	// id에 준하는 email, authVendor로 소셜 회원 정보 조회
 	SocialUser selectSocialMemberByEmailAndAuthVendor(String strEmail, String strAuthVendor);
+	
+	// id로 소셜 회원 정보 조회
+	SocialUser selectSocialMemberById(int id);
 
 	// social(naver, google) 회원정보 저장
 	void insertSocialUser(SocialUser socialUser);
@@ -23,5 +26,11 @@ public interface SocialUserDAO {
 	
 	// 전체 소셜 회원 정보 조회
 	List<SocialUser> selectSocialAllMembers();
+	
+	// social 회원 role 수정
+	void updateRole(int id, String role);
+	
+	// 소셜 회원 role별 조회
+	List<SocialUser> selectSocialAllMembersByRole(String role);
 
 }

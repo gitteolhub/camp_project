@@ -46,6 +46,21 @@ public class SocialUserServiceImpl implements SocialUserService{
 		return socialUserDAO.selectSocialAllMembers();
 	}
 
+	@Override
+	public SocialUser selectSocialUserById(int id) {
+		return socialUserDAO.selectSocialMemberById(id);
+	}
+
+	@Override
+	public void updateRole(int id, String role) {
+		socialUserDAO.updateRole(id, role);
+	}
+
+	@Override
+	public List<SocialUser> selectSocialAllMembersByRole(String role) {
+		return socialUserDAO.selectSocialAllMembersByRole(role);
+	}
+
 }
 
 

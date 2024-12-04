@@ -109,6 +109,12 @@
 		       , #{role}
 		   )
 	</insert>
+	
+	<!-- 회원 롤(Role) 변경 -->
+	<update id = "updateRole" parameterType="map">
+		UPDATE USER_ROLES SET ROLE = #{role}
+		 WHERE USERID = #{id}
+	</update>
 
 	<!-- 회원정보 수정 -->
 	<update id = "updateMember" parameterType = "com.javateam.campProject.domain.MemberVO">
@@ -203,6 +209,14 @@
 		SELECT U.ID id, U.NAME name, U.EMAIL email, R.ROLE role
 		  FROM USER_TBL U, USER_ROLES R
 		 WHERE U.ID = R.USERID
+	</select>
+	
+	<!-- 회원 role별 조회 -->
+	<select id="selectAllUsersByRole" parameterType="String" resultType="map">
+		SELECT U.ID id, U.NAME name, U.EMAIL email, R.ROLE role
+		  FROM USER_TBL U, USER_ROLES R
+		 WHERE U.ID = R.USERID
+		   AND R.ROLE = #{role}
 	</select>
 	
 </mapper>

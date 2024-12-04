@@ -35,9 +35,15 @@ public interface MemberService {
 	// 회원 role 생성
 	boolean insertRole(Role role);
 	
+	// 회원 role 수정
+	void updateRole (String id, String role);
+	
 	// 회원정보 수정
 	boolean updateMember (MemberVO objMemberVO);
 	
 	// 관리자 모드에서 사용자 조회 및 관리
 	List<Map<String, String>> selectAllUsersWithRole();
+	
+	// 회원 role별 조회
+	List<Map<String, String>> selectAllUsersByRole(String role);
 }

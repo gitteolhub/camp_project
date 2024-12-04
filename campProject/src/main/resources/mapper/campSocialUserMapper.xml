@@ -14,6 +14,13 @@
           FROM SOCIAL_USER
          WHERE EMAIL = #{email}
     </select>
+    
+    <!-- 개별 소셜 회원 정보 조회 -->
+	 <select id="selectSocialMemberById" parameterType="int" resultType="com.javateam.campProject.domain.SocialUser">
+        SELECT *
+          FROM SOCIAL_USER
+         WHERE ID = #{id} 
+    </select>
 
     <select id="selectSocialMemberByEmailAndAuthVendor" resultType="com.javateam.campProject.domain.SocialUser">
         SELECT *
@@ -57,5 +64,18 @@
 		  FROM SOCIAL_USER
 		 WHERE EMAIL = #{email} AND AUTH_VENDOR = #{authVendor}
 	</select>
+	
+	<!-- social 회원 role 수정 -->
+	<update id="updateRole" parameterType="map">
+		UPDATE SOCIAL_USER SET ROLE = #{role}
+		 WHERE ID = #{id}
+	</update>
+	
+	<!-- 소셜 회원 role별 조회 -->
+	 <select id="selectSocialAllMembersByRole" resultType="com.javateam.campProject.domain.SocialUser">
+        SELECT *
+          FROM SOCIAL_USER
+         WHERE ROLE=#{role}
+    </select>
 
 </mapper>

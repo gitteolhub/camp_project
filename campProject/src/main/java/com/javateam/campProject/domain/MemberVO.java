@@ -42,9 +42,9 @@ public class MemberVO {
 	private Date birthday;
 	/** 가입일 */
 	private Date joindate;
-	/** 회원 종류*/
+	/** 회원 종류 */
 	private String memberType;
-	/** 사업자 번호*/
+	/** 사업자 번호 */
 	private String businessNum;
 
 	@Override
