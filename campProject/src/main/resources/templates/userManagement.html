@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <th:block th:replace="layout/header :: header-head"></th:block>
   <title>사용자 관리</title>
@@ -102,95 +102,122 @@
   </style>
   <script>
   window.onload=()=>{
-	let actionBtns = document.querySelectorAll('.action-btn');
-	for(let actionBtn of actionBtns) {
-		actionBtn.onclick=(e)=>{
-			let id = e.target.title;
-			console.log("id: ", id);
-			//TODO AJAX(fetch or axios로 이벤트 처리해서 role 변경 구현)
-		}
-	}
+        let actionBtns = document.querySelectorAll('.action-btn');
+        for(let actionBtn of actionBtns) {
+                actionBtn.onclick=(e)=>{
+                        let id = e.target.title;
+                        console.log("id: ", id);
+                        //TODO AJAX(fetch or axios로 이벤트 처리해서 role 변경 구현)
+                }
+        }
+        
+        
+        // 유저 필터 검색 기능
+        const categoryFilter = document.getElementById('category-filter');
+        const adminTable = document.querySelector('.admin-table');
+        
+        categoryFilter.addEventListener('change', () => {
+          const selectedValue = categoryFilter.value;
+          const tableRows = adminTable.querySelectorAll('tbody tr');
+          
+          tableRows.forEach((row) => {
+            const roleCell = row.querySelector('td:nth-child(4)');
+            const roleText = roleCell.textContent;
+            
+            if (selectedValue === 'all') {
+              row.style.display = '';
+            } else if (selectedValue === 'ROLE_ADMIN' && roleText === '관리자') {
+              row.style.display = '';
+            } else if (selectedValue === 'ROLE_CEO' && roleText === '사업자') {
+              row.style.display = '';
+            } else if (selectedValue === 'ROLE_USER' && roleText === '사용자') {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
   }
   </script>
 </head>
 <body>
 
 <!-- 헤더 포함 -->
- 	<th:block th:include="layout/header :: header"></th:block>
+        <th:block th:include="layout/header :: header"></th:block>
 
-	<div class="container">
-<!-- 	users:[[${users}]] -->
-	  <div class="left-menu">
-	    <ul>
-	      <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
-	      <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
-	      <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
-	      <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
-	    </ul>
-	  </div>
-	  <div class="content">
-	    <h2>사용자 관리</h2>
-	  <div class="search-dropdown">
-		  <select id="category-filter">
-		    <option value="all">전체</option>
-		    <option value="ROLE_ADMIN">관리자</option>
-		    <option value="ROLE_CEO">사업자</option>
-		    <option value="ROLE_USER">사용자</option>
-		  </select>
+        <div class="container">
+<!--    users:[[${users}]] -->
+          <div class="left-menu">
+            <ul>
+              <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
+              <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
+              <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
+              <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
+            </ul>
+          </div>
+          <div class="content">
+            <h2>사용자 관리</h2>
+          <div class="search-dropdown">
+                  <select id="category-filter">
+                    <option value="all">전체</option>
+                    <option value="ROLE_ADMIN">관리자</option>
+                    <option value="ROLE_CEO">사업자</option>
+                    <option value="ROLE_USER">사용자</option>
+                  </select>
 
-	  </div>
-	    <table class="admin-table">
-	      <thead>
-	        <tr>
-	          <th>ID</th>
-	          <th>이름</th>
-	          <th>이메일</th>
-	          <th>역할</th>
-	          <th>상태</th>
-	          <th>관리</th>
-	        </tr>
-	      </thead>
-	      <tbody>
-	      
-<!--	  디자인 예시    
-		  <tr> 
-	          <td>1</td>
-	          <td>김관리자</td>
-	          <td>admin@example.com</td>
-	          <td>관리자</td>
-	          <td>활성</td>
-	          <td>
-	            <button class="action-btn">관리자 임명/해제</button>
-	          </td>
-	        </tr> -->
-	        
-	        <!-- 자체 로그인 회원들 -->
-	        <tr th:each="user : ${users}">
-	          <td th:text="${user.get('ID')}"></td>
-	          <td th:text="${user.get('NAME')}"></td>
-	          <td th:text="${user.get('EMAIL')}"></td>
-	          <td th:text="${user.get('ROLE')=='ROLE_ADMIN' ? '관리자' : user.get('ROLE')=='ROLE_CEO' ? '사업자' : '사용자'}"></td>
-	          <td>활성</td>
-	          <td>
-	            <button class="action-btn" th:title="${user.get('ID')}">관리자 임명/해제</button>
-	          </td>
-	        </tr>
-	        
-	        <!-- 소셜 로그인 회원들 -->
-	        <tr th:each="socialUser : ${socialUsers}">
-	          <td th:text="${socialUser.id}"></td>
-	          <td th:text="${socialUser.name}"></td>
-	          <td th:text="${socialUser.email}"></td>
-	          <td th:text="${socialUser.role=='ROLE_ADMIN' ? '관리자' : socialUser.role=='ROLE_CEO' ? '사업자' : '사용자'}"></td>
-	          <td>활성</td>
-	          <td>
-	            <button class="action-btn" th:title="${socialUser.id}">관리자 임명/해제</button>
-	          </td>
-	        </tr>
-	        
-	      </tbody>
-	    </table>
-	  </div>
-	</div>
+          </div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>이름</th>
+                  <th>이메일</th>
+                  <th>역할</th>
+                  <th>상태</th>
+                  <th>관리</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+<!--      디자인 예시    
+                  <tr> 
+                  <td>1</td>
+                  <td>김관리자</td>
+                  <td>admin@example.com</td>
+                  <td>관리자</td>
+                  <td>활성</td>
+                  <td>
+                    <button class="action-btn">관리자 임명/해제</button>
+                  </td>
+                </tr> -->
+                
+                <!-- 자체 로그인 회원들 -->
+                <tr th:each="user : ${users}">
+                  <td th:text="${user.get('ID')}"></td>
+                  <td th:text="${user.get('NAME')}"></td>
+                  <td th:text="${user.get('EMAIL')}"></td>
+                  <td th:text="${user.get('ROLE')=='ROLE_ADMIN' ? '관리자' : user.get('ROLE')=='ROLE_CEO' ? '사업자' : '사용자'}"></td>
+                  <td>활성</td>
+                  <td>
+                    <button class="action-btn" th:title="${user.get('ID')}">관리자 임명/해제</button>
+                  </td>
+                </tr>
+                
+                <!-- 소셜 로그인 회원들 -->
+                <tr th:each="socialUser : ${socialUsers}">
+                  <td th:text="${socialUser.id}"></td>
+                  <td th:text="${socialUser.name}"></td>
+                  <td th:text="${socialUser.email}"></td>
+                  <td th:text="${socialUser.role=='ROLE_ADMIN' ? '관리자' : socialUser.role=='ROLE_CEO' ? '사업자' : '사용자'}"></td>
+                  <td>활성</td>
+                  <td>
+                    <button class="action-btn" th:title="${socialUser.id}">관리자 임명/해제</button>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
 </body>
 </html>
