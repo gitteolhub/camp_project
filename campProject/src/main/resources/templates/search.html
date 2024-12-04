@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html 	xmlns:th="http://www.thymeleaf.org"
-		lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+	  lang="ko-kr">
 <head>
+	<th:block th:replace="layout/header :: header-head"></th:block>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>캠핑 검색</title>
@@ -13,7 +15,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/searchCss.css}">
 </head>
 <body>
-     <div class="container">
+	<!-- 헤더 포함 -->
+    <th:block th:include="layout/header :: header"></th:block>
+
+     <div layout:fragment="content" class="container">
         <h1 style="margin: 20px 0;">캠핑장 검색</h1>
         <div id="searchForm">
 		    <label for="campName"></label>
@@ -22,45 +27,45 @@
 		    	<button type="button" id="sendBtn">검색</button>
 		    </div>
 		</div>
-		
+
 		   <!-- 버튼 영역 -->
         <div class="button-container">
-        
+
 		    <a href="javascript:void(0);" id="searchCamping" class="searchCamps">
 		        <img th:src="@{/img/camp.png}" alt="일반야영장" style="width: 100px; height: auto;">
 		    </a>
-		    
+
 		    <a href="javascript:void(0);" id="searchGlamping" class="searchCamps">
 		        <img th:src="@{/img/glamping.png}" alt="글램핑" style="width: 100px; height: auto;">
 		    </a>
-		    
+
 		    <a href="javascript:void(0);" id="searchCaraban" class="searchCamps">
 		        <img th:src="@{/img/caraban.png}" alt="카라반" style="width: 100px; height: auto;">
 		    </a>
-		    
+
 		    <a href="javascript:void(0);" id="searchCar" class="searchCamps">
 		        <img th:src="@{/img/car.png}" alt="자동차야영장" style="width: 100px; height: auto;">
 		    </a>
 		</div>
-		
-		<!-- 페이징 상단 -->		
+
+		<!-- 페이징 상단 -->
 		<div id="pagingSectionTop">
 			<ul id="pagingsTop">
 	 		</ul>
 		</div>
-		
+
         <div id="results">
             <!-- 검색 결과가 이곳에 표시됩니다 -->
         </div>
-        
+
          <script th:src="@{'/js/searchCamp.js'}" charset="UTF-8"></script>
-         
-        <!-- 페이징 하단 -->		
+
+        <!-- 페이징 하단 -->
 		<div id="pagingSectionBottom">
 			<ul id="pagingsBottom">
 	 		</ul>
-		</div> 
-		
+		</div>
+
     </div>
 </body>
 </html>

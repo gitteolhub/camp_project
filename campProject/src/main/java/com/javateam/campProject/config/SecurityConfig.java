@@ -51,7 +51,7 @@ public class SecurityConfig {
 	        .requestMatchers("/admin/**", "/userManagement")
 	        .hasAnyAuthority("ROLE_ADMIN") // ROLE_ADMIN 권한이 필요한 경로
 	        .requestMatchers("/myPage", "/campReserve") // TODO: 추후 변경
-	        .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_CEO", "ROLE_SUPERADMIN")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
+	        .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_CEO")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
 			// 게시판 관련 링크 추가
 			.requestMatchers("/board/inquiryBoardWrite","/board/inquiryBoardWriteProc",
 							 "/board/image", "/board/image/**", "/board/inquiryBoardList",

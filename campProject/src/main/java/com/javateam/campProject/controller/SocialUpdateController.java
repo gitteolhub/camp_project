@@ -2,6 +2,7 @@ package com.javateam.campProject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ public class SocialUpdateController {
 	SocialUserService SocialUserService;
 
 	@PostMapping("updateGoogle")
-	public String updateGoogle(@ModelAttribute SocialUser socialUser, HttpSession httpSession, RedirectAttributes redirectAttributes) {
+	public String updateGoogle(@ModelAttribute SocialUser socialUser, HttpSession httpSession, Model model) {
 		log.info("[updateGoogle]: {}", socialUser);
 
 		String msg      = "";
@@ -39,7 +40,7 @@ public class SocialUpdateController {
 		if(blRetVal == true) {
 
 			msg      = "가입 되었습니다.";
-			movePath = "redirect:/home";
+			movePath = "/searchRecomCamp";
 
 			// 기존 session 정보 갱신(성별, 생일, 전화번호)
 			SessionUser sessionSocialUser = (SessionUser)httpSession.getAttribute("socialUser");
@@ -53,13 +54,14 @@ public class SocialUpdateController {
 		} else {
 
 			msg      = "가입 실패했습니다.";
-			movePath = "redirect:/socialAddInformation";
+			movePath = "/socialAddInformation";
 		}
+
 		log.info("[updateGoogle][result] : {}", msg);
-		redirectAttributes.addAttribute("msg", msg);
+		model.addAttribute("errMsg", msg);
+		model.addAttribute("movePage", movePath);
 
-
-		return movePath;
+		return "/error";
 	}
 
 }

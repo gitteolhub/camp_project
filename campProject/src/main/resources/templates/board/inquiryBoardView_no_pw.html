@@ -2,12 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorate="~{layout}" lang="ko-kr">
+	  layout:decorate="~{layout}"
+	  lang="ko-kr">
 <head>
+<th:block th:replace="layout/header :: header-head"></th:block>
 <meta charset="UTF-8">
 <title>게시글 보기</title>
 
 <style>
+.main_sect_pnl {
+	margin-top: 70px;
+}
 .container {
 	width: 920px;
     border: 1px solid #ccc; /* 테두리 색상 */
@@ -84,11 +89,11 @@ window.onload = () => {
 	let originalWriter = "[[${board.boardWriter.split('_')[0]}]]";
 	console.log("realWriter: ", realWriter);
 	console.log("originalWriter: ", originalWriter);
-	
-	// Naver & Google 로그인 허용에 따른 조치 
+
+	// Naver & Google 로그인 허용에 따른 조치
 	// 자체로그인 realWriter = id(ex. abcd1111)
 	getAllReplies(boardNum, realWriter, originalWriter);
-	
+
 	writeReply(boardNum, realWriter, originalWriter);
 
 	// (원)글 삭제 함수
@@ -99,137 +104,139 @@ window.onload = () => {
 </head>
 <body>
 
-	<!-- layout -->
+	<!-- 헤더 포함 -->
+    <th:block th:include="layout/header :: header"></th:block>
+
 	<div layout:fragment="content" class="container">
-	
+
 		<div class="main_sect_pnl">
-	
+
 			<div class="content_sect_pnl">
-			
+
 				<h2 class="d-flex justify-content-center">게시글 보기</h2>
-	
+
 				<table class="table mx-auto mt-4" style="width: 800px;">
-					
+
 					<tr>
 						<th scope="col">제목</th>
 						<td th:utext="${board.boardSubject}"></td>
 					</tr>
-					
+
 					<tr>
 						<th scope="col">작성자</th>
 						<td th:utext="${board.boardWriter.split('_')[0]}"></td>
 					</tr>
-					
+
 					<tr>
 						<th scope="col">내용</th>
 						<td>
 							<div id="boardContentDiv" th:utext="${board.boardContent}" contenteditable="false"></div>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<th scope="col">첨부파일</th>
 						<td>
 							<span th:if="${#strings.isEmpty(board.boardFile)}">첨부 파일 없음</span>
-	
+
 							<a th:href="@{'/board/download/'+${board.boardOriginalFile}+'/'+${board.boardFile}}"
 							   th:if="${!#strings.isEmpty(board.boardOriginalFile)}"
 							   th:utext="${board.boardOriginalFile}"></a>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<th class="small-text" scope="col">게시글 번호</th>
 						<td class="small-text" th:utext="${board.boardNum}"></td>
 					</tr>
-					
+
 					<tr>
 						<th class="small-text" scope="col">등록일</th>
 						<td class="small-text" th:utext="${#dates.format(board.boardDate, 'yyyy.MM.dd HH:mm:ss')}"></td>
 					</tr>
-				
+
 				</table>
-				
+
 				<!-- 댓글 영역  -->
 				<!-- <div id="reply_pnl" class="mx-auto my-3 border border-top border-primary-subtle" style="width: 800px;"> -->
-	
+
 				<div id="reply_pnl" class="mx-auto my-3" style="width: 800px;">
-	
+
 					<!-- 개별 게시글 전체 댓글 리스트 -->
 					<div id="reply_list_pnl" class="bg-light my-3">
 					 	<!-- 댓글 리스트 -->
 					</div>
-					
+
 					<!-- 댓글 등록/수정 -->
 					<div id="reply_write_update_pnl" class="my-3">
-	
+
 						<textarea id="reply_write_form" name="reply_write_form"
 								  class="form-control border border-primary"
 								  placeholder="댓글을  100자이내로 작성하십시오"></textarea>
-	
+
 					</div>
-					
+
 					<!-- 댓글 메뉴 -->
 					<!-- 정렬 교정 -->
 					<div class="d-flex justify-content-end align-items-center my-2">
-	
+
 						<!-- 댓글 패쓰워드 -->
 						<!-- 정렬 교정 -->
-	
+
 						<!-- 댓글 패쓰워드 입력 사용시 활성화 비사용시 비활성화 -->
 						<!-- <input type="text" th:id="${'board_pass_' + board.boardNum}"
 							   th:name="${'board_pass_' + board.boardNum}" required
 							   class="form-control form-control-sm h-100 w-25 me-2"> -->
-	
+
 						<!-- 댓글 메뉴 -->
 						<a href="#" th:id="${'reply_write_btn_' + board.boardNum}" class="btn btn-sm btn-outline-primary my-2 me-2">댓글 등록</a>
-	
+
 					</div>
-	
+
 				</div>
-				
+
 				<!-- 추가) board_view_no_pw.js 사용시 레이아웃 변경 : row 추가-->
 				<div class="d-flex justify-content-center mb-3 row">
-	
+
 					<div class="col-auto">
 						<a type="button" class="btn btn-custom" th:href="@{/board/inquiryBoardList}">게시글 목록</a>
 					</div>
-					
+
 					<!-- 글수정 링크 추가 -->
 					<!-- 글 작성자만 글수정/삭제하도록 조건 처리 -->
 					<!-- 자체 로그인일 경우 -->
 					<span th:if="${session.socialUser == null && board.boardWriter == #authentication.name}">
-	
+
 						<a type="button" class="btn btn-custom"
 							th:href="@{'/board/inquiryBoardUpdate?boardNum='+${board.boardNum}}">글수정</a>
-	
+
 						<!-- (원)글삭제 링크 추가 -->
 						<a type="button" class="btn btn-custom ms-2"
 						    th:id="${'board_delete_btn_' + board.boardNum}"
 							href="#">글삭제</a>
-	
+
 					</span>
-					
+
 					<!-- Naver & Google 로그인일 경우 -->
 					<span th:if="${session.socialUser != null && board.boardWriter == session.socialUser.email+'_'+session.socialUser.authVendor}">
-	
+
 						<a type="button" class="btn btn-primary"
 							th:href="@{'/board/inquiryBoardUpdate?boardNum='+${board.boardNum}}">글수정</a>
-	
+
 						<!-- (원)글삭제 링크 추가 -->
 						<a type="button" class="btn btn-primary ms-2"
 						    th:id="${'board_delete_btn_' + board.boardNum}"
 							href="#">글삭제</a>
-	
+
 					</span>
-					
+
 				</div>
-	
+
 			</div>
 			<!--// content -->
-	
+
 		</div>
 	</div>
-				
+
 </body>
 </html>

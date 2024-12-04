@@ -56,7 +56,7 @@ class MemberDAOTest {
 		SocialUser socialUser = SocialUser.builder()
 											.id(1).name("소원").email("tgdcom7@naver.com").gender("여자")
 											.birthday("2000-06-02").mobile("010-8389-1259").memberType("Type")
-											.authVendor("naver").role(SocialRole.USER).build();
+											.authVendor("naver").role(SocialRole.ROLE_USER).build();
 
 		socialUserDAO.insertSocialUser(socialUser);
 

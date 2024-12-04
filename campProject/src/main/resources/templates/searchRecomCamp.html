@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html 	xmlns:th="http://www.thymeleaf.org"
-		lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+	  lang="ko-kr">
 <head>
+	<th:block th:replace="layout/header :: header-head"></th:block>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>캠핑 검색</title>
@@ -13,6 +15,8 @@
 
 </head>
 <body>
+	 <!-- 헤더 포함 -->
+     <th:block th:include="layout/header :: header"></th:block>
      <div class="container">
 
      	<!-- 검색 -->
