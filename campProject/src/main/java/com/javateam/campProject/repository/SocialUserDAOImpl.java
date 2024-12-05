@@ -82,4 +82,9 @@ public class SocialUserDAOImpl implements SocialUserDAO{
 		return sqlSession.selectList(MAPPER_PATH + "selectSocialAllMembersByRole", role);
 	}
 
+	@Override
+	public void deleteSocialUser(int id) {
+		sqlSession.update(MAPPER_PATH + "deleteSocialUser", id);
+	}
+
 }

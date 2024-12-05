@@ -30,7 +30,10 @@ public interface SocialUserDAO {
 	// social 회원 role 수정
 	void updateRole(int id, String role);
 	
-	// 소셜 회원 role별 조회
+	// social 회원 role별 조회
 	List<SocialUser> selectSocialAllMembersByRole(String role);
+
+	// social 회원 정보 삭제
+	void deleteSocialUser(int id);
 
 }

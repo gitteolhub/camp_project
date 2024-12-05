@@ -28,7 +28,7 @@ public class SocialUserServiceImpl implements SocialUserService{
 			socialUserDAO.updateSocialGoogleUser(socialUser);
 			blRetVal = true;
 		} catch (Exception ex) {
-			log.error("[MemberService][updateSocialUser]: {}", ex);
+			log.error("[SocialUserServiceImpl][updateSocialUser]: {}", ex);
 				ex.printStackTrace();
 		}
 
@@ -59,6 +59,21 @@ public class SocialUserServiceImpl implements SocialUserService{
 	@Override
 	public List<SocialUser> selectSocialAllMembersByRole(String role) {
 		return socialUserDAO.selectSocialAllMembersByRole(role);
+	}
+
+	@Override
+	public boolean deleteSocialUser(int id) {
+		boolean blRetVal = false;
+
+		try {
+			socialUserDAO.deleteSocialUser(id);
+			blRetVal = true;
+		} catch (Exception ex) {
+			log.error("[SocialUserServiceImpl][deleteSocialUser]: {}", ex);
+				ex.printStackTrace();
+		}
+
+		return blRetVal;
 	}
 
 }

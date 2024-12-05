@@ -50,4 +50,10 @@ public interface MemberDAO {
 	// 회원 role별 조회
 	List<Map<String, String>> selectAllUsersByRole(String role);
 
+	// 회원 role 삭제
+	void deleteRole(String id);
+
+	// 회원 정보 삭제
+	void deleteMember(String id);
+
 }

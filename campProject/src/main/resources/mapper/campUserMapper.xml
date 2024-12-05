@@ -219,4 +219,16 @@
 		   AND R.ROLE = #{role}
 	</select>
 	
+	<!-- 회원 role 삭제 -->
+	<delete id="deleteRole" parameterType="String">
+		DELETE USER_ROLES
+		 WHERE USERID = #{id}
+	</delete>
+	
+	<!-- 회원 정보 삭제 -->
+	<delete id="deleteMember" parameterType="String">
+		DELETE USER_TBL
+		 WHERE ID = #{id}
+	</delete>
+	
 </mapper>

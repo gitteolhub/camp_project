@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko-kr">
+<head>
+<meta charset="UTF-8">
+<title>global error page</title>
+
+	<!-- thymeleaf를 사용하여 JavaSoript코드를 동적으로 생성
+		 errMsg가 null가 아닐 경우에만 th:if="${errMsg != null}" charset="UTF-8  -->
+	<script th:inline="javascript" charset="UTF-8">
+	
+		var naverLoginPopup;
+	
+		function openPopUp() {
+			let maxX = screen.availWidth;
+			let maxY = screen.availHeight;
+	
+			console.log("maxX = ", maxX, ", maxY = ", maxY);
+	
+			naverLoginPopup = window.open("https://nid.naver.com/nidlogin.logout", "_blank",
+										  "toolbar=0,scrollbars=0,resizable=0,toolbar=0,location=0," +
+										  "status=0,menubar=0,width=1,height=1," + 'left=${maxX}, top=${maxY}');
+		}
+	
+		function naverLogout() {
+			console.log("naverLogout()");
+			openPopUp();
+	
+			setTimeout(function() {
+	
+				naverLoginPopup.close();
+				alert("로그아웃 되었습니다");
+				location.href = "/campProject/logoutProc";
+	
+			}, 1000); <!-- 1초 후에 팝업을 닫고 로그아웃  -->
+		}
+		
+		let authVendor=[[${authVendor}]];
+		console.log("authVendor: " + authVendor);
+		
+		alert(authVendor);
+
+		if (authVendor == "naver") {
+			naverLogout();
+			//alert("회원탈퇴 성공")
+		}
+		else if (authVendor == "google") {
+			location.href='/campProject/logout';
+		}
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>

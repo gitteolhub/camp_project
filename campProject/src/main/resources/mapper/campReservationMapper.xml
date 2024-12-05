@@ -4,16 +4,16 @@
 
 	<insert id="insertReservation" parameterType="com.javateam.campProject.domain.CampReservationVO">
         INSERT INTO CAMP_RESERVATION_TBL
-        	(CAMP_ID, CAMP_C_NO,  CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME,
+        	(ID, CAMP_ID, CAMP_C_NO,  CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME,
         	 USER_EMAIL, USER_PHONE)
         VALUES
-        	(#{campId}, #{campCNo},   #{campName}, #{checkIn}, #{checkOut}, #{userName},
+        	(RESERVATION_SEQ.NEXTVAL, #{campId}, #{campCNo}, #{campName}, #{checkIn}, #{checkOut}, #{userName},
         	 #{userEmail}, #{userPhone})
     </insert>
 
 	<select id="selectReservation" parameterType="com.javateam.campProject.domain.CampReservationVO"
 								   resultType="com.javateam.campProject.domain.CampReservationVO">
-			SELECT CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
+			SELECT ID, CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
  			  FROM CAMP_RESERVATION_TBL
  			 WHERE USER_NAME=#{userName}
  			   AND USER_EMAIL=#{userEmail}
@@ -25,11 +25,24 @@
 	<!-- 개인 예약정보 리스트 조회 -->
 	<select id="selectReservationList" parameterType="com.javateam.campProject.domain.CampReservationVO"
 			 					       resultType="com.javateam.campProject.domain.CampReservationVO">
-			SELECT CAMP_C_NO, CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
+			SELECT ID, CAMP_C_NO, CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
  			  FROM CAMP_RESERVATION_TBL
  			 WHERE USER_NAME = #{userName}
  			   AND USER_EMAIL = #{userEmail}
  			   AND USER_PHONE = #{userPhone}
+ 		     ORDER BY CHECK_IN
 	</select>
+	
+	<!-- 전체 예약정보 리스트 조회(CEO용) -->
+	<select id="selectAllReservationList" resultType="com.javateam.campProject.domain.CampReservationVO">
+		SELECT *
+		  FROM CAMP_RESERVATION_TBL
+	</select>
+	
+	<!-- 개인 예약정보 삭제 -->
+	<delete id="deleteReservation" parameterType="int">
+		DELETE CAMP_RESERVATION_TBL
+		WHERE ID = #{id}
+	</delete>
 
 </mapper>

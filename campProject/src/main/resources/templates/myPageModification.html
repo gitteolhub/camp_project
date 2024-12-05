@@ -108,6 +108,13 @@
     	}
   	}).open(); // 주소 검색창 열기
 	}
+	
+	window.onload=()=>{
+		let deleteBtn = document.getElementById('deleteBtn');
+		deleteBtn.onclick=(e)=>{
+			location.href=`/campProject/deleteMember?id=${e.target.title}`;
+		}
+	}
   </script>
 </head>
 <body>
@@ -116,8 +123,8 @@
   <th:block th:include="layout/header :: header"></th:block>
 
   <div class="container">
-  authentication:[[${#authentication}]] <br>
-  socialUser:[[${session.socialUser}]]
+<!--   authentication:[[${#authentication}]] <br>
+  socialUser:[[${session.socialUser}]] -->
     <div class="left-menu">
       <ul>
         <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
@@ -128,6 +135,8 @@
     </div>
     <div class="content">
       <h2>회원정보 수정</h2>
+<!--       memberUpdateDTO:[[${memberUpdateDTO}]]<br>
+      id:[[${memberUpdateDTO.id}]] -->
       <form th:action="@{'/member/updateProc'}" method="post" th:object="${memberUpdateDTO}">  <!-- TODO 회원정보 테이블로 보내는 action 속성 추가 -->
         
         <!-- 히든 필드 -->
@@ -174,7 +183,7 @@
           <input type="password" id="passwordUpdate" th:field="*{passwordUpdate}" class="form-control" placeholder="수정할 비밀번호를 입력하세요.">
         </div>
         <button type="submit" class="btn">수정</button>
-        <button type="button" class="btn">회원탈퇴</button>
+        <button type="button" class="btn" id="deleteBtn" th:title="${memberUpdateDTO.id}">회원탈퇴</button>
       </form>
     </div>
   </div>

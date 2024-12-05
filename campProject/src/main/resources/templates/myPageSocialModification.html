@@ -108,6 +108,13 @@
     	}
   	}).open(); // 주소 검색창 열기
 	}
+	
+	window.onload=()=>{
+		let deleteBtn = document.getElementById('deleteBtn');
+		deleteBtn.onclick=(e)=>{
+			location.href=`/campProject/deleteSocialMember?id=${e.target.title}`;
+		}
+	}
   </script>
 </head>
 <body>
@@ -116,51 +123,53 @@
   <th:block th:include="layout/header :: header"></th:block>
 
   <div class="container">
-  authentication:[[${#authentication}]] <br>
-  socialUser:[[${session.socialUser}]]
+<!--   authentication:[[${#authentication}]] <br>
+  socialUser:[[${session.socialUser}]] -->
     <div class="left-menu">
       <ul>
-        <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
-	      <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
-	      <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
-	      <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
+          <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a th:href="@{/myPageModification}">회원정보 조회</a></li>
+	      <li sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/myPageReservationCheck}">예약 확인</a></li>
+	      <li sec:authorize="hasRole('ROLE_CEO')"><a th:href="@{/campGroundManagement}">캠핑장 관리</a></li>
+	      <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/userManagement}">유저 관리</a></li>
       </ul>
     </div>
-    <div class="content">
-      <h2>회원정보 조회</h2>
-        
-        <div>
-          <label for="name">이름</label>
-          <span id="name" th:text="${socialUser.name}"></span>
-        </div>
-        
-        <div>
-          <label for="email">이메일</label>
-          <span id="email" th:text="*{socialUser.email}"></span>
-        </div>
-        
-        <div>
-          <label for="gender">성별</label>
-          <span id="gender" th:text="${socialUser.gender}"></span>
-        </div>
-        
-        <div>
-          <label for="birthday">생년월일</label>
-          <span id="birthday" th:text="${socialUser.birthday}"></span>
-        </div>
-        
-        <div>
-          <label for="mobile">휴대폰 번호</label>
-          <span id="mobile" th:text="${socialUser.mobile}"></span>
-        </div>
-        
-        <div>
-          <label for="createdDate">가입일</label>
-          <span id="createdDate" th:text="${socialUser.createdDate}"></span>
-        </div>
-
-        <button type="button" class="btn">회원탈퇴</button>
-    </div>
+	  <div class="content">
+		  <h2>회원정보 조회</h2>
+		
+		  <div class="form-group">
+		    <label for="name">이름</label>
+		    <span id="name" th:text="${socialUser.name}" class="form-control"></span>
+		  </div>
+		
+		  <div class="form-group">
+		    <label for="email">이메일</label>
+		    <span id="email" th:text="*{socialUser.email}" class="form-control"></span>
+		  </div>
+		
+		  <div class="form-group">
+		    <label for="gender">성별</label>
+		    <span id="gender" th:text="${socialUser.gender=='M' ? '남자' : '여자'}" class="form-control"></span>
+		  </div>
+		
+		  <div class="form-group">
+		    <label for="birthday">생년월일</label>
+		    <span id="birthday" th:text="${socialUser.birthday}" class="form-control"></span>
+		  </div>
+		
+		  <div class="form-group">
+		    <label for="mobile">휴대폰 번호</label>
+		    <span id="mobile" th:text="${socialUser.mobile}" class="form-control"></span>
+		  </div>
+		
+		  <div class="form-group">
+		    <label for="createdDate">가입일</label>
+		    <span id="createdDate" th:text="${socialUser.createdDate}" class="form-control"></span>
+		  </div>
+		
+		  <div class="form-group">
+		    <button type="button" class="btn" id="deleteBtn" th:title="${socialUser.id}">회원탈퇴</button>
+		  </div>
+	  </div>
   </div>
 </body>
 </html>

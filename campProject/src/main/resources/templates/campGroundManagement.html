@@ -12,7 +12,7 @@
       padding: 0;
     }
     .container {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
       padding: 20px;
       background-color: #f9f9f9;
@@ -49,6 +49,28 @@
       float: left;
       width: 60%;
       padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .content h2 {
+      margin-top: 0;
+    }
+    .reservation-list {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .reservation-list th, .reservation-list td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    .reservation-list th {
+      background-color: #f9f9f9;
+    }
+    .reservation-list td {
+      background-color: #fff;
     }
     .form-group {
       margin-bottom: 20px;
@@ -90,14 +112,45 @@
     <div class="left-menu">
       <ul>
         <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
-                <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
-                <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
-                <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
-                <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')"><a href="http://localhost:8181/campProject/adminManagement">관리자 관리</a></li>
+        <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
+        <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
+        <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
       </ul>
     </div>
     <div class="content">
-
+      <h2>예약한 고객 확인</h2>
+      <table class="reservation-list">
+        <thead>
+          <tr>
+            <th style="width: 50px">캠핑장 번호</th>
+            <th style="width: 100px">회원 이름</th>
+                <th style="width: 100px">이메일</th>
+                <th style="width: 125px">전화번호</th>
+            <th style="width: 300px">캠핑장 이름</th>
+            <th style="width: 100px">예약 날짜</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+<!--        양식 예시
+                        <tr>
+            <td>12345</td>
+            <td>힐링 캠핑장</td>
+            <td>2024-11-25 ~ 2024-11-26</td>
+            <td><button class="btn">취소</button></td>
+          </tr> -->
+          
+          <tr th:each="reservation, st : ${reservationList}">
+            <td th:text="${reservation.id}"></td>
+            <td th:text="${reservation.userName}"></td>
+            <td th:text="${reservation.userEmail}"></td>
+            <td th:text="${reservation.userPhone}"></td>
+            <td th:text="${reservation.campName}"></td>
+            <td th:text="${reservation.checkIn + ' ~ ' + reservation.checkOut}"></td>
+          </tr>
+          
+        </tbody>
+      </table>
     </div>
   </div>
 </body>

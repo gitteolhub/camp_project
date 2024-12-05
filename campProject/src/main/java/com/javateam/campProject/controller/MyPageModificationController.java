@@ -32,7 +32,7 @@ public class MyPageModificationController {
 
     @GetMapping("/myPageModification")
     public String myPageModification(Model model, HttpSession httpSession) {  // Model 인자를 이용해 페이지 타이틀 설정
-    	log.info("회원정보 수정");
+    	log.info("회원정보 조회 및 수정: ");
     	
     	String movePath="";
     	
@@ -66,6 +66,7 @@ public class MyPageModificationController {
     	}
     	// 소셜 로그인
     	else {
+    		log.info("소셜 로그인: ");
     		SessionUser sessionUser = (SessionUser)httpSession.getAttribute("socialUser");
     		SocialUser socialUser = socialUserService.selectSocialUser(sessionUser.getEmail(), sessionUser.getAuthVendor());
     		model.addAttribute("socialUser", socialUser);

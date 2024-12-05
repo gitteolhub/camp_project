@@ -15,13 +15,16 @@ public interface SocialUserService {
 	// social 회원 조회(id)
 	SocialUser selectSocialUserById(int id);
 	
-	// 전체 소셜 회원 정보 조회
+	// 전체 social 회원 정보 조회
 	List<SocialUser> selectSocialAllMembers();
 	
 	// social 회원 role 수정
 	void updateRole(int id, String role);
 	
-	// 소셜 회원 role별 조회
+	// social 회원 role별 조회
 	List<SocialUser> selectSocialAllMembersByRole(String role);
+	
+	// social 회원 정보 삭제
+	boolean deleteSocialUser(int id);
 
 }

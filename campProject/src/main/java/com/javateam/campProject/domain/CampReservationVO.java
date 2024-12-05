@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CampReservationVO {
 
+	private int id;
 	private int campId;
 	private int campCNo;
 	private String campName;

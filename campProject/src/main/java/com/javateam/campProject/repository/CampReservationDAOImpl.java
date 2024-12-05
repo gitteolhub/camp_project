@@ -45,4 +45,14 @@ public class CampReservationDAOImpl implements CampReservationDAO{
 
 		return sqlSession.selectList(MAPPER_PATH + "selectReservationList", objCampReservationVO);
 	}
+
+	@Override
+	public void deleteReservation(int id) {
+		sqlSession.delete(MAPPER_PATH + "deleteReservation", id);
+	}
+
+	@Override
+	public List<CampReservationVO> selectAllReservationList() {
+		return sqlSession.selectList(MAPPER_PATH + "selectAllReservationList");
+	}
 }

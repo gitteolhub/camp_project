@@ -39,27 +39,27 @@ public class SecurityConfig {
 		// 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
 		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests ->
 	    authorizeHttpRequests
-	        .requestMatchers("/",                   "/resources/**",           "/loginError",       "/loginForm",            "/home",
+	        .requestMatchers("/",                   "/resources/**",           "/loginError",       "/loginForm",            
 	        				 "/captcha",            "/checkCaptcha",           "/captcha/image/**", "/refreshImage",         "/socialAddInformation",
 	        				 "/findUserId",         "/findUserPw",             "/findUserIdProc",   "/pwVerificationCode",   "/findUserPwProc",
 	        				 "/findUserPwResult",   "/choiceJoin",             "/userJoin",         "/ceoJoin",              "/member/joinProc2",
-	        				 "/myPageModification", "/myPageReservationCheck", "/campGroundManagement", "/adminManagement",  "/error",
+	        				 "/myPageModification", "/adminManagement",  "/error",
 	        				 "/search",             "/searchCamp",             "/searchCate3Name",   "/recomCamp" ,          "/recomCampProc",
 	        				 "/searchRecomCamp",    "/campDetail",             "/login"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**", "/userManagement")
 	        .hasAnyAuthority("ROLE_ADMIN") // ROLE_ADMIN 권한이 필요한 경로
-	        .requestMatchers("/myPage", "/campReserve") // TODO: 추후 변경
-	        .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_CEO")	// ROLE_USER, ROLE_ADMIN 권한이 필요한 경로
+	        .requestMatchers("/campGroundManagement")
+	        .hasAnyAuthority("ROLE_CEO") // ROLE_CEO 권한이 필요한 경로
 			// 게시판 관련 링크 추가
 			.requestMatchers("/board/inquiryBoardWrite","/board/inquiryBoardWriteProc",
 							 "/board/image", "/board/image/**", "/board/inquiryBoardList",
 							 "/board/inquiryBoardView", "/board/searchList", "/board/inquiryBoardView_no_pw",
 							 "/board/inquiryBoardUpdate", "/board/inquiryBoardUpdateProc",
-							 "/board/replyWrite", "/board/replyUpdate", "/board/replyUpdateNoPw",
-							 "/board/getRepliesAll", "/board/replyDelete",
-							 "/board/deleteProc").authenticated()
+							 "/board/replyWrite", "/board/replyUpdate", "/board/replyUpdateNoPw", "/camp/campReserve",
+							 "/board/getRepliesAll", "/board/replyDelete", "/myPageReservationCheck",
+							 "/board/deleteProc", "/deleteMember", "/deleteSocialMember").authenticated()
 	        .anyRequest()
 	        .authenticated()
 	);

@@ -46,4 +46,8 @@ public interface MemberService {
 	
 	// 회원 role별 조회
 	List<Map<String, String>> selectAllUsersByRole(String role);
+	
+	// 회원 정보 삭제
+	boolean deleteMember (String id);
+	
 }

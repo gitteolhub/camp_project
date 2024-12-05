@@ -185,5 +185,15 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<Map<String, String>> selectAllUsersByRole(String role) {
 		return sqlSession.selectList(MAPPER_PATH + "selectAllUsersByRole", role);
 	}
+
+	@Override
+	public void deleteRole(String id) {
+		sqlSession.delete(MAPPER_PATH + "deleteRole", id);
+	}
+
+	@Override
+	public void deleteMember(String id) {
+		sqlSession.delete(MAPPER_PATH + "deleteMember", id);
+	}
 }
 

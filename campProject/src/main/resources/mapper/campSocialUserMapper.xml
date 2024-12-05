@@ -71,11 +71,17 @@
 		 WHERE ID = #{id}
 	</update>
 	
-	<!-- 소셜 회원 role별 조회 -->
-	 <select id="selectSocialAllMembersByRole" resultType="com.javateam.campProject.domain.SocialUser">
+	<!-- social 회원 role별 조회 -->
+	<select id="selectSocialAllMembersByRole" resultType="com.javateam.campProject.domain.SocialUser">
         SELECT *
           FROM SOCIAL_USER
          WHERE ROLE=#{role}
     </select>
+    
+    <!-- social 회원 정보 삭제 -->
+    <delete id="deleteSocialUser" parameterType="int">
+    	DELETE SOCIAL_USER
+    	 WHERE ID = #{id}
+    </delete>
 
 </mapper>

@@ -194,8 +194,8 @@
         <th:block th:include="layout/header :: header"></th:block>
 
         <div class="container">
-   users:[[${users}]] <br>
-   socialUsers:[[${socialUsers}]] <br>
+<!--    users:[[${users}]] <br>
+   socialUsers:[[${socialUsers}]] <br> -->
           <div class="left-menu">
             <ul>
               <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>

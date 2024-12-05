@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javateam.campProject.domain.CampReservationVO;
 import com.javateam.campProject.domain.CustomUser;
@@ -64,5 +65,19 @@ public class MyPageReservationCheckController {
     	model.addAttribute("reservationList", campReservationService.selectReservationList(campReservationVO));
     	
         return "myPageReservationCheck"; // myPageReservationCheck.html 파일을 반환
+    }
+    
+    @GetMapping("/deleteReservation")
+    public String deleteReservation(@RequestParam("id") int id, Model model) {
+    	log.info("deleteReservation: " + id);
+    	
+    	if (campReservationService.deleteReservation(id)) {
+    		return "redirect:/myPageReservationCheck";
+    	}
+    	else {
+    		model.addAttribute("errMsg", "예약 취소에 실패하였습니다");
+    		model.addAttribute("movePage", "/myPageReservationCheck");
+    		return "/error";
+    	}
     }
 }

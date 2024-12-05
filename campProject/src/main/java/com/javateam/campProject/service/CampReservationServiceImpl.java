@@ -143,6 +143,26 @@ public class CampReservationServiceImpl implements CampReservationService{
 		return campReservationDAO.selectReservationList(objCampReservationVO);
 	}
 
+	@Override
+	public boolean deleteReservation(int id) {
+		boolean blRetVal = false;
+		
+		try {
+			campReservationDAO.deleteReservation(id);
+			blRetVal = true;
+		} catch (Exception e) {
+			log.error("deleteReservation error: " + e);
+			blRetVal = false;
+		}
+		
+		return blRetVal;
+	}
+
+	@Override
+	public List<CampReservationVO> selectAllReservationList() {
+		return campReservationDAO.selectAllReservationList();
+	}
+
 
 
 }

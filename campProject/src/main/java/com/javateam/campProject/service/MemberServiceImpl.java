@@ -273,4 +273,30 @@ public class MemberServiceImpl implements MemberService {
 	public List<Map<String, String>> selectAllUsersByRole(String role) {
 		return memberDAO.selectAllUsersByRole(role);
 	}
+	
+	@Transactional
+	@Override
+	public boolean deleteMember(String id) {
+		
+		boolean blRetVal = false;
+		try {
+			memberDAO.deleteRole(id);
+			blRetVal = true;
+		} catch (Exception ex) {
+			log.error("[MemberService][updateRole]: {}", ex);
+			blRetVal = false;
+			ex.printStackTrace();
+		}
+		
+		try {
+			memberDAO.deleteMember(id);
+			blRetVal = true;
+		} catch (Exception ex) {
+			log.error("[MemberService][updateRole]: {}", ex);
+			blRetVal = false;
+			ex.printStackTrace();
+		}
+		
+		return blRetVal;
+	}
 }

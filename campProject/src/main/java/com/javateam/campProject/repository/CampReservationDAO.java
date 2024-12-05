@@ -15,4 +15,10 @@ public interface CampReservationDAO {
 	// 개인 예약정보 리스트 조회
 	List<CampReservationVO> selectReservationList(CampReservationVO objCampReservationVO);
 
+	// 개인 예약정보 삭제
+	void deleteReservation(int id);
+
+	// 전체 예약정보 리스트 조회(CEO용)
+	List<CampReservationVO> selectAllReservationList();
+
 }

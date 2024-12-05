@@ -78,17 +78,29 @@
       background-color: #23527c;
     }
   </style>
+  
+  <script>
+  window.onload=()=>{
+	  let btns = document.querySelectorAll(".btn");
+	  for (let btn of btns) {
+		  btn.onclick=(e)=>{
+			  console.log("e.target.title: ", e.target.title);
+			  location.href=`/campProject/deleteReservation?id=${e.target.title}`;
+		  }
+	  }
+  }
+  </script>
 </head>
 <body>
 <!-- 헤더 포함 -->
   <th:block th:include="layout/header :: header"></th:block>
 
   <div class="container">
-  reservationList=[[${reservationList}]]
+  <!-- reservationList=[[${reservationList}]] -->
   
     <div class="left-menu">
       <ul>
-        <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
+	      <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
 	      <li sec:authorize="hasRole('ROLE_USER')"><a href="http://localhost:8181/campProject/myPageReservationCheck">예약 확인</a></li>
 	      <li sec:authorize="hasRole('ROLE_CEO')"><a href="http://localhost:8181/campProject/campGroundManagement">캠핑장 관리</a></li>
 	      <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="http://localhost:8181/campProject/userManagement">유저 관리</a></li>
@@ -99,7 +111,7 @@
       <table class="reservation-list">
         <thead>
           <tr>
-            <th>캠핑장 번호(C_NO)</th>
+            <th>캠핑장 번호(id)</th>
             <th>캠핑장 이름</th>
             <th>예약 날짜</th>
             <th>예약 취소</th>
@@ -116,10 +128,10 @@
           </tr> -->
           
           <tr th:each="reservation, st : ${reservationList}">
-            <td th:text="${reservation.campCNo}"></td>
+            <td th:text="${reservation.id}"></td>
             <td th:text="${reservation.campName}"></td>
             <td th:text="${reservation.checkIn + ' ~ ' + reservation.checkOut}"></td>
-            <td><button class="btn" th:title="${reservation.campCNo}">취소</button></td>
+            <td><button class="btn" th:title="${reservation.id}">취소</button></td>
           </tr>
           
         </tbody>
