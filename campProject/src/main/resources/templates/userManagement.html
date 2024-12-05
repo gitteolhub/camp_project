@@ -135,17 +135,27 @@
         
         
         // 유저 필터 검색 기능
-        // TODO 
-        // category-filter 셀렉트 박스 초기화 => 현재 조회 중인 role로 초기화
+		// category-filter 셀렉트 박스를 현재 조회 중인 role로 초기화
         const categoryFilter = document.getElementById('category-filter');
+        const currentRole = new URLSearchParams(window.location.search).get('role'); // 현재 URL에서 role 파라미터 값 가져오기
+
+        // 기존 선택 항목 초기화 (중요!)
+        categoryFilter.selectedIndex = -1; // 초기화 필수!
+
+        // 현재 role에 해당하는 옵션 찾아서 선택
+        for (let i = 0; i < categoryFilter.options.length; i++) {
+            if (categoryFilter.options[i].value === currentRole) {
+                categoryFilter.selectedIndex = i;
+                break; // 해당 옵션 찾으면 루프 종료
+            }
+        }
+        
         categoryFilter.addEventListener('change', () => {
-        	
-        	let roleVal = categoryFilter.options[categoryFilter.selectedIndex].value;
-        	console.log("roleVal: " + roleVal);
-        	location.href = `/campProject/admin/viewByRole?role=${roleVal}`;
-        	
+            let roleVal = categoryFilter.options[categoryFilter.selectedIndex].value;
+            console.log("roleVal: " + roleVal);
+            location.href = `/campProject/admin/viewByRole?role=${roleVal}`;
         });
-        /*
+        /* 에러나서 주석처리
         const categoryFilter = document.getElementById('category-filter');
         const adminTable = document.querySelector('.admin-table');
         
