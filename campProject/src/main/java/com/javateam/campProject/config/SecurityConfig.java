@@ -39,13 +39,13 @@ public class SecurityConfig {
 		// 마이페이지는 권한 정확히 설정된 후 권한이 필요한 경로로 이동
 		objHttpSecurity.authorizeHttpRequests(authorizeHttpRequests ->
 	    authorizeHttpRequests
-	        .requestMatchers("/",                   "/resources/**",           "/loginError",       "/loginForm",            
+	        .requestMatchers("/",                   "/resources/**",           "/loginError",       "/loginForm",
 	        				 "/captcha",            "/checkCaptcha",           "/captcha/image/**", "/refreshImage",         "/socialAddInformation",
 	        				 "/findUserId",         "/findUserPw",             "/findUserIdProc",   "/pwVerificationCode",   "/findUserPwProc",
 	        				 "/findUserPwResult",   "/choiceJoin",             "/userJoin",         "/ceoJoin",              "/member/joinProc2",
-	        				 "/myPageModification", "/adminManagement",  "/error",
-	        				 "/search",             "/searchCamp",             "/searchCate3Name",   "/recomCamp" ,          "/recomCampProc",
-	        				 "/searchRecomCamp",    "/campDetail",             "/login"
+	        				 "/myPageModification", "/adminManagement",        "/error",			"/searchRecomCamp",      "/campDetail",
+	        				 "/search",             "/searchCamp",             "/searchCate3Name",  "/recomCamp" ,           "/recomCampProc",
+	        				 "/login"
 	        )
 	        .permitAll()
 	        .requestMatchers("/admin/**", "/userManagement")
@@ -53,13 +53,11 @@ public class SecurityConfig {
 	        .requestMatchers("/campGroundManagement")
 	        .hasAnyAuthority("ROLE_CEO") // ROLE_CEO 권한이 필요한 경로
 			// 게시판 관련 링크 추가
-			.requestMatchers("/board/inquiryBoardWrite","/board/inquiryBoardWriteProc",
-							 "/board/image", "/board/image/**", "/board/inquiryBoardList",
-							 "/board/inquiryBoardView", "/board/searchList", "/board/inquiryBoardView_no_pw",
-							 "/board/inquiryBoardUpdate", "/board/inquiryBoardUpdateProc",
-							 "/board/replyWrite", "/board/replyUpdate", "/board/replyUpdateNoPw", "/camp/campReserve",
-							 "/board/getRepliesAll", "/board/replyDelete", "/myPageReservationCheck",
-							 "/board/deleteProc", "/deleteMember", "/deleteSocialMember").authenticated()
+			.requestMatchers("/board/inquiryBoardWrite",  "/board/inquiryBoardWriteProc",  "/board/image",                  "/board/image/**",         "/board/inquiryBoardList",
+							 "/board/inquiryBoardView",   "/board/searchList",             "/board/inquiryBoardView_no_pw", "/board/deleteProc",       "/deleteMember",
+							 "/board/inquiryBoardUpdate", "/board/inquiryBoardUpdateProc", "/camp/campReserve",             "/board/replyWrite",       "/board/replyUpdate",
+							 "/board/replyUpdateNoPw",    "/board/getRepliesAll",          "/board/replyDelete",            "/myPageReservationCheck", "/deleteSocialMember")
+			.authenticated()
 	        .anyRequest()
 	        .authenticated()
 	);

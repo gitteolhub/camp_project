@@ -50,17 +50,17 @@
 			<li sec:authorize="isAuthenticated()">
 			    <span th:if="${session.socialUser == null}">
 			        <form th:action="@{/logout}" method="post" style="display: inline;">
-			            <button type="submit">로그아웃(자체)</button>
+			            <button type="submit">로그아웃</button>
 			        </form>
 			    </span>
 			    <span th:if="${session.socialUser != null}">
 			        <span th:if="${session.socialUser.authVendor != 'naver'}">
 			            <form th:action="@{/logout}" method="post" style="display: inline;">
-			                <button type="submit">로그아웃(Google)</button>
+			                <button type="submit">로그아웃</button>
 			            </form>
 			        </span>
 			        <span th:if="${session.socialUser.authVendor == 'naver'}">
-			            <a href="#" onclick="naverLogout()">로그아웃(Naver)</a>
+			            <a href="#" onclick="naverLogout()">로그아웃</a>
 			        </span>
 			    </span>
 			</li>

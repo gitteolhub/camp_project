@@ -138,8 +138,8 @@
 	<th:block th:replace="layout/header :: header"></th:block>
 
     <div class="login-container">
-	loginErrorCount:[[${session.loginErrorCount}]] <br>
-	error:[[${error}]] <br>
+	<!-- loginErrorCount:[[${session.loginErrorCount}]] <br>
+	error:[[${error}]] <br> -->
         <h2>Login Page</h2>
         <!-- TODO 나중에 수정해야함!! action=""부분  -->
         <form th:action="@{/loginForm}" method="post">
