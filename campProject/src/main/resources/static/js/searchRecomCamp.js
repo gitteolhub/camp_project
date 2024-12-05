@@ -233,7 +233,7 @@ window.onload = () => {
 		            // HTML 생성
 		            resultsHTML += `
 		                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px; min-width:500px;">
-		                    <p onclick="location.href='/campProject/campDetail?campId=${camp.id}'"><img src="/campProject/campImg/${campImg}" style="width:100%"></p>
+		                    <p onclick="location.href='/campProject/campDetail?campId=${camp.campId}'"><img src="/campProject/campImg/${campImg}" style="width:100%"></p>
 		                    <h3> ${camp.campName}</h3>
 		                    <p><strong>종류:</strong> ${camp.cate3}</p>
 		                    <p><strong>주소:</strong> ${address}</p>
@@ -409,6 +409,30 @@ window.onload = () => {
 
 	recomSendBtn.onclick = () => {
 
+		let time = document.getElementById("time");
+		let timeVal = time.value;
+		let destination = document.getElementById("destination");
+		let destinationVal = destination.value;
+
+		// YYYY-MM-DD 형식의 날짜 점검 정규식
+		let regex = new RegExp('((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])');
+
+		if(timeVal.trim()==""){
+			alert("날짜를 입력하세요.");
+			return false;
+		}
+
+		if(regex.test(timeVal) == false){
+			alert("올바른 날짜형식으로 입력하세요. 예) 2024-12-05");
+			return false;
+		}
+
+		if(destinationVal.trim()==""){
+			alert("해당 지역을 입력하십시오. 예)평택");
+			return false;
+		}
+
+
 		alert("추천");
 
 		let form = document.getElementById("recomForm");
@@ -443,11 +467,13 @@ window.onload = () => {
 	        // 데이터 행 추가
 	        data.forEach(camp => {
 
+				console.log("[camp]: " + camp.campId);
+
 	            const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
 
 	            resultsHTML += `
 	                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
-	               		<p onclick="location.href='/campProject/campDetail?campId=${camp.id}'"><img src="/campProject/campImg/${camp.imgName}" style="width:100%"></p>
+	               		<p onclick="location.href='/campProject/campDetail?campId=${camp.campId}'"><img src="/campProject/campImg/${camp.imgName}" style="width:100%"></p>
 	                	<h3> ${camp.campName}</h3>
 	                    <p><strong>종류:</strong> ${camp.cate3}</p>
 	                    <p><strong>주소:</strong> ${address}</p>

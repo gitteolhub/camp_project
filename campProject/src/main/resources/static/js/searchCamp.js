@@ -56,14 +56,15 @@ function searchByCate3Name(keyword, page, limit) {
 
         // 데이터 행 추가
         data.campList.forEach(camp => {
+			console.log("[camp.id] : ", camp.id);
             const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
 
             let campImg = camp.mainImg=='' || camp.mainImg==null ? 'noimg.jpg' : `${camp.mainImg}`;
 
             resultsHTML += `
                 <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
-					<p><img src="/campProject/campImg/${campImg}"></p>
-                    <h3> ${camp.campName}</h3>
+                	<p onclick="location.href='/campProject/campDetail?campId=${camp.id}'"><img src="/campProject/campImg/${campImg}"></p>
+                    <h3>${camp.campName}</h3>
                     <p><strong>종류:</strong> ${camp.cate3}</p>
                     <p><strong>주소:</strong> ${address}</p>
                     <p><strong>시설 특징:</strong> ${camp.facilCharacteristics}</p>
@@ -142,13 +143,14 @@ function searchByCampName(keyword, page, limit) {
 
         // 데이터 행 추가
         data.campList.forEach(camp => {
+			console.log("[camp.id]: " + camp.id);
             const address = camp.roadAddress ? camp.roadAddress : camp.jibunAddress; // 주소 처리
 
             let campImg = camp.mainImg=='' || camp.mainImg==null ? 'noimg.jpg' : `${camp.mainImg}`;
 
             resultsHTML += `
                 <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
-					<p><img src="/campProject/campImg/${campImg}"></p>
+                	<p onclick="location.href='/campProject/campDetail?campId=${camp.id}'"><img src="/campProject/campImg/${campImg}"></p>
                     <h3> ${camp.campName}</h3>
                     <p><strong>종류:</strong> ${camp.cate3}</p>
                     <p><strong>주소:</strong> ${address}</p>
@@ -226,7 +228,7 @@ window.onload = () => {
 		            // HTML 생성
 		            resultsHTML += `
 		                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px; min-width:500px;">
-		                    <p><img src="/campProject/campImg/${campImg}" style="width:100%"></p>
+		                	<p onclick="location.href='/campProject/campDetail?campId=${camp.id}'"><img src="/campProject/campImg/${campImg}"></p>
 		                    <h3> ${camp.campName}</h3>
 		                    <p><strong>종류:</strong> ${camp.cate3}</p>
 		                    <p><strong>주소:</strong> ${address}</p>
@@ -326,7 +328,7 @@ window.onload = () => {
 	            // HTML 생성
 	            resultsHTML += `
 	                <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 8px; min-width:500px;">
-	                    <p><img src="/campProject/campImg/${campImg}" style="width:100%"></p>
+	                	<p onclick="location.href='/campProject/campDetail?campId=${camp.id}'"><img src="/campProject/campImg/${campImg}"></p>
 	                    <h3> ${camp.campName}</h3>
 	                    <p><strong>종류:</strong> ${camp.cate3}</p>
 	                    <p><strong>주소:</strong> ${address}</p>

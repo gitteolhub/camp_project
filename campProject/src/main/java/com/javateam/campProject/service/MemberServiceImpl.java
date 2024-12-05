@@ -26,10 +26,10 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberDAO memberDAO;
-	
+
 	@Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@Autowired
 	public PlatformTransactionManager dataSourceTransactionManager;
 	public TransactionTemplate        transactionTemplate;
@@ -85,16 +85,21 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String findUserEmailByID(String id) {
+		String result = null;
 		try {
 			String strRetVal =  memberDAO.findUserEmailByID(id);
 
 			if(strRetVal == null) {
-				throw new UserNotFoundException("해당 ID에 대한 이메일을 찾을 수 없습니다.");
+//				throw new UserNotFoundException("해당 ID에 대한 이메일을 찾을 수 없습니다.");
+				throw new Exception("해당 ID에 대한 이메일을 찾을 수 없습니다.");
 			}
-			return strRetVal;
+			result = strRetVal;
 		} catch (Exception ex) {
-			throw new RuntimeException("[이메일 조회 중 오류가 발생했습니다]: {}", ex);
+			log.error("이메일 검색 에러: {}", ex);
+//			throw new RuntimeException("[이메일 조회 중 오류가 발생했습니다]: {}", ex);
 		}
+		log.info("[MemberService][findUserEmailByID]");
+		return result;
 	}
 
 	// 이메일로 회원 Id 조회
@@ -116,7 +121,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean updatePw(String strId, String strPw) {
 		boolean blRetVal = false;
-		
+
 		try {
 			// 비밀번호 암호화
 			String encodedPassword = bCryptPasswordEncoder.encode(strPw);
@@ -125,10 +130,10 @@ public class MemberServiceImpl implements MemberService {
 		} catch (Exception ex) {
 			log.error("[MemberService][updatePw]: {}", ex);
 		}
-		
+
 		return blRetVal;
 	}
-	
+
 	// 중복 아이디 확인후 새로운 회원 추가
 	@Override
 	public boolean insertMember(MemberVO objMemberVO) {
@@ -152,7 +157,7 @@ public class MemberServiceImpl implements MemberService {
 					 // 비밀번호 암호화
                     String encodedPassword = bCryptPasswordEncoder.encode(objMemberVO.getPw());
                     objMemberVO.setPw(encodedPassword); // 암호화된 비밀번호를 설정
-					
+
 					// 회원 정보 저장
 					blRetVal = memberDAO.insertMember(objMemberVO);
 
@@ -172,10 +177,10 @@ public class MemberServiceImpl implements MemberService {
 
 					// 가입된 회원 정보 조회
 					MemberVO memberVO = memberDAO.selectMemberById(objMemberVO.getId());
-					
-					String role = memberVO.getMemberType().equals("user") ? "ROLE_USER" : 
+
+					String role = memberVO.getMemberType().equals("user") ? "ROLE_USER" :
 								  memberVO.getMemberType().equals("ceo") ? "ROLE_CEO" : "ROLE_ADMIN";
-									  
+
 					blRetVal = memberDAO.insertRole(memberVO.getId(), role);
 
 				} catch (Exception ex) {
@@ -230,11 +235,11 @@ public class MemberServiceImpl implements MemberService {
 					if(memberDAO.hasMemberByFld("ID", objMemberVO.getId()) == false) {
 						throw new Exception("수정할 회원정보가 존재하지 않습니다.");
 					}
-					
+
 					// 수정한 비밀번호 암호화
                     String encodedPassword = bCryptPasswordEncoder.encode(objMemberVO.getPw());
                     objMemberVO.setPw(encodedPassword); // 암호화된 비밀번호를 설정
-					
+
 					blRetVal = memberDAO.updateMember(objMemberVO);
 
 				} catch (Exception ex) {
@@ -251,7 +256,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<Map<String, String>> selectAllUsersWithRole() {
 		return memberDAO.selectAllUsersWithRole();
 	}
-	
+
 	@Transactional
 	@Override
 	public void updateRole(String id, String role) {
