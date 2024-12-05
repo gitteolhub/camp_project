@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <th:block th:replace="layout/header :: header-head"></th:block>
-  <title>캠핑장 관리</title>
+  <title>예약한 고객 확인</title>
   
   <style>
     /* 레이아웃을 위한 스타일 */
@@ -97,56 +97,7 @@
       </ul>
     </div>
     <div class="content">
-      <h2>캠핑장 목록</h2>
-      <table>
-        <tr>
-          <th>캠핑장 이름</th>
-          <th>캠핑장 주소</th>
-          <th>캠핑장 전화번호</th>
-          <th>캠핑장 이메일</th>
-        </tr>
-        <!-- TODO 캠핑장 목록을 DB에서 가져와서 표시 -->
-        <tr th:each="campground : ${campgrounds}">
-          <td th:text="${campground.name}">캠핑장 이름</td>
-          <td th:text="${campground.address}">캠핑장 주소</td>
-          <td th:text="${campground.phone}">캠핑장 전화번호</td>
-          <td th:text="${campground.email}">캠핑장 이메일</td>
-        </tr>
-      </table>
-      <hr>
-      <h2>캠핑장 등록</h2>
-      <form>  <!-- TODO 캠핑장 테이블로 보내는 action 속성 추가 -->
-        <div class="form-group">
-          <label for="campground-name">캠핑장 이름</label>
-          <input type="text" id="campground-name" class="form-control" placeholder="캠핑장 이름을 입력하세요.">
-        </div>
-        <div class="form-group">
-          <label for="campground-address">캠핑장 주소</label>
-          <input type="text" id="campground-address" class="form-control" placeholder="캠핑장 주소를 입력하세요.">
-        </div>
-        <div class="form-group">
-          <label for="campground-phone">캠핑장 전화번호</label>
-          <input type="tel" id="campground-phone" class="form-control" placeholder="캠핑장 전화번호를 입력하세요.">
-        </div>
-        <div class="form-group">
-          <label for="campground-email">캠핑장 이메일</label>
-          <input type="email" id="campground-email" class="form-control" placeholder="캠핑장 이메일을 입력하세요.">
-        </div>
-        <div class="form-group">
-          <label for="campground-info">캠핑장 정보</label>
-          <textarea id="campground-info" class="form-control" placeholder="캠핑장 정보를 입력하세요."></textarea>
-        </div>
-        <button type="submit" class="btn">등록</button>
-      </form>
-      <hr>
-      <h2>캠핑장 삭제</h2>
-      <form>  <!-- TODO 캠핑장 삭제 action 속성 추가 -->
-        <div class="form-group">
-          <label for="campground-name">캠핑장 이름</label>
-          <input type="text" id="campground-name" class="form-control" placeholder="삭제할 캠핑장 이름을 입력하세요.">
-        </div>
-        <button type="submit" class="btn">삭제</button>
-      </form>
+
     </div>
   </div>
 </body>

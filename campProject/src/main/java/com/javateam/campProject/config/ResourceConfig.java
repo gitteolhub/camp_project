@@ -34,18 +34,20 @@ public class ResourceConfig implements WebMvcConfigurer{
 		registry.addResourceHandler("/webjars/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-		// 캠핑 이미지
+		// 캠핑 이미지(PC에 따라 변경)
 		registry.addResourceHandler("/campImg/**")
 //				.addResourceLocations("file:///D:/work/campImage/");
-				.addResourceLocations("file:///D:/coding/work/crawl/campImage/");
+//				.addResourceLocations("file:///D:/coding/work/crawl/campImage/");
+				.addResourceLocations("file:///C:/Users/USER/Desktop/programming/works/crawling/");
 
 		// 부트 스트랩 아이콘
 		registry.addResourceHandler("/bootstrap-icons/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/bootstrap-icons/");
 
-		// 캠핑장 이미지 경로 추가
+		// 캠핑장 이미지 경로 추가(PC에 따라 변경)
 		registry.addResourceHandler("/campImgPath/**")
-				.addResourceLocations("file:///D:/coding/work/crawl/campImage/");
+//				.addResourceLocations("file:///D:/coding/work/crawl/campImage/");
+				.addResourceLocations("file:///C:/Users/USER/Desktop/programming/works/crawling/");
 	}
 
 	@Override

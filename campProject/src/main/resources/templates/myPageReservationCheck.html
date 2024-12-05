@@ -84,6 +84,8 @@
   <th:block th:include="layout/header :: header"></th:block>
 
   <div class="container">
+  reservationList=[[${reservationList}]]
+  
     <div class="left-menu">
       <ul>
         <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
@@ -97,23 +99,29 @@
       <table class="reservation-list">
         <thead>
           <tr>
-            <th>예약 번호</th>
+            <th>캠핑장 번호(C_NO)</th>
             <th>캠핑장 이름</th>
             <th>예약 날짜</th>
-            <th>인원 수</th>
-            <th>상태</th>
-            <th>취소</th>
+            <th>예약 취소</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+        
+<!--        양식 예시
+			<tr>
             <td>12345</td>
             <td>힐링 캠핑장</td>
-            <td>2024-11-25</td>
-            <td>4명</td>
-            <td>확정</td>
+            <td>2024-11-25 ~ 2024-11-26</td>
             <td><button class="btn">취소</button></td>
+          </tr> -->
+          
+          <tr th:each="reservation, st : ${reservationList}">
+            <td th:text="${reservation.campCNo}"></td>
+            <td th:text="${reservation.campName}"></td>
+            <td th:text="${reservation.checkIn + ' ~ ' + reservation.checkOut}"></td>
+            <td><button class="btn" th:title="${reservation.campCNo}">취소</button></td>
           </tr>
+          
         </tbody>
       </table>
     </div>
