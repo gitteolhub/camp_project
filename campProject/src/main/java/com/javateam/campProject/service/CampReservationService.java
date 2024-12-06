@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.javateam.campProject.domain.CampReservationVO;
+import com.javateam.campProject.domain.CampTotReservationVO;
 
 public interface CampReservationService {
 
@@ -22,8 +23,14 @@ public interface CampReservationService {
 
 	// 개인 예약정보 삭제
 	boolean deleteReservation(int id);
-	
+
 	// 전체 예약정보 리스트 조회(CEO용)
 	List<CampReservationVO> selectAllReservationList();
-	
+
+	// 캠핑장별 전체 예약현황 수정
+	boolean updateReservation(int id, int availSite);
+
+	// 캠핑장별 전체 예약현황 조회
+	CampTotReservationVO selectReservationById(int id);
+
 }

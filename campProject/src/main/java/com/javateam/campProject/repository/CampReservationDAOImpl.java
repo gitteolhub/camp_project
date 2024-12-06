@@ -1,7 +1,10 @@
 package com.javateam.campProject.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections4.map.HashedMap;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -54,5 +57,15 @@ public class CampReservationDAOImpl implements CampReservationDAO{
 	@Override
 	public List<CampReservationVO> selectAllReservationList() {
 		return sqlSession.selectList(MAPPER_PATH + "selectAllReservationList");
+	}
+
+	@Override
+	public void updateReservation(int id, int availSite) {
+		Map<String, Integer> map = new HashMap<>();
+
+		map.put("id", id);
+		map.put("availSite", availSite);
+
+		sqlSession.delete(MAPPER_PATH + "updateReservation", map);
 	}
 }

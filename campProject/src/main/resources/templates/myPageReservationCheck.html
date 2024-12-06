@@ -3,7 +3,7 @@
 <head>
   <th:block th:replace="layout/header :: header-head"></th:block>
   <title>마이페이지 일반유저 예약 확인</title>
-  
+
   <style>
     /* 레이아웃을 위한 스타일 */
     body {
@@ -78,14 +78,17 @@
       background-color: #23527c;
     }
   </style>
-  
+
   <script>
   window.onload=()=>{
 	  let btns = document.querySelectorAll(".btn");
 	  for (let btn of btns) {
 		  btn.onclick=(e)=>{
 			  console.log("e.target.title: ", e.target.title);
-			  location.href=`/campProject/deleteReservation?id=${e.target.title}`;
+			  let arr = e.target.title.split("_");
+			  let id = arr[0];
+			  let campId = arr[1];
+			  location.href=`/campProject/deleteReservation?id=${id}&campId=${campId}`;
 		  }
 	  }
   }
@@ -97,7 +100,7 @@
 
   <div class="container">
   <!-- reservationList=[[${reservationList}]] -->
-  
+
     <div class="left-menu">
       <ul>
 	      <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_CEO', 'ROLE_ADMIN')"><a href="http://localhost:8181/campProject/myPageModification">회원정보 수정</a></li>
@@ -118,7 +121,7 @@
           </tr>
         </thead>
         <tbody>
-        
+
 <!--        양식 예시
 			<tr>
             <td>12345</td>
@@ -126,14 +129,14 @@
             <td>2024-11-25 ~ 2024-11-26</td>
             <td><button class="btn">취소</button></td>
           </tr> -->
-          
+
           <tr th:each="reservation, st : ${reservationList}">
             <td th:text="${reservation.id}"></td>
             <td th:text="${reservation.campName}"></td>
             <td th:text="${reservation.checkIn + ' ~ ' + reservation.checkOut}"></td>
-            <td><button class="btn" th:title="${reservation.id}">취소</button></td>
+            <td><button class="btn" th:title="${reservation.id + '_' + reservation.campId}">취소</button></td>
           </tr>
-          
+
         </tbody>
       </table>
     </div>

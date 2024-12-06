@@ -25,24 +25,31 @@
 	<!-- 개인 예약정보 리스트 조회 -->
 	<select id="selectReservationList" parameterType="com.javateam.campProject.domain.CampReservationVO"
 			 					       resultType="com.javateam.campProject.domain.CampReservationVO">
-			SELECT ID, CAMP_C_NO, CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
+			SELECT ID, CAMP_ID, CAMP_C_NO, CAMP_NAME, CHECK_IN, CHECK_OUT, USER_NAME, USER_EMAIL, USER_PHONE
  			  FROM CAMP_RESERVATION_TBL
  			 WHERE USER_NAME = #{userName}
  			   AND USER_EMAIL = #{userEmail}
  			   AND USER_PHONE = #{userPhone}
  		     ORDER BY CHECK_IN
 	</select>
-	
+
 	<!-- 전체 예약정보 리스트 조회(CEO용) -->
 	<select id="selectAllReservationList" resultType="com.javateam.campProject.domain.CampReservationVO">
 		SELECT *
 		  FROM CAMP_RESERVATION_TBL
 	</select>
-	
+
 	<!-- 개인 예약정보 삭제 -->
 	<delete id="deleteReservation" parameterType="int">
 		DELETE CAMP_RESERVATION_TBL
 		WHERE ID = #{id}
 	</delete>
+
+	<!-- 개인 예약정보 수정 -->
+	<update id="updateReservation" parameterType="map">
+		UPDATE CAMP_TOT_RESERVATION_TBL
+   		   SET AVAIL_SITE = #{availSite}
+ 		 WHERE CAMP_ID = #{id}
+	</update>
 
 </mapper>

@@ -53,6 +53,10 @@ UPDATE CAMP_TOT_RESERVATION_TBL
    SET SITE = 10
  WHERE SITE = 0;
 
+UPDATE CAMP_TOT_RESERVATION_TBL
+   SET AVAIL_SITE = 0
+ WHERE CAMP_ID = 2445;
+
  SELECT c_no, site
    from CAMP_SITE_TBL site
   where c_no in (select c_no )

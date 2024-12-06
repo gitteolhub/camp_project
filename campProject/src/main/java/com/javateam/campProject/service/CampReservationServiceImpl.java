@@ -146,7 +146,7 @@ public class CampReservationServiceImpl implements CampReservationService{
 	@Override
 	public boolean deleteReservation(int id) {
 		boolean blRetVal = false;
-		
+
 		try {
 			campReservationDAO.deleteReservation(id);
 			blRetVal = true;
@@ -154,7 +154,7 @@ public class CampReservationServiceImpl implements CampReservationService{
 			log.error("deleteReservation error: " + e);
 			blRetVal = false;
 		}
-		
+
 		return blRetVal;
 	}
 
@@ -163,6 +163,24 @@ public class CampReservationServiceImpl implements CampReservationService{
 		return campReservationDAO.selectAllReservationList();
 	}
 
+	@Override
+	public boolean updateReservation(int id, int availSite) {
+		boolean blRetVal = false;
 
+		try {
+			campReservationDAO.updateReservation(id, availSite);
+			blRetVal = true;
+		} catch (Exception e) {
+			log.error("updateReservation error: " + e);
+			blRetVal = false;
+		}
+
+		return blRetVal;
+	}
+
+	@Override
+	public CampTotReservationVO selectReservationById(int id) {
+		return campTotReservationRepository.findById(id).get();
+	}
 
 }

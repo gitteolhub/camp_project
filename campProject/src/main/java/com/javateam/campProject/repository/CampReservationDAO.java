@@ -21,4 +21,7 @@ public interface CampReservationDAO {
 	// 전체 예약정보 리스트 조회(CEO용)
 	List<CampReservationVO> selectAllReservationList();
 
+	// 캠핑장별 전체 예약현황 수정
+	void updateReservation(int id, int availSite);
+
 }
